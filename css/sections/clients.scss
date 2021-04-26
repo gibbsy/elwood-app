@@ -1,0 +1,31 @@
+.clients__section-container {
+  @extend .section-container;
+}
+.clients__content-block {
+  @extend .content-block;
+  min-height: 100vh;
+  flex-direction: column;
+  background: linear-gradient(180deg, $lightGrey 80%, #fff 95%);
+  h1 {
+    color: $darkPurple;
+  }
+  @include bp(1200) {
+    padding: 12vh 0;
+  }
+}
+.clients__carousel {
+  position: relative;
+  margin-top: 80px;
+  width: 50%;
+}
+.clients__card {
+  background: #fff;
+  box-shadow: 0px 0px 20px rgba(20, 54, 124, 0.08);
+  border-radius: 8px;
+  padding: 60px;
+}
+
+.client__details,
+.client__testimonial {
+  display: flex;
+}

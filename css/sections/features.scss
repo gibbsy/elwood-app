@@ -1,0 +1,12 @@
+.features__section-container {
+  @extend .section-container;
+}
+.feature__content-block {
+  @extend .content-block;
+  min-height: 100vh;
+  h1 {
+    strong {
+      color: $darkPurple;
+    }
+  }
+}

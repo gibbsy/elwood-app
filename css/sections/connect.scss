@@ -1,0 +1,15 @@
+.connect__section-container {
+  @extend .section-container;
+}
+.connect__content-block {
+  @extend .content-block;
+  min-height: 100vh;
+  flex-direction: column;
+  background: #fff;
+  h1 {
+    color: $darkPurple;
+  }
+  @include bp(1200) {
+    padding: 12vh 0;
+  }
+}

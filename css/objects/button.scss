@@ -1,0 +1,49 @@
+/* Buttons styles start */
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin: 0;
+  margin-left: 1.5rem;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.btn:hover,
+.btn:focus {
+  background: #fff;
+}
+
+.btn:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.btn:active {
+  transform: scale(0.99);
+}
+/* Button styles end */
+
+.btn__solid--green {
+  background-color: $brightGreen;
+  color: $black;
+  border: 1px solid $brightGreen;
+}
+
+.btn__keyline--green {
+  color: $brightGreen;
+  background: none;
+  border: 1px solid $brightGreen;
+  &:hover {
+    background: $brightGreen;
+    color: $black;
+  }
+}

@@ -1,0 +1,55 @@
+.hero__container {
+  @extend .section-container;
+  @include dark-grad();
+}
+
+.hero__content-block {
+  @extend .content-block;
+  background: none;
+  height: 100vh;
+}
+
+.hero__text-block {
+  @extend .text-block;
+  @include bp(1023) {
+    width: 65%;
+  }
+  color: white;
+  h1 {
+    margin: 0.75rem 0 2rem 0;
+    @include bp(1200) {
+      font-size: 3rem;
+    }
+    @include bp(1600) {
+      font-size: 4rem;
+    }
+  }
+}
+
+.hero__summary {
+  @extend .summary;
+}
+
+.hero__feature-list {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  padding-bottom: 0.5rem;
+  li {
+    position: relative;
+    font-size: 0.9rem;
+    margin-left: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 1.2rem;
+      height: 1rem;
+      background: url("~@/static/hero_tick.svg") no-repeat center 100% / auto;
+    }
+  }
+}
