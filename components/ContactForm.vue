@@ -5,9 +5,15 @@
       name="contact"
       method="POST"
       data-netlify="true"
+      netlify-honeypot="bot-field"
       @submit.prevent="handleSubmit"
     >
       <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden">
+        <label
+          >Don’t fill this out if you’re human: <input name="bot-field"
+        /></label>
+      </p>
       <fieldset>
         <div class="form-row text firstname">
           <label class="firstname" for="firstname">First name</label>
