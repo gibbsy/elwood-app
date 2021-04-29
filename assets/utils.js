@@ -82,6 +82,14 @@ const addClass = function (elem, className) {
     elem.className += " " + className;
   }
 };
+const addClasses = function (elem, classNames) {
+  for (let i = 0; i < classNames.length; i++) {
+    const cname = classNames[i];
+    if (!hasClass(elem, cname)) {
+      elem.className += " " + cname;
+    }
+  }
+};
 
 const removeClass = function (elem, className) {
   let newClass = " " + elem.className.replace(/[\t\r\n]/g, " ") + " ";
@@ -113,6 +121,7 @@ export {
   MathUtils,
   hasClass,
   addClass,
+  addClasses,
   removeClass,
   toggleClass,
   getRandomInt,

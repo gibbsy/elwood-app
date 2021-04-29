@@ -32,13 +32,24 @@
 }
 /* Button styles end */
 
+.btn__solid--purple {
+  @extend .btn;
+  background-color: $darkPurple;
+  color: #fff;
+  border: 1px solid $darkPurple;
+  &:hover {
+    background-color: darken($darkPurple, 10%);
+  }
+}
 .btn__solid--green {
+  @extend .btn;
   background-color: $brightGreen;
   color: $black;
   border: 1px solid $brightGreen;
 }
 
 .btn__keyline--green {
+  @extend .btn;
   color: $brightGreen;
   background: none;
   border: 1px solid $brightGreen;

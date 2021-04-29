@@ -19,8 +19,7 @@ module.exports = {
   },
   globals: {
     gtag: "readonly",
-    lottie: "readonly",
+    Vimeo: "readonly",
     gsap: "readonly",
-    locomotiveScroll: "readonly",
   },
 };

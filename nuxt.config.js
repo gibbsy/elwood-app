@@ -48,7 +48,7 @@ export default {
     script: [
       {
         src:
-          "https://cdn.jsdelivr.net/combine/npm/lottie-web@5.7.3/build/player/lottie_light.min.js,npm/gsap@3.6.0",
+          "https://cdn.jsdelivr.net/combine/npm/gsap@3.6.0,npm/@vimeo/player@2.15.0",
       },
     ],
   },
@@ -62,10 +62,6 @@ export default {
       src: "@/plugins/locomotive-scroll.js",
       mode: "client",
     },
-    /* {
-      src: "@/plugins/gsap.js",
-      mode: "client",
-    }, */
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

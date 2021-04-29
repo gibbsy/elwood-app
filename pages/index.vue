@@ -1,7 +1,6 @@
-/* eslint-disable vue/attribute-hyphenation */
 <template>
   <div ref="scroll" class="home page-wrapper" data-scroll-section>
-    <div class="nav" role="navigation">
+    <div id="nav" class="nav" role="navigation">
       <div class="elwood-logo">
         <svg
           width="180"
@@ -48,23 +47,34 @@
       </div>
     </div>
     <section class="hero__container">
-      <graphics></graphics>
+      <graphics :section-id="'hero-graphics'" :scroll="scroll"></graphics>
       <div class="hero__content-block">
         <div class="hero__text-block" data-scroll data-scroll-speed="-2">
-          <h2 class="subhead">
+          <h2 id="hero-subhead" class="subhead">
             {{ homeData.heroSubhead }}
           </h2>
-          <h1>{{ homeData.heroHeadline }}</h1>
-          <div class="hero__summary">
+          <h1 id="hero-heading" class="hero__headline">
+            {{ homeData.heroHeadline }}
+          </h1>
+          <div id="hero-summary" class="hero__summary">
             <block-content :blocks="homeData.heroBody"></block-content>
           </div>
-          <div class="btn-container">
+          <div id="hero-btns" class="btn-container">
             <button class="btn btn__solid--green">XMS Trading</button>
             <button class="btn btn__solid--green">XMS Brokerage</button>
           </div>
         </div>
-        <ul class="hero__feature-list" data-scroll data-scroll-speed="-1">
-          <li v-for="(item, i) in homeData.heroBullets" :key="i">
+        <ul
+          id="hero-bullets"
+          class="hero__feature-list"
+          data-scroll
+          data-scroll-speed="-1"
+        >
+          <li
+            v-for="(item, i) in homeData.heroBullets"
+            :key="i"
+            class="hero__bullet"
+          >
             {{ item.text }}
           </li>
         </ul>
@@ -74,38 +84,86 @@
       <div
         v-for="(feature, i) in homeData.features"
         :key="i"
-        class="feature__content-block"
+        :class="['feature__content-block', { rtl: i % 2 != 0 }]"
       >
-        <div class="text-block">
-          <block-content
+        <div class="feature__text-block">
+          <h2
+            data-scroll
+            data-scroll-speed="1"
+            class="feature__subhead"
+            :data-scroll-offset="videoOffset * 0.75"
+          >
+            {{ feature.subhead }}
+          </h2>
+          <div
             class="feature__title"
-            :blocks="feature.title"
             data-scroll
-            data-scroll-speed="0.5"
-          ></block-content>
-          <block-content
-            class="feature__text"
-            :blocks="feature.text"
+            data-scroll-speed="1.25"
+            :data-scroll-offset="videoOffset * 0.75"
+          >
+            <block-content :blocks="feature.title"></block-content>
+          </div>
+          <div
+            class="feature__summary"
             data-scroll
-            data-scroll-speed="2"
-          ></block-content>
+            data-scroll-speed="1.5"
+            :data-scroll-offset="videoOffset * 0.75"
+          >
+            <block-content :blocks="feature.text"></block-content>
+          </div>
+          <a
+            class="cta-link"
+            data-scroll
+            data-scroll-speed="1.6"
+            :data-scroll-offset="videoOffset"
+            >Connect to get started</a
+          >
         </div>
+        <ContentVideo
+          :player-id="`feature-video-${i}`"
+          :vimeo-id="feature.animation"
+          :autoplay="true"
+          :wallpaper="true"
+          :scroll="scroll"
+          data-scroll
+          data-scroll-repeat="true"
+          :data-scroll-offset="videoOffset"
+        ></ContentVideo>
       </div>
     </section>
     <section class="usp__section-container">
-      <div class="usp__content-block">
-        <block-content :blocks="homeData.uspTitle"></block-content>
-        <div class="usp__bullet-points">
+      <graphics :scroll="scroll"></graphics>
+      <div
+        class="usp__content-block"
+        data-scroll
+        data-scroll-call="showBullets"
+        :data-scroll-offset="videoOffset"
+      >
+        <div
+          class="usp__headline"
+          data-scroll
+          :data-scroll-offset="videoOffset"
+        >
+          <block-content :blocks="homeData.uspTitle"></block-content>
+        </div>
+        <div class="usp__bullet-points" data-scroll data-scroll-speed="-1">
           <div
             v-for="(bullet, i) in homeData.uspList"
             :key="i"
             class="usp__bullet"
           >
-            <h3>{{ bullet.title }}</h3>
+            <figure
+              class="usp__icon"
+              :style="{ backgroundImage: `url(${urlFor(bullet.icon)})` }"
+              data-scroll
+            ></figure>
+            <h2 class="usp__title">{{ bullet.title }}</h2>
             <block-content :blocks="bullet.text"></block-content>
           </div>
         </div>
-        <a class="cta-link">Connect to get started</a>
+        <a class="cta-link--green usp__cta" data-scroll
+          >Connect to get started</a
+        >
       </div>
     </section>
     <section clients__section-container>
@@ -126,6 +184,7 @@
               </li>
             </ul>
           </div>
+          <contact-form></contact-form>
         </div>
       </div>
     </section>
@@ -133,9 +192,17 @@
 </template>
 
 <script>
+import imageUrlBuilder from "@sanity/image-url";
+import sanity from "@/sanityClient";
 import sanityClient from "../sanityClient";
 import ClientsCarousel from "../components/ClientsCarousel";
 import Graphics from "../components/Graphics";
+import ContentVideo from "../components/ContentVideo";
+import ContactForm from "~/components/ContactForm.vue";
+const urlBuilder = imageUrlBuilder(sanity);
+if (typeof window === "undefined") {
+  global.window = {};
+}
 const query = `{
 	"home": *[_type=="home"][0] {
   ...,
@@ -143,7 +210,7 @@ const query = `{
    text
   },
   features[] {
-  subtitle, title, text, animation, image
+  subhead, title, text, animation, image
   },
   uspList[] {
 		..., image{
@@ -152,9 +219,7 @@ const query = `{
   },
   clients[] {
 		name, position, quote, 
-    image{
-    asset->
-  },
+    image,
     logo{
     asset->
   }
@@ -166,22 +231,34 @@ connectBullets[] {
 }`;
 export default {
   components: {
+    ContentVideo,
     ClientsCarousel,
     Graphics,
+    ContactForm,
   },
   data() {
     return {
       homeData: 0,
-      scroll: -1,
+      scroll: {},
+      tlIntro: {},
     };
   },
   async fetch() {
     await sanityClient.fetch(query).then((data) => {
-      console.log(data);
+      // console.log(data);
       this.homeData = data.home;
       console.log(this.homeData);
       // this.updateScroll();
     });
+  },
+  computed: {
+    videoOffset() {
+      let val = 250;
+      if (process.client) {
+        val = Math.round(window.innerHeight / 2.5);
+      }
+      return val;
+    },
   },
   /* head() {
     if (!this || !this.home) {
@@ -204,8 +281,7 @@ export default {
     };
   }, */
   mounted() {
-    console.log("hi");
-    console.log(this.LocomotiveScroll);
+    this.introAni();
     this.$nextTick(() => {
       this.initScroll();
     });
@@ -214,55 +290,96 @@ export default {
     }, 500);
     console.log("GSAP");
     console.log(gsap);
-    console.log(lottie);
   },
   methods: {
+    urlFor(source) {
+      return urlBuilder.image(source);
+    },
     initScroll() {
       const el = this.$refs.scroll;
       this.scroll = new this.LocomotiveScroll({
         el,
         smooth: true,
       });
-      console.log("init");
-      /*   */
+      this.initScrollEvents();
+    },
+    initScrollEvents() {
+      this.scroll.on("call", (value, way, obj) => {
+        if ((value === "showBullets") & (way === "enter")) {
+          this.showUSPs();
+          obj.el.removeAttribute("data-scroll-call");
+        }
+      });
     },
     updateScroll() {
       console.log("update scroll");
       this.scroll.update();
     },
+    introAni() {
+      const nav = document.getElementById("nav");
+      const heroSub = document.getElementById("hero-subhead");
+      const heroHead = document.getElementById("hero-heading");
+      const heroSummary = document.getElementById("hero-summary");
+      const btns = document.getElementById("hero-btns");
+      const bullets = gsap.utils.toArray(".hero__bullet");
+      const els = [heroSub, heroHead, heroSummary, btns];
+      console.log(els);
+      this.tlIntro = gsap
+        .timeline()
+        .set(els, { opacity: 0, y: "+=80" })
+        .set(nav, { y: "-=40", opacity: 0 })
+        .set(bullets, { x: "+=30", opacity: "0" })
+        .to(
+          nav,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "Power2.easeOut",
+          },
+          0.5
+        );
+      els.forEach((el, i) => {
+        this.tlIntro.to(
+          el,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "Power2.easeOut",
+          },
+          i * 0.2 + 0.5
+        );
+      });
+      bullets.forEach((el, i) => {
+        this.tlIntro.to(
+          el,
+          {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            ease: "Power2.easeOut",
+          },
+          i * 0.3 + 2
+        );
+      });
+    },
+    showUSPs() {
+      const els = gsap.utils.toArray(".usp__bullet");
+      const tlBullets = gsap.timeline().set(els, { y: "+=100" });
+      els.forEach((el, i) => {
+        tlBullets.to(
+          el,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "Power2.easeOut",
+          },
+          i * 0.1 + 0.5
+        );
+      });
+    },
   },
 };
 </script>
-
-<style lang="scss">
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>

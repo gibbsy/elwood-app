@@ -3,6 +3,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  * {
+    line-height: 0;
+    font-size: 0;
+  }
 }
 .graphics__dots-main {
   @include abs100();
@@ -14,6 +18,14 @@
     display: flex;
     &:first-child {
       margin-top: 24px;
+    }
+    @for $i from 1 through 12 {
+      &.radius-#{$i} {
+        li {
+          width: #{$i}px;
+          height: #{$i}px;
+        }
+      }
     }
     li {
       list-style: none;
@@ -30,6 +42,63 @@
   }
 }
 
+.graphics__dots-cluster {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  ul {
+    display: flex;
+    list-style: none;
+    display: inline-block;
+    border-radius: 50%;
+  }
+  li {
+    list-style: none;
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba($brightGreen, 0.2);
+    margin-left: 44px;
+    opacity: 0;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  @for $i from 1 through 36 {
+    &.gap-#{$i} {
+      ul {
+        margin-top: #{$i}px;
+      }
+      li {
+        margin-left: #{$i}px;
+      }
+    }
+  }
+  @for $i from 1 through 12 {
+    &.radius-#{$i} {
+      li {
+        width: #{$i}px;
+        height: #{$i}px;
+      }
+    }
+  }
+}
+
+.graphics__dots-cluster--green {
+  @extend .graphics__dots-cluster;
+  li {
+    background: $brightGreen;
+  }
+}
+.graphics__dots-cluster--purple {
+  @extend .graphics__dots-cluster;
+  li {
+    background: $lightPurple;
+  }
+}
+
 .graphics__gradient--pink {
   position: absolute;
   display: inline-block;
@@ -41,6 +110,20 @@
     56.29% 56.29% at 50% 50%,
     rgba(127, 26, 228, 0.4) 0%,
     rgba(24, 22, 113, 0) 90%
+  );
+  animation: gradient-fade 10s infinite alternate, 5s;
+}
+.graphics__gradient--blue {
+  position: absolute;
+  display: inline-block;
+  bottom: -20%;
+  right: -10%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(
+    56.29% 56.29% at 50% 50%,
+    rgba(26, 192, 228, 0.3) 0%,
+    rgba(4, 0, 214, 0) 90%
   );
   animation: gradient-fade 10s infinite alternate, 5s;
 }

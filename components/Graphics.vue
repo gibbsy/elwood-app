@@ -1,33 +1,97 @@
 /* eslint-disable no-unused-vars */
 <template>
   <div
-    id="graphics"
+    :id="sectionId"
     class="graphics__container"
     data-scroll
-    data-scroll-speed="0.2"
+    data-scroll-speed="0.1"
     aria-hidden="true"
   >
     <div class="graphics__gradient--pink"></div>
+    <div class="graphics__gradient--blue"></div>
   </div>
 </template>
 
 <script>
-import { addClass, getRandomInt } from "../assets/utils";
+// import { addClass, getRandomInt } from "../assets/utils";
+import DotGrid from "../assets/graphics/DotGrid";
+import DotCluster from "../assets/graphics/DotCluster";
+
 if (typeof window === "undefined") {
   global.window = {};
 }
 export default {
+  props: {
+    scroll: {
+      type: Object,
+      default: () => {},
+    },
+    sectionId: {
+      type: String,
+      default: "graphics",
+    },
+  },
   data() {
     return {
-      coords: {},
+      mainDots: "",
+      clusters: [],
     };
   },
   mounted() {
-    this.mainDots();
+    // this.mainDots();
+    const container = document.getElementById(this.sectionId);
+    this.mainDots = new DotGrid(container, 3);
+    const options = {
+      x: 5,
+      y: 20,
+      radius: 2,
+      rows: 10,
+      cols: 24,
+      gap: 16,
+      fill: "green",
+      opacity: 0.5,
+    };
+    const cluster1 = new DotCluster({ container, ...options });
+    const cluster2 = new DotCluster({
+      container,
+      ...options,
+      alignX: "right",
+      alignY: "bottom",
+      cols: 18,
+      fill: "purple",
+    });
+    const cluster3 = new DotCluster({
+      container,
+      ...options,
+      alignX: "right",
+      alignY: "top",
+      radius: 3,
+      x: 15,
+      y: 30,
+      rows: 6,
+      cols: 12,
+      fill: "green",
+      speed: 5,
+    });
+    this.clusters.push(cluster1, cluster2, cluster3);
+    console.log(this.scroll);
+    this.$nextTick(() => {
+      this.updateScroll();
+    });
   },
   methods: {
     initGraphics() {},
-    mainDots() {
+    updateScroll() {
+      console.log("updateScroll");
+      if (typeof this.scroll.update === "function") {
+        this.scroll.update();
+      } else {
+        setTimeout(() => {
+          this.updateScroll();
+        }, 100);
+      }
+    },
+    /* mainDots() {
       const { innerWidth, innerHeight } = window;
       const container = document.getElementById("graphics");
       console.log(innerWidth, innerHeight, container);
@@ -60,7 +124,7 @@ export default {
         }
       }
     },
-    dotsGroup(dotSize, margin, className) {},
+    dotsGroup(dotSize, margin, className) {}, */
   },
 };
 </script>
