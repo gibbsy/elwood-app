@@ -190,7 +190,7 @@
               </li>
             </ul>
           </div>
-          <contact-form></contact-form>
+          <!--  <contact-form></contact-form> -->
         </div>
       </div>
     </section>
