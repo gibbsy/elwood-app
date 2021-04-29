@@ -3,10 +3,11 @@
     <form
       id="contact-form"
       name="contact"
+      method="POST"
       data-netlify="true"
       @submit.prevent="handleSubmit"
     >
-      <input type="hidden" name="form-name" value="contact-form" />
+      <input type="hidden" name="form-name" value="contact" />
       <fieldset>
         <div class="form-row text firstname">
           <label class="firstname" for="firstname">First name</label>
