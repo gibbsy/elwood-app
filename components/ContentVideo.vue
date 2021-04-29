@@ -34,6 +34,7 @@
           </button>
         </div>
       </transition>
+      <div class="video__overlay"></div>
     </div>
   </div>
 </template>
@@ -146,11 +147,14 @@ export default {
     init() {
       // create an invisible element over video player so we can scroll the page over the video
       this.initPlayer();
-      if (this.autoplay) {
+      /**
+       * these methods causing problems with nuxt
+       */
+      /*   if (this.autoplay) {
         this.initOverlay();
       } else {
         this.initController();
-      }
+      } */
       this.initialized = true;
     },
     initPlayer() {
