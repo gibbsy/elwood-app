@@ -15,21 +15,23 @@
   &:first-child {
     margin-left: 0;
   }
+  &:hover {
+    background: #fff;
+  }
+  &:focus {
+    outline: 1px solid #fff;
+  }
 }
 
-.btn:hover,
-.btn:focus {
-  background: #fff;
-}
+/* .btn:hover,
 
 .btn:focus {
-  outline: 1px solid #fff;
-  outline-offset: -4px;
+  outline: 2px solid #fff;
 }
 
 .btn:active {
   transform: scale(0.99);
-}
+} */
 /* Button styles end */
 
 .btn__solid--purple {
@@ -48,12 +50,23 @@
   border: 1px solid $brightGreen;
 }
 
-.btn__keyline--green {
+.btn__keyline {
   @extend .btn;
-  color: $brightGreen;
+  color: $darkPurple;
   background: none;
+  border: 1px solid $darkPurple;
+  &:hover {
+    border: 1px solid $darkPurple;
+    background: $darkPurple;
+    color: #fff;
+  }
+}
+.btn__keyline--green {
+  @extend .btn__keyline;
+  color: $brightGreen;
   border: 1px solid $brightGreen;
   &:hover {
+    border: 1px solid $brightGreen;
     background: $brightGreen;
     color: $black;
   }

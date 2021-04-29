@@ -124,7 +124,7 @@
         <input
           type="submit"
           class="submit-button btn__solid--purple"
-          value="Submit"
+          value="Connect with us"
         />
       </div>
     </form>

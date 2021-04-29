@@ -43,7 +43,20 @@
         <!--         <a>Products</a>
         <a>Company</a>
         <a>Connect</a> -->
-        <button class="btn btn__keyline--green">Request callback</button>
+        <button
+          tabindex="0"
+          role="button"
+          aria-label="Connect with us"
+          class="btn btn__keyline--green"
+          @click.prevent="
+            scrollTo('#contact-anchor', {
+              offset: 100,
+              duration: 1000,
+            })
+          "
+        >
+          Request Demo
+        </button>
       </div>
     </div>
     <section class="hero__container">
@@ -174,21 +187,38 @@
       </div>
     </section>
     <section connect__section-container>
-      <div class="connect__content-block">
+      <div id="contact-anchor" class="connect__content-block">
         <h1>Connect with our team</h1>
         <div class="connect__main">
           <div class="connect__leftcol">
-            <block-content :blocks="homeData.connectIntro"></block-content>
-            <ul>
-              <li v-for="(bullet, i) in homeData.connectBullets" :key="i">
-                {{ bullet.text }}
-              </li>
-            </ul>
+            <div class="connect__intro">
+              <block-content :blocks="homeData.connectIntro"></block-content>
+            </div>
+            <block-content
+              :class-name="'connect__bullets'"
+              :blocks="homeData.connectBullets"
+            ></block-content>
           </div>
           <contact-form></contact-form>
         </div>
       </div>
     </section>
+    <footer>
+      <div class="footer__contact footer__col">
+        <h2>Connect</h2>
+        <ul class="footer__socials">
+          <li class="linkedin"></li>
+          <li class="twitter"></li>
+        </ul>
+        <p class="address">
+          <span>27 Baker Street</span><span>London, W1U 8EQ, UK</span>
+        </p>
+        <p class="copyright">©2021 Elwood Asset Management LLP</p>
+      </div>
+      <div class="footer__logo">
+        <img src="~/assets/logo_refreshed_stacked.svg" alt="" />
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -224,10 +254,7 @@ const query = `{
     logo{
     asset->
   }
-  },
-connectBullets[] {
-  text
-}
+  }
 }
 }`;
 export default {
@@ -315,6 +342,9 @@ export default {
     updateScroll() {
       console.log("update scroll");
       this.scroll.update();
+    },
+    scrollTo(target, options) {
+      this.scroll.scrollTo(target, options);
     },
     introAni() {
       const nav = document.getElementById("nav");

@@ -19,8 +19,8 @@
         </div>
         <div class="client__details">
           <div>
-            <h3 class="client__name">{{ client.name }}</h3>
-            <h4 class="client__position">{{ client.position }}</h4>
+            <p class="client__name">{{ client.name }}</p>
+            <p class="client__position">{{ client.position }}</p>
           </div>
           <div
             class="client__logo"

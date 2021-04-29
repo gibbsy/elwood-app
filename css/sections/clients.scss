@@ -22,7 +22,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 75vh;
+  min-height: 65vh;
 }
 .client__card {
   // position: absolute;
@@ -47,6 +47,17 @@
   margin-top: auto;
   align-items: center;
   padding-top: 3rem;
+  p {
+    font-family: Proxima Nova, sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.4;
+    &.client__name {
+      color: $darkPurple;
+      font-weight: 600;
+    }
+  }
 }
 
 .client__quote {
@@ -60,7 +71,7 @@
     font-size: 1.5rem;
     max-width: 32rem;
     margin-top: 1.4rem;
-    &:first-child {
+    &:first-of-type {
       margin-top: 0;
     }
   }
@@ -92,12 +103,16 @@
     max-width: 100%;
   }
   @include bp(1200) {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
   }
   @include bp(1600) {
     width: 140px;
     height: 140px;
+  }
+  @include bp(1800) {
+    width: 160px;
+    height: 160px;
   }
 }
 
@@ -125,10 +140,10 @@
   li {
     display: inline-block;
     width: 66px;
-    height: 8px;
-    border-radius: 4px;
+    height: 10px;
+    border-radius: 5px;
     background: #fff;
-    border: 1px solid $midPurple;
+    border: 1px solid $darkPurple;
     transition: background-color 0.3s ease, transform 0.3s ease;
     margin-left: 8px;
     cursor: pointer;
@@ -137,7 +152,7 @@
       margin-left: 0;
     }
     &.active {
-      background: $midPurple;
+      background: $darkPurple;
     }
     &:hover {
       transform: scale(0.9);
