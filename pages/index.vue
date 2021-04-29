@@ -47,7 +47,9 @@
       </div>
     </div>
     <section class="hero__container">
-      <graphics :section-id="'hero-graphics'" :scroll="scroll"></graphics>
+      <client-only>
+        <graphics :section-id="'hero-graphics'" :scroll="scroll"></graphics>
+      </client-only>
       <div class="hero__content-block">
         <div class="hero__text-block" data-scroll data-scroll-speed="-2">
           <h2 id="hero-subhead" class="subhead">
@@ -132,7 +134,9 @@
       </div>
     </section>
     <section class="usp__section-container">
-      <graphics :scroll="scroll"></graphics>
+      <client-only>
+        <graphics :scroll="scroll"></graphics>
+      </client-only>
       <div
         class="usp__content-block"
         data-scroll
