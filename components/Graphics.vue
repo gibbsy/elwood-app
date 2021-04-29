@@ -38,49 +38,53 @@ export default {
     };
   },
   mounted() {
-    // this.mainDots();
-    const container = document.getElementById(this.sectionId);
-    this.mainDots = new DotGrid(container, 3);
-    const options = {
-      x: 5,
-      y: 20,
-      radius: 2,
-      rows: 10,
-      cols: 24,
-      gap: 16,
-      fill: "green",
-      opacity: 0.5,
-    };
-    const cluster1 = new DotCluster({ container, ...options });
-    const cluster2 = new DotCluster({
-      container,
-      ...options,
-      alignX: "right",
-      alignY: "bottom",
-      cols: 18,
-      fill: "purple",
-    });
-    const cluster3 = new DotCluster({
-      container,
-      ...options,
-      alignX: "right",
-      alignY: "top",
-      radius: 3,
-      x: 15,
-      y: 30,
-      rows: 6,
-      cols: 12,
-      fill: "green",
-      speed: 5,
-    });
-    this.clusters.push(cluster1, cluster2, cluster3);
-    console.log(this.scroll);
-    this.$nextTick(() => {
-      this.updateScroll();
-    });
+    this.initGraphics();
   },
   methods: {
-    initGraphics() {},
+    initGraphics() {
+      if (!process.client) {
+        return;
+      }
+      const container = document.getElementById(this.sectionId);
+      this.mainDots = new DotGrid(container, 3);
+      const options = {
+        x: 5,
+        y: 20,
+        radius: 2,
+        rows: 10,
+        cols: 24,
+        gap: 16,
+        fill: "green",
+        opacity: 0.5,
+      };
+      const cluster1 = new DotCluster({ container, ...options });
+      const cluster2 = new DotCluster({
+        container,
+        ...options,
+        alignX: "right",
+        alignY: "bottom",
+        cols: 18,
+        fill: "purple",
+      });
+      const cluster3 = new DotCluster({
+        container,
+        ...options,
+        alignX: "right",
+        alignY: "top",
+        radius: 3,
+        x: 15,
+        y: 30,
+        rows: 6,
+        cols: 12,
+        fill: "green",
+        speed: 5,
+      });
+      this.clusters.push(cluster1, cluster2, cluster3);
+      console.log(this.scroll);
+      this.$nextTick(() => {
+        this.updateScroll();
+      });
+    },
     updateScroll() {
       console.log("updateScroll");
       if (typeof this.scroll.update === "function") {
