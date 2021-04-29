@@ -42,9 +42,9 @@ export default {
   },
   methods: {
     initGraphics() {
-      if (!process.client) {
+      /*       if (!process.client) {
         return;
-      }
+      } */
       const container = document.getElementById(this.sectionId);
       this.mainDots = new DotGrid(container, 3);
       const options = {
