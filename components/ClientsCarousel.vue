@@ -54,7 +54,7 @@ export default {
   },
   data() {
     return {
-      index: 8,
+      index: 0,
     };
   },
   computed: {

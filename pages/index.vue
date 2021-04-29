@@ -1,6 +1,6 @@
 <template>
   <div ref="scroll" class="home page-wrapper" data-scroll-section>
-    <div id="nav" class="nav" role="navigation">
+    <div id="nav" class="nav intro-ani" role="navigation">
       <div class="elwood-logo">
         <svg
           width="180"
@@ -50,16 +50,16 @@
       <graphics :section-id="'hero-graphics'" :scroll="scroll"></graphics>
       <div class="hero__content-block">
         <div class="hero__text-block" data-scroll data-scroll-speed="-2">
-          <h2 id="hero-subhead" class="subhead">
+          <h2 id="hero-subhead" class="subhead intro-ani">
             {{ homeData.heroSubhead }}
           </h2>
-          <h1 id="hero-heading" class="hero__headline">
+          <h1 id="hero-heading" class="hero__headline intro-ani">
             {{ homeData.heroHeadline }}
           </h1>
-          <div id="hero-summary" class="hero__summary">
+          <div id="hero-summary" class="hero__summary intro-ani">
             <block-content :blocks="homeData.heroBody"></block-content>
           </div>
-          <div id="hero-btns" class="btn-container">
+          <div id="hero-btns" class="btn-container intro-ani">
             <button class="btn btn__solid--green">XMS Trading</button>
             <button class="btn btn__solid--green">XMS Brokerage</button>
           </div>
@@ -73,7 +73,7 @@
           <li
             v-for="(item, i) in homeData.heroBullets"
             :key="i"
-            class="hero__bullet"
+            class="hero__bullet intro-ani"
           >
             {{ item.text }}
           </li>

@@ -1,6 +1,9 @@
 .hero__container {
   @extend .section-container;
   @include dark-grad();
+  .intro-ani {
+    opacity: 0;
+  }
 }
 
 .hero__content-block {
