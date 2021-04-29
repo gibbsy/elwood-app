@@ -121,18 +121,16 @@
             >Connect to get started</a
           >
         </div>
-        <client-only>
-          <ContentVideo
-            :player-id="`feature-video-${i}`"
-            :vimeo-id="feature.animation"
-            :autoplay="true"
-            :wallpaper="true"
-            :scroll="scroll"
-            data-scroll
-            data-scroll-repeat="true"
-            :data-scroll-offset="videoOffset"
-          ></ContentVideo>
-        </client-only>
+        <ContentVideo
+          :player-id="`feature-video-${i}`"
+          :vimeo-id="feature.animation"
+          :autoplay="true"
+          :wallpaper="true"
+          :scroll="scroll"
+          data-scroll
+          data-scroll-repeat="true"
+          :data-scroll-offset="videoOffset"
+        ></ContentVideo>
       </div>
     </section>
     <section class="usp__section-container">
@@ -190,7 +188,7 @@
               </li>
             </ul>
           </div>
-          <!--  <contact-form></contact-form> -->
+          <contact-form></contact-form>
         </div>
       </div>
     </section>

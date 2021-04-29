@@ -6,6 +6,7 @@
       data-netlify="true"
       @submit.prevent="handleSubmit"
     >
+      <input type="hidden" name="form-name" value="contact-form" />
       <fieldset>
         <div class="form-row text firstname">
           <label class="firstname" for="firstname">First name</label>
