@@ -22,10 +22,13 @@
     z-index: 10;
     svg,
     img {
-      width: 100%;
+      max-width: 100%;
     }
     svg {
-      fill: $brightGreen;
+      fill: #fff;
+      .logo_hex {
+        fill: $brightGreen;
+      }
     }
   }
   .nav__links {

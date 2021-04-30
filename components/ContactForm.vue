@@ -22,7 +22,7 @@
             v-model="firstname"
             name="firstname"
             type="text"
-            placeholder="John"
+            placeholder="Jane"
             required=""
           />
         </div>
@@ -34,7 +34,7 @@
             v-model="lastname"
             name="lastname"
             type="text"
-            placeholder="Smith"
+            placeholder="Doe"
             required=""
           />
         </div>
@@ -46,12 +46,12 @@
             v-model="email.value"
             name="email"
             type="email"
-            placeholder="john.smith@example.com"
+            placeholder="jane.doe@example.com"
             required=""
           />
         </div>
         <div class="form-row text phone">
-          <label class="phone" for="phone">Work phone</label>
+          <label class="phone" for="phone">Phone number</label>
           <input
             id="phone"
             v-model="phone"
@@ -59,7 +59,6 @@
             type="text"
             placeholder="+44"
             required=""
-            class="invalid-missing"
           />
         </div>
         <div class="form-row text website">

@@ -52,6 +52,17 @@
 
 .btn__keyline {
   @extend .btn;
+  color: #fff;
+  background: none;
+  border: 1px solid #fff;
+  &:hover {
+    border: 1px solid $brightGreen;
+    background: $brightGreen;
+    color: $black;
+  }
+}
+.btn__keyline--purple {
+  @extend .btn;
   color: $darkPurple;
   background: none;
   border: 1px solid $darkPurple;

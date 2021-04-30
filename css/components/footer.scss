@@ -68,3 +68,10 @@ footer {
     display: block;
   }
 }
+
+.footer__logo {
+  width: 120px;
+  svg.logo__stacked {
+    width: 100% !important;
+  }
+}
