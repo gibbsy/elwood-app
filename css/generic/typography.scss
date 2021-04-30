@@ -105,10 +105,7 @@ a.cta-link {
   transform: translateY(40px);
   transition: opacity 0.3s ease, background-color 0.3s $easing,
     color 0.3s $easing;
-  opacity: 0;
-  &.is-inview {
-    opacity: 1;
-  }
+
   &:before {
     content: "";
     position: absolute;

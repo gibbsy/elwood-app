@@ -5,10 +5,17 @@
     class="graphics__container"
     data-scroll
     data-scroll-speed="0.1"
+    role="presentation"
     aria-hidden="true"
   >
     <div class="graphics__gradient--pink"></div>
     <div class="graphics__gradient--blue"></div>
+    <div class="graphics__hero-arc" data-scroll data-scroll-speed="-2">
+      <div class="graphic"><arc /></div>
+    </div>
+    <div class="graphics__hero-hex" data-scroll data-scroll-speed="-2">
+      <div class="graphic"><hex /></div>
+    </div>
   </div>
 </template>
 
@@ -16,11 +23,17 @@
 // import { addClass, getRandomInt } from "../assets/utils";
 import DotGrid from "../assets/graphics/DotGrid";
 import DotCluster from "../assets/graphics/DotCluster";
+import Arc from "~/assets/graphics_arc.svg?inline";
+import Hex from "~/assets/graphics_hex_dark.svg?inline";
 
 if (typeof window === "undefined") {
   global.window = {};
 }
 export default {
+  components: {
+    Arc,
+    Hex,
+  },
   props: {
     scroll: {
       type: Object,

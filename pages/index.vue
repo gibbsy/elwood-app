@@ -12,7 +12,7 @@
           tabindex="0"
           role="button"
           aria-label="Connect with us"
-          class="btn btn__keyline"
+          class="btn btn__keyline--green"
           @click.prevent="
             scrollTo('#contact-anchor', {
               offset: 100,
@@ -57,45 +57,114 @@
           </li>
         </ul>
       </div>
+      <div
+        id="scroll-prompt"
+        class="scroll-prompt"
+        data-scroll
+        data-scroll-speed="1.8"
+        data-scroll-offset="0,20%"
+        data-scroll-repeat="true"
+        role="presentation"
+        alt=""
+        aria-hidden
+      >
+        <div class="graphic"></div>
+      </div>
+      <div
+        class="graphics__circle-keyline--green"
+        data-scroll
+        data-scroll-speed="2.5"
+        data-scroll-repeat="true"
+        role="presentation"
+        alt=""
+        aria-hidden
+      >
+        <div class="graphic"></div>
+      </div>
     </section>
     <section class="features__section-container">
+      <div
+        id="features-hex-1"
+        class="graphics__hex--white"
+        data-scroll
+        data-scroll-speed="-2"
+        role="presentation"
+        aria-hidden="true"
+      >
+        <div class="graphic"></div>
+      </div>
+      <div
+        id="features-hex-2"
+        class="graphics__hex--white"
+        data-scroll
+        data-scroll-speed="-3"
+        role="presentation"
+        aria-hidden="true"
+      >
+        <div class="graphic"></div>
+      </div>
+      <div
+        id="features-circ-1"
+        class="graphics__circle"
+        data-scroll
+        data-scroll-speed="-2"
+        role="presentation"
+        aria-hidden="true"
+      >
+        <div class="graphic"></div>
+      </div>
+      <div
+        id="features-circ-2"
+        class="graphics__circle-keyline--green"
+        data-scroll
+        data-scroll-speed="-1"
+        role="presentation"
+        aria-hidden="true"
+      >
+        <div class="graphic"></div>
+      </div>
+      <dot-grid
+        data-scroll
+        data-scroll-speed="-1"
+        :init-options="{ radius: 3, rows: 4, cols: 16, gap: 18 }"
+        fill="purple"
+        uid="features-1"
+      ></dot-grid>
+      <dot-grid
+        data-scroll
+        data-scroll-speed="-1"
+        :init-options="{ radius: 3, rows: 4, cols: 12, gap: 24 }"
+        fill="purple"
+        uid="features-2"
+      ></dot-grid>
+      <dot-grid
+        data-scroll
+        data-scroll-speed="-2"
+        :init-options="{ radius: 3, rows: 4, cols: 8, gap: 18 }"
+        fill="purple"
+        uid="features-3"
+      ></dot-grid>
+
       <div
         v-for="(feature, i) in homeData.features"
         :key="i"
         :class="['feature__content-block', { rtl: i % 2 != 0 }]"
       >
         <div class="feature__text-block">
-          <h2
-            data-scroll
-            data-scroll-speed="1"
-            class="feature__subhead"
-            :data-scroll-offset="videoOffset * 0.75"
-          >
-            {{ feature.subhead }}
-          </h2>
-          <div
-            class="feature__title"
-            data-scroll
-            data-scroll-speed="1.25"
-            :data-scroll-offset="videoOffset * 0.75"
-          >
+          <div class="feature__subhead" data-scroll data-scroll-speed="1">
+            <h2>
+              {{ feature.subhead }}
+            </h2>
+          </div>
+          <div class="feature__title" data-scroll data-scroll-speed="1.25">
             <block-content :blocks="feature.title"></block-content>
           </div>
-          <div
-            class="feature__summary"
-            data-scroll
-            data-scroll-speed="1.5"
-            :data-scroll-offset="videoOffset * 0.75"
-          >
+          <div class="feature__summary" data-scroll data-scroll-speed="1.5">
             <block-content :blocks="feature.text"></block-content>
           </div>
-          <a
-            class="cta-link"
-            data-scroll
-            data-scroll-speed="1.6"
-            :data-scroll-offset="videoOffset"
-            >Connect to get started</a
-          >
+          <div class="feature__cta-wrapper" data-scroll data-scroll-speed="1.6">
+            <a class="cta-link">Connect to get started</a>
+          </div>
         </div>
         <ContentVideo
           :player-id="`feature-video-${i}`"
@@ -147,7 +216,9 @@
     </section>
     <section clients__section-container>
       <div class="clients__content-block">
-        <h1>{{ homeData.clientsTitle }}</h1>
+        <div class="clients__title" data-scroll data-scroll-offset="100">
+          <h1>{{ homeData.clientsTitle }}</h1>
+        </div>
         <clients-carousel :clients="homeData.clients"></clients-carousel>
       </div>
     </section>
@@ -194,6 +265,7 @@ import sanityClient from "../sanityClient";
 import ClientsCarousel from "../components/ClientsCarousel";
 import Graphics from "../components/Graphics";
 import ContentVideo from "../components/ContentVideo";
+import DotGrid from "../components/DotGrid";
 import ContactForm from "~/components/ContactForm.vue";
 import LogoHorizontal from "~/assets/logo_refreshed_horizontal.svg?inline";
 import LogoStacked from "~/assets/logo_refreshed_stacked.svg?inline";
@@ -232,6 +304,7 @@ export default {
     ContactForm,
     LogoHorizontal,
     LogoStacked,
+    DotGrid,
   },
   data() {
     return {
@@ -339,6 +412,7 @@ export default {
           },
           0.5
         );
+
       els.forEach((el, i) => {
         this.tlIntro.to(
           el,

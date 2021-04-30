@@ -1,5 +1,10 @@
 <template>
-  <div class="clients__carousel">
+  <div
+    ref="container"
+    class="clients__carousel"
+    data-scroll
+    data-scroll-offset="150"
+  >
     <transition name="carousel" mode="out-in">
       <div v-for="i in [currentIndex]" :key="i" class="client__card">
         <div class="client__testimonial">
@@ -55,6 +60,8 @@ export default {
   data() {
     return {
       index: 0,
+      container: null,
+      autoPlayIndex: 0,
     };
   },
   computed: {
@@ -64,6 +71,12 @@ export default {
     client() {
       return this.clients[this.currentIndex];
     },
+  },
+  mounted() {
+    this.container = this.$refs.container;
+    const config = { attributes: true, childList: false, subtree: false };
+    this.observer = new MutationObserver(this.onClassChange);
+    this.observer.observe(this.container, config);
   },
   methods: {
     urlFor(source) {
@@ -78,7 +91,25 @@ export default {
       return src;
     },
     updateIndex(i) {
+      window.clearInterval(this.autoPlayIndex);
       this.index = i;
+    },
+    autoPlay() {
+      this.autoPlayIndex = window.setInterval(() => {
+        this.index += 1;
+      }, 6000);
+    },
+    onClassChange(mutationsList, observer) {
+      for (const m of mutationsList) {
+        if (m.attributeName === "class") {
+          if (m.target.classList.contains("is-inview")) {
+            if (!this.initialized) {
+              this.autoPlay();
+              this.observer.disconnect();
+            }
+          }
+        }
+      }
     },
   },
 };
