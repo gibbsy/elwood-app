@@ -224,8 +224,10 @@
     </section>
     <section connect__section-container>
       <div id="contact-anchor" class="connect__content-block">
-        <h1>Connect with our team</h1>
-        <div class="connect__main">
+        <div class="connect__title" data-scroll data-scroll-offset="200">
+          <h1>Connect with our team</h1>
+        </div>
+        <div class="connect__main" data-scroll data-scroll-offset="200">
           <div class="connect__leftcol">
             <div class="connect__intro">
               <block-content :blocks="homeData.connectIntro"></block-content>
