@@ -6,11 +6,12 @@
 .usp__content-block {
   @extend .content-block;
   background: none;
-  min-height: 100vh;
+  min-height: 90vh;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   @include bp(1200) {
+    min-height: 100vh;
     padding: 12vh 0;
   }
   /* @include bp(1600) {
@@ -46,23 +47,37 @@
 
 .usp__bullet-points {
   position: relative;
-  width: 90%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 3rem;
-  @include bp(1024) {
-    width: 70%;
+  @include bp(768) {
+    width: 90%;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
   }
+  @include bp(1200) {
+    width: 70%;
+  }
 }
 .usp__bullet {
   opacity: 0;
+  margin-top: 2rem;
+  &:first-child {
+    margin-top: 0;
+  }
+  @include bp(768) {
+    margin-top: 0;
+  }
   p {
     font-size: 1rem;
+  }
+  @include bp(768) {
+    width: 26%;
+    margin: 2%;
   }
   @include bp(1024) {
     width: 26%;

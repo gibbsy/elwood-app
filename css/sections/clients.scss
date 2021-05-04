@@ -7,11 +7,9 @@
   flex-direction: column;
   background: linear-gradient(180deg, $lightGrey 80%, #fff 95%);
   align-items: center;
+  padding: 10vh 0 0 0;
   h1 {
     color: $darkPurple;
-  }
-  @include bp(1200) {
-    padding: 12vh 0;
   }
 }
 
@@ -33,11 +31,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  min-height: 80vh;
+  min-height: 75vh;
   @include fadeIn();
+  @include bp(768) {
+    width: 80%;
+    min-height: 60vh;
+  }
   @include bp(1024) {
-    min-height: 70vh;
     width: 70%;
+    min-height: 70vh;
   }
   @include bp(1400) {
     width: 60%;
@@ -52,12 +54,16 @@
   background: #fff;
   box-shadow: 0px 0px 20px rgba(20, 54, 124, 0.08);
   border-radius: 8px;
-  padding: 60px 80px;
-  width: 100%;
+  width: 90%;
+  padding: 30px;
   // height: 85%;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  @include bp(768) {
+    width: 100%;
+    padding: 60px 80px;
+  }
 }
 
 .client__details,
@@ -73,9 +79,13 @@
   p {
     font-family: Proxima Nova, sans-serif;
     font-weight: 500;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.2;
+    @include bp(768) {
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
     &.client__name {
       color: $darkPurple;
       font-weight: 600;
@@ -85,17 +95,28 @@
 
 .client__quote {
   flex: auto;
-  margin-left: 10%;
   display: flex;
   flex-direction: column;
+  @include bp(768) {
+    margin-left: 10%;
+  }
   p {
     font-family: Brandon-Grotesque;
     font-weight: 400;
-    font-size: 1.5rem;
     max-width: 32rem;
+    font-size: 1.2rem;
     margin-top: 1.4rem;
     &:first-of-type {
       margin-top: 0;
+    }
+    @include bp(768) {
+      font-size: 1.3rem;
+    }
+    @include bp(1200) {
+      font-size: 1.4rem;
+    }
+    @include bp(1400) {
+      font-size: 1.5rem;
     }
   }
 }
@@ -122,6 +143,10 @@
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;
+  display: none;
+  @include bp(768) {
+    display: inline-block;
+  }
   img {
     max-width: 100%;
   }
@@ -142,14 +167,18 @@
 .client__logo {
   position: relative;
   display: inline-block;
-  width: 150px;
-  height: 50px;
+  width: 80px;
+  height: 30px;
   overflow: hidden;
   flex-shrink: 0;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   background-color: #fff;
+  @include bp(768) {
+    width: 150px;
+    height: 50px;
+  }
   img {
     max-width: 100%;
   }

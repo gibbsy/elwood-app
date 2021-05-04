@@ -1,9 +1,9 @@
 /* Buttons styles start */
 .btn {
   display: inline-block;
-  padding: 0.8rem 1rem;
+  padding: 1rem;
   margin: 0;
-  margin-left: 1.5rem;
+  margin-left: 1rem;
   text-decoration: none;
   font-size: 0.8rem;
   line-height: 1;
@@ -13,6 +13,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   @include bp(768) {
+    margin-left: 1.5rem;
     font-size: 0.9rem;
     padding: 1rem 2rem;
   }

@@ -12,10 +12,16 @@ body {
 
 h1 {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 8vw;
   line-height: 1.2;
-  @include bp(1200) {
+  @include bp(768) {
+    font-size: 6vw;
+  }
+  @include bp(1024) {
     font-size: 2rem;
+  }
+  @include bp(1400) {
+    font-size: 2.6rem;
   }
   @include bp(1600) {
     font-size: 3rem;
@@ -28,16 +34,24 @@ h1 {
   }
   &.hero__headline {
     margin: 0.75rem 0 0 0;
-    @include bp(1200) {
+    font-size: 9vw;
+    @include bp(1024) {
       font-size: 3rem;
       margin: 0.75rem 0 1.2rem 0;
     }
     @include bp(1400) {
-      font-size: 3rem;
+      font-size: 3.2rem;
       margin: 0.75rem 0 2rem 0;
     }
     @include bp(1600) {
       font-size: 4rem;
+    }
+  }
+  &.block-heading--centred {
+    padding: 0 2rem;
+    text-align: center;
+    @include bp(1200) {
+      padding: 0;
     }
   }
 }
@@ -87,20 +101,20 @@ li {
   font-family: Proxima Nova, sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   text-decoration: none;
   list-style: none;
   text-indent: 0;
   padding: 0;
   @include bp(768) {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
-  @include bp(1400) {
-    font-size: 1.1rem;
+  @include bp(1200) {
+    font-size: 1.2rem;
   }
 
   @include bp(1600) {
-    font-size: 1.2rem;
+    // font-size: 1.2rem;
     line-height: 1.7;
   }
   strong {
@@ -112,7 +126,7 @@ a.cta-link {
   font-family: Proxima Nova, sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 28px;
   color: $darkPurple;
   display: inline-block;
@@ -124,6 +138,13 @@ a.cta-link {
   transform: translateY(40px);
   transition: opacity 0.3s ease, background-color 0.3s $easing,
     color 0.3s $easing;
+  @include bp(1400) {
+    font-size: 1.1rem;
+  }
+
+  @include bp(1600) {
+    font-size: 1.2rem;
+  }
 
   &:before {
     content: "";

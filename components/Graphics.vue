@@ -61,23 +61,25 @@ export default {
       } */
       console.log("mobile " + isMobile);
       const container = document.getElementById(this.sectionId);
-      this.mainDots = new DotGrid(container, 3);
+      this.mainDots = new DotGrid(container, 4);
       const options = {
         x: 5,
         y: 20,
-        radius: 2,
-        rows: 10,
-        cols: 24,
+        radius: 3,
+        rows: 8,
+        cols: 18,
         gap: 16,
         fill: "green",
         opacity: 0.5,
+        alignX: "right",
+        alignY: "bottom",
       };
       /**
        * Additional dots
        */
       if (!isMobile()) {
         const cluster1 = new DotCluster({ container, ...options });
-        const cluster2 = new DotCluster({
+        /*  const cluster2 = new DotCluster({
           container,
           ...options,
           alignX: "right",
@@ -97,8 +99,8 @@ export default {
           cols: 12,
           fill: "green",
           speed: 5,
-        });
-        this.clusters.push(cluster1, cluster2, cluster3);
+        }); */
+        this.clusters.push(cluster1 /* cluster2, cluster3 */);
       }
       this.$nextTick(() => {
         this.updateScroll();

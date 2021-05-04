@@ -6,10 +6,6 @@
   min-height: 100vh;
   flex-direction: column;
   background: #fff;
-  padding: 0;
-  @include bp(1200) {
-    padding: 12vh 0;
-  }
 }
 
 .connect__title {
@@ -29,6 +25,11 @@
   flex-direction: column;
   justify-content: center;
   margin-top: 80px;
+  width: 100%;
+  padding: 0 1rem;
+  @include bp(768) {
+    padding: 0 6rem;
+  }
   > * {
     @include revealStart();
   }
@@ -39,17 +40,33 @@
   }
   @include bp(1024) {
     flex-direction: row;
+    width: auto;
+    padding: 0;
   }
 }
 
 .connect__leftcol {
+  @include bp(768) {
+    padding: 0;
+  }
   @include bp(1024) {
     padding-right: 5%;
   }
 }
 
+.connect__intro {
+  p {
+    padding: 0 2rem;
+    text-align: center;
+  }
+}
+
 .connect__bullets {
+  display: none;
   margin-top: 1.8rem;
+  @include bp(1024) {
+    display: inline-block;
+  }
   p,
   li {
     line-height: 2.2;
@@ -74,15 +91,18 @@
 }
 
 .connect__form-container {
-  padding: 60px 10px;
+  margin-top: 1.8rem;
+  padding: 40px 20px;
   width: 100%;
   background: #f7f9fd;
   border-radius: 8px;
   flex: none;
+  @include bp(768) {
+    padding: 60px;
+  }
 
   @include bp(1024) {
     box-shadow: 0px 0px 24px rgba(196, 197, 255, 0.35);
-    padding: 60px;
     width: 50%;
     margin-left: 92px;
   }
@@ -97,7 +117,10 @@
   input[type="text"],
   input[type="email"],
   textarea {
-    width: 60%;
+    width: 100%;
+    @include bp(768) {
+      width: 60%;
+    }
   }
   input[type="text"]:focus,
   input[type="email"]:focus,
@@ -110,7 +133,7 @@
   .select {
     position: relative;
     width: 100%;
-    @include bp(1024) {
+    @include bp(768) {
       width: 60%;
     }
   }
@@ -228,11 +251,11 @@
 
 .form-row {
   position: relative;
-  margin-top: 0.8rem;
+  margin-top: 1rem;
   &:first-child {
     margin-top: 0;
   }
-  @include bp(1024) {
+  @include bp(768) {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -241,8 +264,6 @@
 
 .submit-row {
   margin-top: 3rem;
-  @include bp(1024) {
-    display: flex;
-    justify-content: center;
-  }
+  display: flex;
+  justify-content: center;
 }

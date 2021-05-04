@@ -37,9 +37,29 @@
           <div id="hero-summary" class="hero__summary intro-ani">
             <block-content :blocks="homeData.heroBody"></block-content>
           </div>
-          <div id="hero-btns" class="btn-container intro-ani">
-            <button class="btn btn__solid--green">XMS Trading</button>
-            <button class="btn btn__solid--green">XMS Brokerage</button>
+          <div id="hero-btns" class="hero__btn-container intro-ani">
+            <button
+              class="btn btn__solid--green"
+              @click.prevent="
+                scrollTo('#feature-2', {
+                  offset: 100,
+                  duration: 1000,
+                })
+              "
+            >
+              XMS Trading
+            </button>
+            <button
+              class="btn btn__solid--green"
+              @click.prevent="
+                scrollTo('#feature-1', {
+                  offset: 100,
+                  duration: 1000,
+                })
+              "
+            >
+              XMS Brokerage
+            </button>
           </div>
         </div>
         <ul
@@ -56,6 +76,34 @@
             {{ item.text }}
           </li>
         </ul>
+        <div
+          class="hero__btn-container--mobile"
+          data-scroll
+          data-scroll-speed="-1"
+        >
+          <button
+            class="btn btn__solid--green"
+            @click.prevent="
+              scrollTo('#feature-2', {
+                offset: -100,
+                duration: 1000,
+              })
+            "
+          >
+            XMS Trading
+          </button>
+          <button
+            class="btn btn__solid--green"
+            @click.prevent="
+              scrollTo('#feature-1', {
+                offset: -100,
+                duration: 1000,
+              })
+            "
+          >
+            XMS Brokerage
+          </button>
+        </div>
       </div>
       <div
         id="scroll-prompt"
@@ -124,6 +172,7 @@
         <div class="graphic"></div>
       </div>
       <dot-grid
+        v-if="!isMobile"
         data-scroll
         data-scroll-speed="-1"
         :init-options="{ radius: 3, rows: 4, cols: 16, gap: 18 }"
@@ -131,6 +180,7 @@
         uid="features-1"
       ></dot-grid>
       <dot-grid
+        v-if="!isMobile"
         data-scroll
         data-scroll-speed="-1"
         :init-options="{ radius: 3, rows: 4, cols: 12, gap: 24 }"
@@ -138,6 +188,7 @@
         uid="features-2"
       ></dot-grid>
       <dot-grid
+        v-if="!isMobile"
         data-scroll
         data-scroll-speed="-2"
         :init-options="{ radius: 3, rows: 4, cols: 8, gap: 18 }"
@@ -147,23 +198,53 @@
 
       <div
         v-for="(feature, i) in homeData.features"
+        :id="`feature-${i}`"
         :key="i"
         :class="['feature__content-block', { rtl: i % 2 != 0 }]"
       >
         <div class="feature__text-block">
-          <div class="feature__subhead" data-scroll data-scroll-speed="1">
+          <div
+            class="feature__subhead"
+            data-scroll
+            data-scroll-speed="1"
+            :data-scroll-offset="videoOffset"
+          >
             <h2>
               {{ feature.subhead }}
             </h2>
           </div>
-          <div class="feature__title" data-scroll data-scroll-speed="1.25">
+          <div
+            class="feature__title"
+            data-scroll
+            data-scroll-speed="1.25"
+            :data-scroll-offset="videoOffset"
+          >
             <block-content :blocks="feature.title"></block-content>
           </div>
-          <div class="feature__summary" data-scroll data-scroll-speed="1.5">
+          <div
+            class="feature__summary"
+            data-scroll
+            data-scroll-speed="1.5"
+            :data-scroll-offset="videoOffset"
+          >
             <block-content :blocks="feature.text"></block-content>
           </div>
-          <div class="feature__cta-wrapper" data-scroll data-scroll-speed="1.6">
-            <a class="cta-link">Connect to get started</a>
+          <div
+            class="feature__cta-wrapper"
+            data-scroll
+            data-scroll-speed="1.6"
+            :data-scroll-offset="videoOffset"
+          >
+            <a
+              class="cta-link"
+              @click.prevent="
+                scrollTo('#contact-anchor', {
+                  offset: 100,
+                  duration: 1000,
+                })
+              "
+              >Connect to get started</a
+            >
           </div>
         </div>
         <ContentVideo
@@ -192,7 +273,10 @@
           data-scroll
           :data-scroll-offset="videoOffset"
         >
-          <block-content :blocks="homeData.uspTitle"></block-content>
+          <block-content
+            :class-name="'block-heading--centred'"
+            :blocks="homeData.uspTitle"
+          ></block-content>
         </div>
         <div class="usp__bullet-points" data-scroll data-scroll-speed="-1">
           <div
@@ -209,7 +293,15 @@
             <block-content :blocks="bullet.text"></block-content>
           </div>
         </div>
-        <a class="cta-link--green usp__cta" data-scroll
+        <a
+          class="cta-link--green usp__cta"
+          data-scroll
+          @click.prevent="
+            scrollTo('#contact-anchor', {
+              offset: 100,
+              duration: 1000,
+            })
+          "
           >Connect to get started</a
         >
       </div>
@@ -217,7 +309,7 @@
     <section clients__section-container>
       <div class="clients__content-block">
         <div class="clients__title" data-scroll data-scroll-offset="100">
-          <h1>{{ homeData.clientsTitle }}</h1>
+          <h1 class="block-heading--centred">{{ homeData.clientsTitle }}</h1>
         </div>
         <clients-carousel :clients="homeData.clients"></clients-carousel>
       </div>
@@ -225,7 +317,7 @@
     <section connect__section-container>
       <div id="contact-anchor" class="connect__content-block">
         <div class="connect__title" data-scroll data-scroll-offset="200">
-          <h1>Connect with our team</h1>
+          <h1 class="block-heading--centred">Connect with our team</h1>
         </div>
         <div class="connect__main" data-scroll data-scroll-offset="200">
           <div class="connect__leftcol">
@@ -261,6 +353,7 @@
 </template>
 
 <script>
+import mobile from "is-mobile";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "@/sanityClient";
 import sanityClient from "../sanityClient";
@@ -324,10 +417,17 @@ export default {
     });
   },
   computed: {
+    isMobile() {
+      return mobile();
+    },
     videoOffset() {
-      let val = 250;
+      let val = 100;
       if (process.client) {
-        val = Math.round(window.innerHeight / 2.5);
+        if (window.innerHeight < 768) {
+          val = Math.round(window.innerHeight / 4);
+        } else {
+          val = Math.round(window.innerHeight / 2.5);
+        }
       }
       return val;
     },
