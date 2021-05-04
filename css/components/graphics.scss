@@ -219,6 +219,10 @@
 .graphics__circle {
   position: absolute;
   z-index: 100;
+  display: none;
+  @include bp(1200) {
+    display: inline-block;
+  }
 
   .graphic {
     position: relative;
@@ -251,9 +255,12 @@
 
 .graphics__hex--white {
   position: absolute;
-  display: inline-block;
   width: 140px;
   height: 140px;
+  display: none;
+  @include bp(1200) {
+    display: inline-block;
+  }
 
   .graphic {
     position: relative;

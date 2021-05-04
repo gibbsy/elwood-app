@@ -4,13 +4,17 @@
 .feature__content-block {
   @extend .content-block;
   min-height: 100vh;
+  flex-direction: column-reverse;
   h1 {
     strong {
       color: $darkPurple;
     }
   }
-  &.rtl {
-    flex-direction: row-reverse;
+  @include bp(1024) {
+    flex-direction: row;
+    &.rtl {
+      flex-direction: row-reverse;
+    }
   }
 }
 .feature__text-block {

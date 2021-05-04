@@ -6,7 +6,7 @@
   min-height: 100vh;
   flex-direction: column;
   background: #fff;
-
+  padding: 0;
   @include bp(1200) {
     padding: 12vh 0;
   }
@@ -26,6 +26,7 @@
 
 .connect__main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 80px;
   > * {
@@ -36,10 +37,15 @@
       @include revealTo();
     }
   }
+  @include bp(1024) {
+    flex-direction: row;
+  }
 }
 
 .connect__leftcol {
-  padding-right: 5%;
+  @include bp(1024) {
+    padding-right: 5%;
+  }
 }
 
 .connect__bullets {
@@ -68,14 +74,16 @@
 }
 
 .connect__form-container {
-  padding: 60px;
-  width: 50%;
+  padding: 60px 10px;
+  width: 100%;
   background: #f7f9fd;
-  box-shadow: 0px 0px 24px rgba(196, 197, 255, 0.35);
   border-radius: 8px;
   flex: none;
 
   @include bp(1024) {
+    box-shadow: 0px 0px 24px rgba(196, 197, 255, 0.35);
+    padding: 60px;
+    width: 50%;
     margin-left: 92px;
   }
   input[type="text"],
@@ -101,7 +109,10 @@
   }
   .select {
     position: relative;
-    width: 60%;
+    width: 100%;
+    @include bp(1024) {
+      width: 60%;
+    }
   }
   .select::after {
     content: "";
@@ -217,17 +228,21 @@
 
 .form-row {
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-top: 0.8rem;
   &:first-child {
     margin-top: 0;
+  }
+  @include bp(1024) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
 .submit-row {
   margin-top: 3rem;
-  display: flex;
-  justify-content: center;
+  @include bp(1024) {
+    display: flex;
+    justify-content: center;
+  }
 }

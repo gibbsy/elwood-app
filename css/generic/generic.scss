@@ -20,9 +20,13 @@
   position: relative;
   width: 100%;
   min-height: 50vh;
-  padding: 0 10%;
+  padding: 80px 32px;
   display: flex;
   align-items: center;
+
+  @include bp(768) {
+    padding: 0 10%;
+  }
 }
 
 .btn-container {

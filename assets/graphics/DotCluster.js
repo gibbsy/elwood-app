@@ -62,11 +62,11 @@ export default class DotGrid {
   }
 
   enter() {
-    const tlIntro = gsap.timeline();
+    const tlIntro = gsap.timeline({ delay: getRandomInt(1, 10) });
     this.els.rows.forEach((row) => {
       const children = Array.from(row.children);
       children.forEach((dot, i) => {
-        tlIntro.to(dot, { opacity: 1, duration: 0.5, delay: 1 }, 0.01 * i);
+        tlIntro.to(dot, { opacity: 1, duration: 0.5 }, 0.01 * i);
       });
     });
     Object.assign(this, { tlIntro });

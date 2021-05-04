@@ -28,13 +28,24 @@
 .clients__carousel {
   position: relative;
   margin-top: 80px;
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  min-height: 60vh;
+  min-height: 80vh;
   @include fadeIn();
+  @include bp(1024) {
+    min-height: 70vh;
+    width: 70%;
+  }
+  @include bp(1400) {
+    width: 60%;
+  }
+  @include bp(1600) {
+    min-height: 60vh;
+    width: 50%;
+  }
 }
 .client__card {
   // position: absolute;

@@ -51,7 +51,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 3rem;
-  @include bp(1023) {
+  @include bp(1024) {
     width: 70%;
     flex-direction: row;
     flex-wrap: wrap;
@@ -60,11 +60,13 @@
   }
 }
 .usp__bullet {
-  width: 26%;
-  margin: 2%;
   opacity: 0;
   p {
     font-size: 1rem;
+  }
+  @include bp(1024) {
+    width: 26%;
+    margin: 2%;
   }
 }
 

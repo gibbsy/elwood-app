@@ -21,6 +21,7 @@
 
 <script>
 // import { addClass, getRandomInt } from "../assets/utils";
+import isMobile from "is-mobile";
 import DotGrid from "../assets/graphics/DotGrid";
 import DotCluster from "../assets/graphics/DotCluster";
 import Arc from "~/assets/graphics_arc.svg?inline";
@@ -58,6 +59,7 @@ export default {
       /*       if (!process.client) {
         return;
       } */
+      console.log("mobile " + isMobile);
       const container = document.getElementById(this.sectionId);
       this.mainDots = new DotGrid(container, 3);
       const options = {
@@ -70,30 +72,34 @@ export default {
         fill: "green",
         opacity: 0.5,
       };
-      const cluster1 = new DotCluster({ container, ...options });
-      const cluster2 = new DotCluster({
-        container,
-        ...options,
-        alignX: "right",
-        alignY: "bottom",
-        cols: 18,
-        fill: "purple",
-      });
-      const cluster3 = new DotCluster({
-        container,
-        ...options,
-        alignX: "right",
-        alignY: "top",
-        radius: 3,
-        x: 15,
-        y: 30,
-        rows: 6,
-        cols: 12,
-        fill: "green",
-        speed: 5,
-      });
-      this.clusters.push(cluster1, cluster2, cluster3);
-      console.log(this.scroll);
+      /**
+       * Additional dots
+       */
+      if (!isMobile()) {
+        const cluster1 = new DotCluster({ container, ...options });
+        const cluster2 = new DotCluster({
+          container,
+          ...options,
+          alignX: "right",
+          alignY: "bottom",
+          cols: 18,
+          fill: "purple",
+        });
+        const cluster3 = new DotCluster({
+          container,
+          ...options,
+          alignX: "right",
+          alignY: "top",
+          radius: 4,
+          x: 15,
+          y: 30,
+          rows: 6,
+          cols: 12,
+          fill: "green",
+          speed: 5,
+        });
+        this.clusters.push(cluster1, cluster2, cluster3);
+      }
       this.$nextTick(() => {
         this.updateScroll();
       });
