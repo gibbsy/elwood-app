@@ -294,7 +294,7 @@
           </div>
         </div>
         <a
-          class="cta-link--green usp__cta"
+          class="cta-link--green centred usp__cta"
           data-scroll
           @click.prevent="
             scrollTo('#contact-anchor', {

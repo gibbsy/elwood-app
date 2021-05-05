@@ -9,6 +9,7 @@
 }
 
 .connect__title {
+  @include centred-title-margin();
   h1 {
     color: $darkPurple;
     @include revealStart();
@@ -24,11 +25,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 80px;
   width: 100%;
   padding: 0 1rem;
   @include bp(768) {
     padding: 0 6rem;
+  }
+  @include bp(1024) {
+    flex-direction: row;
+    width: auto;
+    padding: 0;
   }
   > * {
     @include revealStart();
@@ -37,11 +42,6 @@
     > * {
       @include revealTo();
     }
-  }
-  @include bp(1024) {
-    flex-direction: row;
-    width: auto;
-    padding: 0;
   }
 }
 
@@ -56,8 +56,10 @@
 
 .connect__intro {
   p {
-    padding: 0 2rem;
-    text-align: center;
+    @media screen and (max-width: 767px) {
+      padding: 0 2rem;
+      text-align: center;
+    }
   }
 }
 
@@ -98,6 +100,7 @@
   border-radius: 8px;
   flex: none;
   @include bp(768) {
+    margin-top: 0;
     padding: 60px;
   }
 
@@ -118,7 +121,9 @@
   input[type="email"],
   textarea {
     width: 100%;
+    margin-top: 0.5rem;
     @include bp(768) {
+      margin-top: 0;
       width: 60%;
     }
   }
@@ -130,14 +135,16 @@
     border-color: $midPurple;
     box-shadow: 0 0 5px rgba(44, 86, 222, 0.2);
   }
-  .select {
+  .select-container {
     position: relative;
     width: 100%;
+    margin-top: 0.5rem;
     @include bp(768) {
+      margin-top: 0;
       width: 60%;
     }
   }
-  .select::after {
+  .select-container::after {
     content: "";
     position: absolute;
     z-index: 1;
@@ -185,9 +192,9 @@
     position: absolute;
     left: 0;
     top: 50%;
-    margin-top: -8px;
-    width: 16px;
-    height: 16px;
+    margin-top: -10px;
+    width: 20px;
+    height: 20px;
   }
   input[type="radio"] + label::before,
   input[type="checkbox"] + label::before {
@@ -242,7 +249,20 @@
     background: #2b3e51;
   }
   label {
-    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #666;
+    @include bp(768) {
+      text-transform: none;
+      font-size: 1rem;
+      letter-spacing: 0;
+      color: $black;
+      font-weight: 500;
+    }
+    @include bp(1400) {
+      font-size: 1.1rem;
+    }
   }
   p.hidden {
     display: none;
@@ -260,10 +280,39 @@
     justify-content: space-between;
     align-items: center;
   }
+  &.opt-in {
+    margin-top: 2rem;
+    width: 100%;
+    label {
+      position: relative;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: 0;
+      width: 90%;
+      @include bp(768) {
+        width: 70%;
+      }
+      p {
+        margin-left: 1rem;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+    }
+  }
 }
 
 .submit-row {
   margin-top: 3rem;
   display: flex;
   justify-content: center;
+}
+
+@keyframes cd-bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
 }

@@ -15,7 +15,7 @@ h1 {
   font-size: 8vw;
   line-height: 1.2;
   @include bp(768) {
-    font-size: 6vw;
+    font-size: 5vw;
   }
   @include bp(1024) {
     font-size: 2rem;
@@ -53,6 +53,18 @@ h1 {
     @include bp(1200) {
       padding: 0;
     }
+  }
+}
+@mixin centred-title-margin {
+  margin-bottom: 2rem;
+  @include bp(768) {
+    margin-bottom: 3rem;
+  }
+  @include bp(1200) {
+    margin-bottom: 5rem;
+  }
+  @include bp(1800) {
+    margin-bottom: 6rem;
   }
 }
 h2 {
@@ -173,6 +185,9 @@ a.cta-link {
     &:after {
       transform: translateX(8px);
     }
+  }
+  &.centred {
+    margin-left: -30px;
   }
 }
 a {

@@ -74,7 +74,7 @@
         </div>
         <div class="form-row country">
           <label class="country" for="country">Country</label>
-          <div class="select">
+          <div class="select-container">
             <select id="country" v-model="country" name="country" required="">
               <option disabled="" value="">Choose country…</option>
               <option value="GB +44">United Kingdom</option>
@@ -90,7 +90,7 @@
         </div>
         <div class="form-row enquiry-type">
           <label class="enquiry" for="enquiry">Nature of enquiry</label>
-          <div class="select">
+          <div class="select-container">
             <select id="enquiry" v-model="enquiry" name="enquiry" required="">
               <option disabled selected value="">Select option...</option>
               <option value="sales">Sales</option>
@@ -99,6 +99,21 @@
               <option value="general">General</option>
             </select>
           </div>
+        </div>
+        <div class="form-row opt-in">
+          <input
+            id="opt-in"
+            v-model="optIn"
+            type="checkbox"
+            name="mailing-list"
+          />
+          <label for="opt-in"
+            ><p>
+              Opt-in to receive email updates from Elwood. You can unsubscribe
+              from these communications at any time. For more information on how
+              to unsubscribe, view our <a>Privacy Policy</a>.
+            </p></label
+          >
         </div>
       </fieldset>
 
@@ -144,6 +159,7 @@ export default {
       email: { value: null, valid: false },
       website: null,
       enquiry: "",
+      optIn: false,
       submitted: false,
     };
   },
