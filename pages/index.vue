@@ -1,29 +1,6 @@
 <template>
   <div ref="scroll" class="home page-wrapper" data-scroll-section>
-    <div id="nav" class="nav intro-ani" role="navigation">
-      <div class="elwood-logo">
-        <logo-horizontal />
-      </div>
-      <div class="nav__links">
-        <!--         <a>Products</a>
-        <a>Company</a>
-        <a>Connect</a> -->
-        <button
-          tabindex="0"
-          role="button"
-          aria-label="Connect with us"
-          class="btn btn__keyline--green"
-          @click.prevent="
-            scrollTo('#contact-anchor', {
-              offset: 100,
-              duration: 1000,
-            })
-          "
-        >
-          Request Demo
-        </button>
-      </div>
-    </div>
+    <nav-desktop :scroll="scroll" />
     <section class="hero__container">
       <graphics :section-id="'hero-graphics'" :scroll="scroll"></graphics>
       <div class="hero__content-block">
@@ -238,7 +215,7 @@
             <a
               class="cta-link"
               @click.prevent="
-                scrollTo('#contact-anchor', {
+                scrollTo('#contact-section', {
                   offset: 100,
                   duration: 1000,
                 })
@@ -297,7 +274,7 @@
           class="cta-link--green centred usp__cta"
           data-scroll
           @click.prevent="
-            scrollTo('#contact-anchor', {
+            scrollTo('#contact-section', {
               offset: 100,
               duration: 1000,
             })
@@ -306,7 +283,7 @@
         >
       </div>
     </section>
-    <section clients__section-container>
+    <section id="clients-section" clients__section-container>
       <div class="clients__content-block">
         <div class="clients__title" data-scroll data-scroll-offset="100">
           <h1 class="block-heading--centred">{{ homeData.clientsTitle }}</h1>
@@ -315,7 +292,7 @@
       </div>
     </section>
     <section connect__section-container>
-      <div id="contact-anchor" class="connect__content-block">
+      <div id="contact-section" class="connect__content-block">
         <div class="connect__title" data-scroll data-scroll-offset="200">
           <h1 class="block-heading--centred">Connect with our team</h1>
         </div>
@@ -357,12 +334,12 @@ import mobile from "is-mobile";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "@/sanityClient";
 import sanityClient from "../sanityClient";
+import NavDesktop from "../components/NavDesktop";
 import ClientsCarousel from "../components/ClientsCarousel";
 import Graphics from "../components/Graphics";
 import ContentVideo from "../components/ContentVideo";
 import DotGrid from "../components/DotGrid";
 import ContactForm from "~/components/ContactForm.vue";
-import LogoHorizontal from "~/assets/logo_refreshed_horizontal.svg?inline";
 import LogoStacked from "~/assets/logo_refreshed_stacked.svg?inline";
 const urlBuilder = imageUrlBuilder(sanity);
 if (typeof window === "undefined") {
@@ -393,11 +370,11 @@ const query = `{
 }`;
 export default {
   components: {
+    NavDesktop,
     ContentVideo,
     ClientsCarousel,
     Graphics,
     ContactForm,
-    LogoHorizontal,
     LogoStacked,
     DotGrid,
   },
