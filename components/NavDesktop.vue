@@ -78,7 +78,7 @@
       </li>
     </ul>
     <button
-      v-if="isMobile"
+      v-show="isMobile"
       tabindex="0"
       role="button"
       aria-label="Connect with us"
