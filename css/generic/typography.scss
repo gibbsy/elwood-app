@@ -73,15 +73,15 @@ h2 {
 button,
 h2,
 .submit-button {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: proxima-nova-condensed, sans-serif;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
   @include bp(1200) {
-    letter-spacing: 3px;
+    // letter-spacing: 3px;
   }
   @include bp(1400) {
-    letter-spacing: 4px;
+    // letter-spacing: 4px;
   }
 }
 

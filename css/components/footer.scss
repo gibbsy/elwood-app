@@ -31,24 +31,27 @@ footer {
 .footer__socials {
   display: flex;
   li {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    position: relative;
     margin-left: 12px;
     &:first-child {
       margin-left: 0;
     }
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    &.linkedin {
+    a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    &.linkedin a {
       background: $darkPurple url("~/assets/icon_linkedin.svg") no-repeat
         center/50%;
       &:hover {
         background-color: darken($darkPurple, 10%);
       }
     }
-    &.twitter {
+    &.twitter a {
       background: $darkPurple url("~/assets/icon_twitter.svg") no-repeat
         center/50%;
       &:hover {

@@ -60,7 +60,7 @@
     justify-content: center;
   }
   @include bp(1200) {
-    width: 70%;
+    width: 80%;
   }
 }
 .usp__bullet {
@@ -78,10 +78,9 @@
   @include bp(768) {
     width: 26%;
     margin: 2%;
-  }
-  @include bp(1024) {
-    width: 26%;
-    margin: 2%;
+    &:first-child {
+      margin: 2%;
+    }
   }
 }
 

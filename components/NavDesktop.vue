@@ -18,16 +18,6 @@
           <ul>
             <li
               @click.prevent="
-                scrollTo('#feature-2', {
-                  offset: 100,
-                  duration: 1000,
-                })
-              "
-            >
-              <h2>XMS Trading</h2>
-            </li>
-            <li
-              @click.prevent="
                 scrollTo('#feature-1', {
                   offset: 100,
                   duration: 1000,
@@ -35,6 +25,16 @@
               "
             >
               <h2>XMS Brokerage</h2>
+            </li>
+            <li
+              @click.prevent="
+                scrollTo('#feature-2', {
+                  offset: 100,
+                  duration: 1000,
+                })
+              "
+            >
+              <h2>XMS Trading</h2>
             </li>
           </ul>
         </div>
@@ -52,7 +52,7 @@
       <li>
         <a
           @click.prevent="
-            scrollTo('#contact-section', {
+            scrollTo('#promo-section', {
               offset: 0,
               duration: 1000,
             })

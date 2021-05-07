@@ -1,0 +1,103 @@
+.promo__section-container {
+  @extend .section-container;
+  @include dark-grad();
+}
+
+.promo__content-block {
+  @extend .content-block;
+  background: none;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: auto;
+  @include fadeIn();
+  @include bp(768) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+  }
+  @include bp(1200) {
+    padding: 15vh 10%;
+  }
+}
+
+.promo-box {
+  position: relative;
+  padding: 4rem 3rem;
+  border-radius: 8px;
+  border: 1px solid $elwoodGreen;
+  background: rgba($nightMode, 0.8);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  box-shadow: 0px 0px 40px rgba($nightMode, 0.6);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  margin-top: 40px;
+  &:first-child {
+    margin-top: 0;
+  }
+  @include bp(768) {
+    margin-top: 0;
+    &.col-2 {
+      margin-left: 5%;
+    }
+    &.col-3 {
+      margin-left: 3%;
+    }
+    &:only-child {
+      flex-grow: 0;
+      width: 50%;
+      padding: 4.5rem;
+    }
+    &:first-child {
+      margin: 0;
+    }
+  }
+  &:hover {
+    background: $nightMode;
+    .promo__cta {
+      transform: translateX(6px);
+    }
+  }
+}
+
+.promo__title {
+  margin-bottom: 1rem;
+  font-size: 2.4rem;
+}
+
+.promo__content {
+  display: flex;
+}
+
+.promo__text-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  margin-bottom: 0.6rem;
+  color: #fff;
+}
+
+.promo__icon {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  margin: 0 0 8px 0;
+  @include fadeIn();
+}
+
+.promo__cta {
+  position: absolute;
+  display: inline-block;
+  right: 26px;
+  bottom: 20px;
+  width: 40px;
+  height: 40px;
+  background: url(~/assets/cta_arrow.svg) no-repeat center/contain;
+  transition: transform 0.6s $easing;
+}

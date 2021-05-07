@@ -13,6 +13,7 @@
       data-scroll-target="#sticky-nav-target"
       :active="navActive"
       :scroll="scroll"
+      :dark="dark"
     />
     <section
       id="hero-container"
@@ -111,6 +112,12 @@
         role="presentation"
         alt=""
         aria-hidden
+        @click.prevent="
+          scrollTo('#feature-0', {
+            offset: 0,
+            duration: 1000,
+          })
+        "
       >
         <div class="graphic"></div>
       </div>
@@ -126,7 +133,12 @@
         <div class="graphic"></div>
       </div>
     </section>
-    <section class="features__section-container">
+    <section
+      class="features__section-container"
+      data-scroll
+      data-scroll-call="features"
+      data-scroll-repeat="true"
+    >
       <div
         id="features-hex-1"
         class="graphics__hex--white"
@@ -255,7 +267,13 @@
         ></ContentVideo>
       </div>
     </section>
-    <section class="usp__section-container">
+    <section
+      class="usp__section-container"
+      data-scroll
+      data-scroll-call="usp"
+      data-scroll-repeat="true"
+      data-scroll-offset="100%"
+    >
       <graphics :scroll="scroll"></graphics>
 
       <div
@@ -302,7 +320,13 @@
         >
       </div>
     </section>
-    <section id="clients-section" clients__section-container>
+    <section
+      id="clients-section"
+      clients__section-container
+      data-scroll
+      data-scroll-call="clients"
+      data-scroll-repeat="true"
+    >
       <div class="clients__content-block">
         <div class="clients__title" data-scroll data-scroll-offset="100">
           <h1 class="block-heading--centred">{{ homeData.clientsTitle }}</h1>
@@ -329,12 +353,60 @@
         </div>
       </div>
     </section>
+    <section
+      id="promo-section"
+      class="promo__section-container"
+      data-scroll
+      data-scroll-call="promos"
+      data-scroll-repeat="true"
+      data-scroll-offset="100%"
+    >
+      <graphics :section-id="'promo-bg-graphics'" :scroll="scroll"></graphics>
+
+      <div
+        class="promo__content-block"
+        data-scroll
+        :data-scroll-offset="videoOffset"
+      >
+        <a
+          v-for="promo in homeData.promoBoxes"
+          :key="promo.title"
+          :class="['promo-box', `col-${homeData.promoBoxes.length}`]"
+          @click.prevent="scrollTo(`#${promo.link}`)"
+        >
+          <div class="promo__content">
+            <figure
+              class="promo__icon"
+              :style="{ backgroundImage: `url(${urlFor(promo.icon)})` }"
+              data-scroll
+            ></figure>
+            <div class="promo__text-content">
+              <h1 class="promo__title">{{ promo.title }}</h1>
+              <block-content :blocks="promo.text"></block-content>
+            </div>
+          </div>
+          <div class="promo__cta"></div>
+        </a>
+      </div>
+    </section>
     <footer>
       <div class="footer__contact footer__col">
         <h2>Connect</h2>
         <ul class="footer__socials">
-          <li class="linkedin"></li>
-          <li class="twitter"></li>
+          <li class="linkedin">
+            <a
+              href="https://www.linkedin.com/company/elwoodam/"
+              target="_blank"
+              aria-label="Follow us on Linkedin"
+            ></a>
+          </li>
+          <li class="twitter">
+            <a
+              href="https://twitter.com/Elwood_AM"
+              target="_blank"
+              aria-label="Follow us on Twitter"
+            ></a>
+          </li>
         </ul>
         <p class="address">
           <span>27 Baker Street</span><span>London, W1U 8EQ, UK</span>
@@ -360,7 +432,7 @@ import Graphics from "../components/Graphics";
 import ContentVideo from "../components/ContentVideo";
 import DotGrid from "../components/DotGrid";
 import ContactForm from "~/components/ContactForm.vue";
-import LogoStacked from "~/assets/logo_refreshed_stacked.svg?inline";
+import LogoStacked from "~/assets/logo_vertical.svg?inline";
 const urlBuilder = imageUrlBuilder(sanity);
 if (typeof window === "undefined") {
   global.window = {};
@@ -375,7 +447,7 @@ const query = `{
   subhead, title, text, animation, image
   },
   uspList[] {
-		..., image{
+		..., icon{
     asset->
     }
   },
@@ -385,7 +457,12 @@ const query = `{
     logo{
     asset->
   }
-  }
+  },
+   promoBoxes[] {
+		..., icon{
+    asset->
+    }
+  },
 }
 }`;
 export default {
@@ -402,6 +479,7 @@ export default {
   data() {
     return {
       navActive: false,
+      dark: false,
       homeData: 0,
       resizeTimeout: 0,
       scroll: {},
@@ -472,6 +550,7 @@ export default {
       this.scroll = new this.LocomotiveScroll({
         el,
         smooth: true,
+        getDirection: true,
       });
       this.initScrollEvents();
     },
@@ -492,6 +571,38 @@ export default {
             this.navActive = true;
           } else {
             this.navActive = false;
+          }
+        }
+        /*  if (value === "features") {
+          if (this.isMobile) {
+            return;
+          }
+          if (way === "exit") {
+            this.dark = true;
+          } else {
+            this.dark = false;
+          }
+        } */
+        if (value === "usp") {
+          if (this.isMobile) {
+            return;
+          }
+          if (way === "exit") {
+            this.dark = false;
+          } else if (way === "enter") {
+            console.log(obj);
+            this.dark = true;
+          }
+        }
+        if (value === "promos") {
+          if (this.isMobile) {
+            return;
+          }
+          if (way === "exit") {
+            this.dark = false;
+          } else if (way === "enter") {
+            console.log(obj);
+            this.dark = true;
           }
         }
         if ((value === "showBullets") & (way === "enter")) {

@@ -117,6 +117,7 @@
   bottom: 60px;
   right: 10%;
   z-index: 400;
+  cursor: pointer;
   @include bp(1024) {
     display: inline-block;
   }

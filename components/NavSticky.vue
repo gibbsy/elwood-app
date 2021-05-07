@@ -1,6 +1,6 @@
 <template>
   <div :class="[{ active }, 'nav__sticky-wrapper']">
-    <div id="nav-sticky" class="nav__sticky" role="navigation">
+    <div id="nav-sticky" :class="[{ dark }, 'nav__sticky']" role="navigation">
       <div class="elwood-logo">
         <logo-horizontal />
       </div>
@@ -19,16 +19,6 @@
             <ul>
               <li
                 @click.prevent="
-                  scrollTo('#feature-2', {
-                    offset: 100,
-                    duration: 1000,
-                  })
-                "
-              >
-                <h2>XMS Trading</h2>
-              </li>
-              <li
-                @click.prevent="
                   scrollTo('#feature-1', {
                     offset: 100,
                     duration: 1000,
@@ -36,6 +26,16 @@
                 "
               >
                 <h2>XMS Brokerage</h2>
+              </li>
+              <li
+                @click.prevent="
+                  scrollTo('#feature-2', {
+                    offset: 100,
+                    duration: 1000,
+                  })
+                "
+              >
+                <h2>XMS Trading</h2>
               </li>
             </ul>
           </div>
@@ -53,7 +53,7 @@
         <li>
           <a
             @click.prevent="
-              scrollTo('#contact-section', {
+              scrollTo('#promo-section', {
                 offset: 0,
                 duration: 1000,
               })
@@ -107,6 +107,10 @@ export default {
   },
   props: {
     active: {
+      type: Boolean,
+      default: false,
+    },
+    dark: {
       type: Boolean,
       default: false,
     },
