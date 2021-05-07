@@ -57,7 +57,7 @@
               duration: 1000,
             })
           "
-          >Connect</a
+          >Developers</a
         >
       </li>
       <li>
@@ -73,7 +73,7 @@
             })
           "
         >
-          Request Demo
+          Connect with us
         </button>
       </li>
     </ul>
@@ -97,7 +97,7 @@
 <script>
 import mobile from "is-mobile";
 import Arrow from "~/assets/dropdown_arrow.svg?inline";
-import LogoHorizontal from "~/assets/logo_refreshed_horizontal.svg?inline";
+import LogoHorizontal from "~/assets/logo_horizontal.svg?inline";
 export default {
   components: {
     Arrow,

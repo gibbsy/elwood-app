@@ -53,9 +53,9 @@
 }
 .btn__solid--green {
   @extend .btn;
-  background-color: $brightGreen;
-  color: $black;
-  border: 1px solid $brightGreen;
+  background-color: $elwoodGreen;
+  color: #000;
+  border: 1px solid $elwoodGreen;
 }
 
 .btn__keyline {
@@ -64,8 +64,8 @@
   background: none;
   border: 1px solid #fff;
   &:hover {
-    border: 1px solid $brightGreen;
-    background: $brightGreen;
+    border: 1px solid $elwoodGreen;
+    background: $elwoodGreen;
     color: $black;
   }
 }
@@ -82,11 +82,11 @@
 }
 .btn__keyline--green {
   @extend .btn__keyline;
-  color: $brightGreen;
-  border: 1px solid $brightGreen;
+  color: $elwoodGreen;
+  border: 1px solid $elwoodGreen;
   &:hover {
-    border: 1px solid $brightGreen;
-    background: $brightGreen;
+    border: 1px solid $elwoodGreen;
+    background: $elwoodGreen;
     color: $black;
   }
 }

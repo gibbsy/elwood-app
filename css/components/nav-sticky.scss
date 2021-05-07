@@ -1,0 +1,73 @@
+#sticky-nav-target {
+  @include abs100();
+  pointer-events: none;
+}
+$stickyHeight: 70px;
+.nav__sticky-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $stickyHeight;
+  z-index: 200;
+  &.disabled {
+    z-index: -2;
+    pointer-events: none;
+  }
+  &.active {
+    pointer-events: initial;
+    display: flex;
+    .nav__sticky {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+.nav__sticky {
+  @extend .nav;
+  height: $stickyHeight;
+  background: none;
+  background-color: rgba($nightMode, 0.9);
+  transform: translateY(-80px);
+  opacity: 0;
+  transition: transform 0.8s $easing, opacity 0.3s $easing,
+    background-color 0.3s ease;
+  &:hover {
+    background-color: $nightMode;
+  }
+  .elwood-logo {
+    width: 130px;
+    svg {
+      fill: #fff;
+      .logo-hex {
+        fill: $elwoodGreen;
+      }
+    }
+  }
+  .nav__links-desktop {
+    > * {
+      margin-right: 2rem;
+      @include bp(1200) {
+        margin-right: 3rem;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    li {
+      a {
+        font-size: 1rem;
+      }
+    }
+    .nav__products-dropdown {
+      ul {
+        border-radius: 0 0 8px 8px;
+        margin-top: 48px;
+      }
+      li {
+        background-color: rgba(lighten($nightMode, 5), 1);
+        padding: 0.8rem 1.25rem;
+      }
+    }
+  }
+}

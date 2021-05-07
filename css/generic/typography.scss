@@ -86,7 +86,7 @@ h2,
 }
 
 h2 {
-  color: $brightGreen;
+  color: $elwoodGreen;
   &.subhead {
     margin: 0;
   }
@@ -200,13 +200,13 @@ a {
 }
 a.cta-link--green {
   @extend.cta-link;
-  color: $brightGreen;
+  color: $elwoodGreen;
   &:hover {
     background: none;
     color: #fff;
   }
   &:before {
-    background: $brightGreen;
+    background: $elwoodGreen;
   }
   &:after {
     background-image: url("~assets/cta_arrow.svg");

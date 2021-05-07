@@ -1,13 +1,32 @@
 <template>
-  <div ref="scroll" class="home page-wrapper" data-scroll-section>
+  <div
+    id="page-wrapper"
+    ref="scroll"
+    class="home page-wrapper"
+    data-scroll-section
+  >
+    <div id="sticky-nav-target"></div>
     <nav-desktop :scroll="scroll" />
-    <section class="hero__container">
+    <nav-sticky
+      data-scroll
+      data-scroll-sticky
+      data-scroll-target="#sticky-nav-target"
+      :active="navActive"
+      :scroll="scroll"
+    />
+    <section
+      id="hero-container"
+      class="hero__container"
+      data-scroll
+      data-scroll-call="hero"
+      data-scroll-repeat="true"
+    >
       <graphics :section-id="'hero-graphics'" :scroll="scroll"></graphics>
       <div class="hero__content-block">
         <div class="hero__text-block" data-scroll data-scroll-speed="-2">
-          <h2 id="hero-subhead" class="subhead intro-ani">
+          <!-- <h2 id="hero-subhead" class="subhead intro-ani">
             {{ homeData.heroSubhead }}
-          </h2>
+          </h2> -->
           <h1 id="hero-heading" class="hero__headline intro-ani">
             {{ homeData.heroHeadline }}
           </h1>
@@ -335,6 +354,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import sanity from "@/sanityClient";
 import sanityClient from "../sanityClient";
 import NavDesktop from "../components/NavDesktop";
+import NavSticky from "../components/NavSticky";
 import ClientsCarousel from "../components/ClientsCarousel";
 import Graphics from "../components/Graphics";
 import ContentVideo from "../components/ContentVideo";
@@ -371,6 +391,7 @@ const query = `{
 export default {
   components: {
     NavDesktop,
+    NavSticky,
     ContentVideo,
     ClientsCarousel,
     Graphics,
@@ -380,7 +401,9 @@ export default {
   },
   data() {
     return {
+      navActive: false,
       homeData: 0,
+      resizeTimeout: 0,
       scroll: {},
       tlIntro: {},
     };
@@ -453,10 +476,27 @@ export default {
       this.initScrollEvents();
     },
     initScrollEvents() {
+      window.addEventListener("resize", () => {
+        console.log("Resize");
+        clearTimeout(this.resizeTimeout);
+        this.resizeTimeout = setTimeout(() => {
+          this.updateScroll();
+        }, 250);
+      });
       this.scroll.on("call", (value, way, obj) => {
+        if (value === "hero") {
+          if (this.isMobile) {
+            return;
+          }
+          if (way === "exit") {
+            this.navActive = true;
+          } else {
+            this.navActive = false;
+          }
+        }
         if ((value === "showBullets") & (way === "enter")) {
           this.showUSPs();
-          obj.el.removeAttribute("data-scroll-call");
+          // obj.el.removeAttribute("data-scroll-call");
         }
       });
     },
@@ -467,14 +507,15 @@ export default {
     scrollTo(target, options) {
       this.scroll.scrollTo(target, options);
     },
+
     introAni() {
       const nav = document.getElementById("nav");
-      const heroSub = document.getElementById("hero-subhead");
+      // const heroSub = document.getElementById("hero-subhead");
       const heroHead = document.getElementById("hero-heading");
       const heroSummary = document.getElementById("hero-summary");
       const btns = document.getElementById("hero-btns");
       const bullets = gsap.utils.toArray(".hero__bullet");
-      const els = [heroSub, heroHead, heroSummary, btns];
+      const els = [/* heroSub, */ heroHead, heroSummary, btns];
       console.log(els);
       this.tlIntro = gsap
         .timeline()

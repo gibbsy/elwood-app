@@ -3,7 +3,7 @@ export default class DotGrid {
   constructor(container, dotSize, width, height) {
     const { innerWidth, innerHeight } = window;
     this.container = container;
-    console.log(innerWidth, innerHeight, container);
+    // console.log(innerWidth, innerHeight, container);
     const pad = 44;
     this.size = dotSize;
     const numDots = Math.floor(innerWidth / (pad + dotSize));

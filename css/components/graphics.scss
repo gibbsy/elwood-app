@@ -39,7 +39,7 @@
       width: 3px;
       height: 3px;
       border-radius: 50%;
-      background: rgba($brightGreen, 0.2);
+      background: rgba($elwoodGreen, 0.2);
       margin-left: 44px;
       &:first-child {
         margin-left: 0;
@@ -68,7 +68,7 @@
     width: 3px;
     height: 3px;
     border-radius: 50%;
-    background: rgba($brightGreen, 0.2);
+    background: rgba($elwoodGreen, 0.2);
     margin-left: 44px;
     opacity: 0;
     &:first-child {
@@ -98,7 +98,7 @@
 .graphics__dots-cluster--green {
   @extend .graphics__dots-cluster;
   li {
-    background: $brightGreen;
+    background: $elwoodGreen;
   }
 }
 .graphics__dots-cluster--purple {
@@ -170,7 +170,7 @@
 .graphics__dots-inline--green {
   @extend .graphics__dots-inline;
   li {
-    background: $brightGreen;
+    background: $elwoodGreen;
   }
 }
 .graphics__dots-inline--purple {
@@ -254,7 +254,7 @@
   @extend .graphics__circle;
   .graphic {
     background: none;
-    border: 1px solid $brightGreen;
+    border: 1px solid $elwoodGreen;
   }
 }
 
