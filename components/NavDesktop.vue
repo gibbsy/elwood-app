@@ -1,7 +1,9 @@
 <template>
   <div id="nav" class="nav intro-ani" role="navigation">
     <div class="elwood-logo">
-      <logo-horizontal />
+      <nuxt-link to="/">
+        <logo-horizontal />
+      </nuxt-link>
     </div>
     <ul class="nav__links-desktop">
       <li>

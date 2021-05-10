@@ -5,41 +5,85 @@
     class="home page-wrapper"
     data-scroll-section
   >
-    <div id="sticky-nav-target"></div>
-    <nav-desktop :scroll="scroll" />
-    <nav-sticky
-      data-scroll
-      data-scroll-sticky
-      data-scroll-target="#sticky-nav-target"
-      :active="navActive"
-      :scroll="scroll"
-      :dark="dark"
-    />
-    <section
-      id="hero-container"
-      class="hero__container"
-      data-scroll
-      data-scroll-call="hero"
-      data-scroll-repeat="true"
-    >
-      <graphics :section-id="'hero-graphics'" :scroll="scroll"></graphics>
-      <div class="hero__content-block">
-        <div class="hero__text-block" data-scroll data-scroll-speed="-2">
-          <!-- <h2 id="hero-subhead" class="subhead intro-ani">
+    <div v-if="loaded" class="page-inner-wrapper">
+      <div id="sticky-nav-target"></div>
+      <nav-desktop :scroll="scroll" />
+      <nav-sticky
+        data-scroll
+        data-scroll-sticky
+        data-scroll-target="#sticky-nav-target"
+        :active="navActive"
+        :scroll="scroll"
+        :dark="dark"
+      />
+      <section
+        id="hero-container"
+        class="hero__container"
+        data-scroll
+        data-scroll-call="hero"
+        data-scroll-repeat="true"
+      >
+        <graphics :section-id="'hero-graphics'" :scroll="scroll"></graphics>
+        <div class="hero__content-block">
+          <div class="hero__text-block" data-scroll data-scroll-speed="-2">
+            <!-- <h2 id="hero-subhead" class="subhead intro-ani">
             {{ homeData.heroSubhead }}
           </h2> -->
-          <h1 id="hero-heading" class="hero__headline intro-ani">
-            {{ homeData.heroHeadline }}
-          </h1>
-          <div id="hero-summary" class="hero__summary intro-ani">
-            <block-content :blocks="homeData.heroBody"></block-content>
+            <h1 id="hero-heading" class="hero__headline intro-ani">
+              {{ homeData.heroHeadline }}
+            </h1>
+            <div id="hero-summary" class="hero__summary intro-ani">
+              <block-content :blocks="homeData.heroBody"></block-content>
+            </div>
+            <div id="hero-btns" class="hero__btn-container intro-ani">
+              <button
+                class="btn btn__solid--green"
+                @click.prevent="
+                  scrollTo('#feature-2', {
+                    offset: 100,
+                    duration: 1000,
+                  })
+                "
+              >
+                XMS Trading
+              </button>
+              <button
+                class="btn btn__solid--green"
+                @click.prevent="
+                  scrollTo('#feature-1', {
+                    offset: 100,
+                    duration: 1000,
+                  })
+                "
+              >
+                XMS Brokerage
+              </button>
+            </div>
           </div>
-          <div id="hero-btns" class="hero__btn-container intro-ani">
+          <ul
+            id="hero-bullets"
+            class="hero__feature-list"
+            data-scroll
+            data-scroll-speed="-1"
+          >
+            <li
+              v-for="(item, i) in homeData.heroBullets"
+              :key="i"
+              class="hero__bullet intro-ani"
+            >
+              {{ item.text }}
+            </li>
+          </ul>
+          <div
+            class="hero__btn-container--mobile"
+            data-scroll
+            data-scroll-speed="-1"
+          >
             <button
               class="btn btn__solid--green"
               @click.prevent="
                 scrollTo('#feature-2', {
-                  offset: 100,
+                  offset: -100,
                   duration: 1000,
                 })
               "
@@ -50,7 +94,7 @@
               class="btn btn__solid--green"
               @click.prevent="
                 scrollTo('#feature-1', {
-                  offset: 100,
+                  offset: -100,
                   duration: 1000,
                 })
               "
@@ -59,371 +103,329 @@
             </button>
           </div>
         </div>
-        <ul
-          id="hero-bullets"
-          class="hero__feature-list"
-          data-scroll
-          data-scroll-speed="-1"
-        >
-          <li
-            v-for="(item, i) in homeData.heroBullets"
-            :key="i"
-            class="hero__bullet intro-ani"
-          >
-            {{ item.text }}
-          </li>
-        </ul>
         <div
-          class="hero__btn-container--mobile"
+          id="scroll-prompt"
+          class="scroll-prompt"
           data-scroll
-          data-scroll-speed="-1"
-        >
-          <button
-            class="btn btn__solid--green"
-            @click.prevent="
-              scrollTo('#feature-2', {
-                offset: -100,
-                duration: 1000,
-              })
-            "
-          >
-            XMS Trading
-          </button>
-          <button
-            class="btn btn__solid--green"
-            @click.prevent="
-              scrollTo('#feature-1', {
-                offset: -100,
-                duration: 1000,
-              })
-            "
-          >
-            XMS Brokerage
-          </button>
-        </div>
-      </div>
-      <div
-        id="scroll-prompt"
-        class="scroll-prompt"
-        data-scroll
-        data-scroll-speed="1.8"
-        data-scroll-offset="0,20%"
-        data-scroll-repeat="true"
-        role="presentation"
-        alt=""
-        aria-hidden
-        @click.prevent="
-          scrollTo('#feature-0', {
-            offset: 0,
-            duration: 1000,
-          })
-        "
-      >
-        <div class="graphic"></div>
-      </div>
-      <div
-        class="graphics__circle-keyline--green"
-        data-scroll
-        data-scroll-speed="2.5"
-        data-scroll-repeat="true"
-        role="presentation"
-        alt=""
-        aria-hidden
-      >
-        <div class="graphic"></div>
-      </div>
-    </section>
-    <section
-      class="features__section-container"
-      data-scroll
-      data-scroll-call="features"
-      data-scroll-repeat="true"
-    >
-      <div
-        id="features-hex-1"
-        class="graphics__hex--white"
-        data-scroll
-        data-scroll-speed="-2"
-        role="presentation"
-        aria-hidden="true"
-      >
-        <div class="graphic"></div>
-      </div>
-      <div
-        id="features-hex-2"
-        class="graphics__hex--white"
-        data-scroll
-        data-scroll-speed="-3"
-        role="presentation"
-        aria-hidden="true"
-      >
-        <div class="graphic"></div>
-      </div>
-      <div
-        id="features-circ-1"
-        class="graphics__circle"
-        data-scroll
-        data-scroll-speed="-2"
-        role="presentation"
-        aria-hidden="true"
-      >
-        <div class="graphic"></div>
-      </div>
-      <div
-        id="features-circ-2"
-        class="graphics__circle-keyline--green"
-        data-scroll
-        data-scroll-speed="-1"
-        role="presentation"
-        aria-hidden="true"
-      >
-        <div class="graphic"></div>
-      </div>
-      <dot-grid
-        v-if="!isMobile"
-        data-scroll
-        data-scroll-speed="-1"
-        :init-options="{ radius: 3, rows: 4, cols: 16, gap: 18 }"
-        fill="purple"
-        uid="features-1"
-      ></dot-grid>
-      <dot-grid
-        v-if="!isMobile"
-        data-scroll
-        data-scroll-speed="-1"
-        :init-options="{ radius: 3, rows: 4, cols: 12, gap: 24 }"
-        fill="purple"
-        uid="features-2"
-      ></dot-grid>
-      <dot-grid
-        v-if="!isMobile"
-        data-scroll
-        data-scroll-speed="-2"
-        :init-options="{ radius: 3, rows: 4, cols: 8, gap: 18 }"
-        fill="purple"
-        uid="features-3"
-      ></dot-grid>
-
-      <div
-        v-for="(feature, i) in homeData.features"
-        :id="`feature-${i}`"
-        :key="i"
-        :class="['feature__content-block', { rtl: i % 2 != 0 }]"
-      >
-        <div class="feature__text-block">
-          <div
-            class="feature__subhead"
-            data-scroll
-            data-scroll-speed="1"
-            :data-scroll-offset="videoOffset"
-          >
-            <h2>
-              {{ feature.subhead }}
-            </h2>
-          </div>
-          <div
-            class="feature__title"
-            data-scroll
-            data-scroll-speed="1.25"
-            :data-scroll-offset="videoOffset"
-          >
-            <block-content :blocks="feature.title"></block-content>
-          </div>
-          <div
-            class="feature__summary"
-            data-scroll
-            data-scroll-speed="1.5"
-            :data-scroll-offset="videoOffset"
-          >
-            <block-content :blocks="feature.text"></block-content>
-          </div>
-          <div
-            class="feature__cta-wrapper"
-            data-scroll
-            data-scroll-speed="1.6"
-            :data-scroll-offset="videoOffset"
-          >
-            <a
-              class="cta-link"
-              @click.prevent="
-                scrollTo('#contact-section', {
-                  offset: 100,
-                  duration: 1000,
-                })
-              "
-              >Connect to get started</a
-            >
-          </div>
-        </div>
-        <ContentVideo
-          :player-id="`feature-video-${i}`"
-          :vimeo-id="feature.animation"
-          :autoplay="true"
-          :wallpaper="true"
-          :scroll="scroll"
-          data-scroll
+          data-scroll-speed="1.8"
+          data-scroll-offset="0,20%"
           data-scroll-repeat="true"
-          :data-scroll-offset="videoOffset"
-        ></ContentVideo>
-      </div>
-    </section>
-    <section
-      class="usp__section-container"
-      data-scroll
-      data-scroll-call="usp"
-      data-scroll-repeat="true"
-      data-scroll-offset="100%"
-    >
-      <graphics :scroll="scroll"></graphics>
-
-      <div
-        class="usp__content-block"
-        data-scroll
-        data-scroll-call="showBullets"
-        :data-scroll-offset="videoOffset"
-      >
-        <div
-          class="usp__headline"
-          data-scroll
-          :data-scroll-offset="videoOffset"
-        >
-          <block-content
-            :class-name="'block-heading--centred'"
-            :blocks="homeData.uspTitle"
-          ></block-content>
-        </div>
-        <div class="usp__bullet-points" data-scroll data-scroll-speed="-1">
-          <div
-            v-for="(bullet, i) in homeData.uspList"
-            :key="i"
-            class="usp__bullet"
-          >
-            <figure
-              class="usp__icon"
-              :style="{ backgroundImage: `url(${urlFor(bullet.icon)})` }"
-              data-scroll
-            ></figure>
-            <h2 class="usp__title">{{ bullet.title }}</h2>
-            <block-content :blocks="bullet.text"></block-content>
-          </div>
-        </div>
-        <a
-          class="cta-link--green centred usp__cta"
-          data-scroll
+          role="presentation"
+          alt=""
+          aria-hidden
           @click.prevent="
-            scrollTo('#contact-section', {
-              offset: 100,
+            scrollTo('#feature-0', {
+              offset: 0,
               duration: 1000,
             })
           "
-          >Connect to get started</a
         >
-      </div>
-    </section>
-    <section
-      id="clients-section"
-      clients__section-container
-      data-scroll
-      data-scroll-call="clients"
-      data-scroll-repeat="true"
-    >
-      <div class="clients__content-block">
-        <div class="clients__title" data-scroll data-scroll-offset="100">
-          <h1 class="block-heading--centred">{{ homeData.clientsTitle }}</h1>
+          <div class="graphic"></div>
         </div>
-        <clients-carousel :clients="homeData.clients"></clients-carousel>
-      </div>
-    </section>
-    <section connect__section-container>
-      <div id="contact-section" class="connect__content-block">
-        <div class="connect__title" data-scroll data-scroll-offset="200">
-          <h1 class="block-heading--centred">Connect with our team</h1>
+        <div
+          class="graphics__circle-keyline--green"
+          data-scroll
+          data-scroll-speed="2.5"
+          data-scroll-repeat="true"
+          role="presentation"
+          alt=""
+          aria-hidden
+        >
+          <div class="graphic"></div>
         </div>
-        <div class="connect__main" data-scroll data-scroll-offset="200">
-          <div class="connect__leftcol">
-            <div class="connect__intro">
-              <block-content :blocks="homeData.connectIntro"></block-content>
+      </section>
+      <section
+        class="features__section-container"
+        data-scroll
+        data-scroll-call="features"
+        data-scroll-repeat="true"
+      >
+        <div
+          id="features-hex-1"
+          class="graphics__hex--white"
+          data-scroll
+          data-scroll-speed="-2"
+          role="presentation"
+          aria-hidden="true"
+        >
+          <div class="graphic"></div>
+        </div>
+        <div
+          id="features-hex-2"
+          class="graphics__hex--white"
+          data-scroll
+          data-scroll-speed="-3"
+          role="presentation"
+          aria-hidden="true"
+        >
+          <div class="graphic"></div>
+        </div>
+        <div
+          id="features-circ-1"
+          class="graphics__circle"
+          data-scroll
+          data-scroll-speed="-2"
+          role="presentation"
+          aria-hidden="true"
+        >
+          <div class="graphic"></div>
+        </div>
+        <div
+          id="features-circ-2"
+          class="graphics__circle-keyline--green"
+          data-scroll
+          data-scroll-speed="-1"
+          role="presentation"
+          aria-hidden="true"
+        >
+          <div class="graphic"></div>
+        </div>
+        <dot-grid
+          v-if="!isMobile"
+          data-scroll
+          data-scroll-speed="-1"
+          :init-options="{ radius: 3, rows: 4, cols: 16, gap: 18 }"
+          fill="purple"
+          uid="features-1"
+        ></dot-grid>
+        <dot-grid
+          v-if="!isMobile"
+          data-scroll
+          data-scroll-speed="-1"
+          :init-options="{ radius: 3, rows: 4, cols: 12, gap: 24 }"
+          fill="purple"
+          uid="features-2"
+        ></dot-grid>
+        <dot-grid
+          v-if="!isMobile"
+          data-scroll
+          data-scroll-speed="-2"
+          :init-options="{ radius: 3, rows: 4, cols: 8, gap: 18 }"
+          fill="purple"
+          uid="features-3"
+        ></dot-grid>
+
+        <div
+          v-for="(feature, i) in homeData.features"
+          :id="`feature-${i}`"
+          :key="i"
+          :class="['feature__content-block', { rtl: i % 2 != 0 }]"
+        >
+          <div class="feature__text-block">
+            <div
+              class="feature__subhead"
+              data-scroll
+              data-scroll-speed="1"
+              :data-scroll-offset="videoOffset"
+            >
+              <h2>
+                {{ feature.subhead }}
+              </h2>
             </div>
+            <div
+              class="feature__title"
+              data-scroll
+              data-scroll-speed="1.25"
+              :data-scroll-offset="videoOffset"
+            >
+              <block-content :blocks="feature.title"></block-content>
+            </div>
+            <div
+              class="feature__summary"
+              data-scroll
+              data-scroll-speed="1.5"
+              :data-scroll-offset="videoOffset"
+            >
+              <block-content :blocks="feature.text"></block-content>
+            </div>
+            <div
+              class="feature__cta-wrapper"
+              data-scroll
+              data-scroll-speed="1.6"
+              :data-scroll-offset="videoOffset"
+            >
+              <a
+                class="cta-link"
+                @click.prevent="
+                  scrollTo('#contact-section', {
+                    offset: 100,
+                    duration: 1000,
+                  })
+                "
+                >Connect to get started</a
+              >
+            </div>
+          </div>
+          <ContentVideo
+            :player-id="`feature-video-${i}`"
+            :vimeo-id="feature.animation"
+            :autoplay="true"
+            :wallpaper="true"
+            :scroll="scroll"
+            data-scroll
+            data-scroll-repeat="true"
+            :data-scroll-offset="videoOffset"
+          ></ContentVideo>
+        </div>
+      </section>
+      <section
+        class="usp__section-container"
+        data-scroll
+        data-scroll-call="usp"
+        data-scroll-repeat="true"
+        data-scroll-offset="100%"
+      >
+        <graphics :scroll="scroll"></graphics>
+
+        <div
+          class="usp__content-block"
+          data-scroll
+          data-scroll-call="showBullets"
+          :data-scroll-offset="videoOffset"
+        >
+          <div
+            class="usp__headline"
+            data-scroll
+            :data-scroll-offset="videoOffset"
+          >
             <block-content
-              :class-name="'connect__bullets'"
-              :blocks="homeData.connectBullets"
+              :class-name="'block-heading--centred'"
+              :blocks="homeData.uspTitle"
             ></block-content>
           </div>
-          <contact-form></contact-form>
-        </div>
-      </div>
-    </section>
-    <section
-      id="promo-section"
-      class="promo__section-container"
-      data-scroll
-      data-scroll-call="promos"
-      data-scroll-repeat="true"
-      data-scroll-offset="100%"
-    >
-      <graphics :section-id="'promo-bg-graphics'" :scroll="scroll"></graphics>
-
-      <div
-        class="promo__content-block"
-        data-scroll
-        :data-scroll-offset="videoOffset"
-      >
-        <a
-          v-for="promo in homeData.promoBoxes"
-          :key="promo.title"
-          :class="['promo-box', `col-${homeData.promoBoxes.length}`]"
-          @click.prevent="scrollTo(`#${promo.link}`)"
-        >
-          <div class="promo__content">
-            <figure
-              class="promo__icon"
-              :style="{ backgroundImage: `url(${urlFor(promo.icon)})` }"
-              data-scroll
-            ></figure>
-            <div class="promo__text-content">
-              <h1 class="promo__title">{{ promo.title }}</h1>
-              <block-content :blocks="promo.text"></block-content>
+          <div class="usp__bullet-points" data-scroll data-scroll-speed="-1">
+            <div
+              v-for="(bullet, i) in homeData.uspList"
+              :key="i"
+              class="usp__bullet"
+            >
+              <figure
+                class="usp__icon"
+                :style="{ backgroundImage: `url(${urlFor(bullet.icon)})` }"
+                data-scroll
+              ></figure>
+              <h2 class="usp__title">{{ bullet.title }}</h2>
+              <block-content :blocks="bullet.text"></block-content>
             </div>
           </div>
-          <div class="promo__cta"></div>
-        </a>
-      </div>
-    </section>
-    <footer>
-      <div class="footer__main">
-        <div class="footer__contact footer__col">
-          <h2>Connect</h2>
-          <ul class="footer__socials">
-            <li class="linkedin">
-              <a
-                href="https://www.linkedin.com/company/elwoodam/"
-                target="_blank"
-                aria-label="Follow us on Linkedin"
-              ></a>
-            </li>
-            <li class="twitter">
-              <a
-                href="https://twitter.com/Elwood_AM"
-                target="_blank"
-                aria-label="Follow us on Twitter"
-              ></a>
-            </li>
+          <a
+            class="cta-link--green centred usp__cta"
+            data-scroll
+            @click.prevent="
+              scrollTo('#contact-section', {
+                offset: 100,
+                duration: 1000,
+              })
+            "
+            >Connect to get started</a
+          >
+        </div>
+      </section>
+      <section
+        id="clients-section"
+        clients__section-container
+        data-scroll
+        data-scroll-call="clients"
+        data-scroll-repeat="true"
+      >
+        <div class="clients__content-block">
+          <div class="clients__title" data-scroll data-scroll-offset="100">
+            <h1 class="block-heading--centred">{{ homeData.clientsTitle }}</h1>
+          </div>
+          <clients-carousel :clients="homeData.clients"></clients-carousel>
+        </div>
+      </section>
+      <section connect__section-container>
+        <div id="contact-section" class="connect__content-block">
+          <div class="connect__title" data-scroll data-scroll-offset="200">
+            <h1 class="block-heading--centred">Connect with our team</h1>
+          </div>
+          <div class="connect__main" data-scroll data-scroll-offset="200">
+            <div class="connect__leftcol">
+              <div class="connect__intro">
+                <block-content :blocks="homeData.connectIntro"></block-content>
+              </div>
+              <block-content
+                :class-name="'connect__bullets'"
+                :blocks="homeData.connectBullets"
+              ></block-content>
+            </div>
+            <contact-form></contact-form>
+          </div>
+        </div>
+      </section>
+      <section
+        id="promo-section"
+        class="promo__section-container"
+        data-scroll
+        data-scroll-call="promos"
+        data-scroll-repeat="true"
+        data-scroll-offset="100%"
+      >
+        <graphics :section-id="'promo-bg-graphics'" :scroll="scroll"></graphics>
+
+        <div
+          class="promo__content-block"
+          data-scroll
+          :data-scroll-offset="videoOffset"
+        >
+          <a
+            v-for="promo in homeData.promoBoxes"
+            :key="promo.title"
+            :class="['promo-box', `col-${homeData.promoBoxes.length}`]"
+            @click.prevent="scrollTo(`#${promo.link}`)"
+          >
+            <div class="promo__content">
+              <figure
+                class="promo__icon"
+                :style="{ backgroundImage: `url(${urlFor(promo.icon)})` }"
+                data-scroll
+              ></figure>
+              <div class="promo__text-content">
+                <h1 class="promo__title">{{ promo.title }}</h1>
+                <block-content :blocks="promo.text"></block-content>
+              </div>
+            </div>
+            <div class="promo__cta"></div>
+          </a>
+        </div>
+      </section>
+      <footer>
+        <div class="footer__main">
+          <div class="footer__contact footer__col">
+            <h2>Connect</h2>
+            <ul class="footer__socials">
+              <li class="linkedin">
+                <a
+                  href="https://www.linkedin.com/company/elwoodam/"
+                  target="_blank"
+                  aria-label="Follow us on Linkedin"
+                ></a>
+              </li>
+              <li class="twitter">
+                <a
+                  href="https://twitter.com/Elwood_AM"
+                  target="_blank"
+                  aria-label="Follow us on Twitter"
+                ></a>
+              </li>
+            </ul>
+            <p class="address">
+              <span>27 Baker Street</span><span>London, W1U 8EQ, UK</span>
+            </p>
+          </div>
+          <div class="footer__logo">
+            <logo-stacked class="logo__stacked" />
+          </div>
+        </div>
+        <div class="footer__legals">
+          <p class="copyright">©2021 Elwood Asset Management LLP</p>
+          <ul>
+            <nuxt-link to="privacy">Privacy policy</nuxt-link>
           </ul>
-          <p class="address">
-            <span>27 Baker Street</span><span>London, W1U 8EQ, UK</span>
-          </p>
         </div>
-        <div class="footer__logo">
-          <logo-stacked class="logo__stacked" />
-        </div>
-      </div>
-      <div class="footer__legals">
-        <p class="copyright">©2021 Elwood Asset Management LLP</p>
-        <ul>
-          <!-- <nuxt-link to="privacy">Privacy policy</nuxt-link> -->
-        </ul>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </div>
 </template>
 
@@ -485,6 +487,7 @@ export default {
   },
   data() {
     return {
+      loaded: false,
       navActive: false,
       dark: false,
       homeData: 0,
@@ -498,6 +501,12 @@ export default {
       // console.log(data);
       this.homeData = data.home;
       console.log(this.homeData);
+      this.$nextTick(() => {
+        console.log("loaded");
+        this.loaded = true;
+        console.log(process.client);
+        this.init();
+      });
       // this.updateScroll();
     });
   },
@@ -538,17 +547,22 @@ export default {
     };
   }, */
   mounted() {
-    this.introAni();
-    this.$nextTick(() => {
-      this.initScroll();
-    });
-    setTimeout(() => {
-      this.updateScroll();
-    }, 500);
-    console.log("GSAP");
-    console.log(gsap);
+    // this.initScroll();
   },
   methods: {
+    init() {
+      if (process.client) {
+        console.log("init");
+        this.$nextTick(() => {
+          this.initScroll();
+        });
+      }
+      /*  setTimeout(() => {
+        this.updateScroll();
+      }, 500); */
+      // console.log("GSAP");
+      // console.log(gsap);
+    },
     urlFor(source) {
       return urlBuilder.image(source);
     },
@@ -560,6 +574,9 @@ export default {
         getDirection: true,
       });
       this.initScrollEvents();
+      this.$nextTick(() => {
+        this.introAni();
+      });
     },
     initScrollEvents() {
       window.addEventListener("resize", () => {

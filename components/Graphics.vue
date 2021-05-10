@@ -103,7 +103,7 @@ export default {
         this.clusters.push(cluster1 /* cluster2, cluster3 */);
       }
       this.$nextTick(() => {
-        this.updateScroll();
+        // this.updateScroll();
       });
     },
     updateScroll() {
