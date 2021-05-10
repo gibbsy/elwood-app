@@ -5,7 +5,7 @@
     class="home page-wrapper"
     data-scroll-section
   >
-    <div v-if="loaded" class="page-inner-wrapper">
+    <div v-if="loaded">
       <div id="sticky-nav-target"></div>
       <nav-desktop :scroll="scroll" />
       <nav-sticky
@@ -29,13 +29,25 @@
             <!-- <h2 id="hero-subhead" class="subhead intro-ani">
             {{ homeData.heroSubhead }}
           </h2> -->
-            <h1 id="hero-heading" class="hero__headline intro-ani">
+            <h1
+              id="hero-heading"
+              ref="hero-heading"
+              class="hero__headline intro-ani"
+            >
               {{ homeData.heroHeadline }}
             </h1>
-            <div id="hero-summary" class="hero__summary intro-ani">
+            <div
+              id="hero-summary"
+              ref="hero-summary"
+              class="hero__summary intro-ani"
+            >
               <block-content :blocks="homeData.heroBody"></block-content>
             </div>
-            <div id="hero-btns" class="hero__btn-container intro-ani">
+            <div
+              id="hero-btns"
+              ref="hero-btns"
+              class="hero__btn-container intro-ani"
+            >
               <button
                 class="btn btn__solid--green"
                 @click.prevent="
@@ -475,6 +487,7 @@ const query = `{
 }
 }`;
 export default {
+  fetchOnServer: false,
   components: {
     NavDesktop,
     NavSticky,
@@ -500,13 +513,15 @@ export default {
     await sanityClient.fetch(query).then((data) => {
       // console.log(data);
       this.homeData = data.home;
-      console.log(this.homeData);
+      // console.log(this.homeData);
       this.$nextTick(() => {
         console.log("loaded");
         this.loaded = true;
         console.log(process.client);
         console.log(process.static);
-        this.init();
+        if (process.client) {
+          this.init();
+        }
       });
       // this.updateScroll();
     });
@@ -548,10 +563,14 @@ export default {
     };
   }, */
   mounted() {
-    this.initScroll();
+    /*  this.initScroll();
+    this.$nextTick(() => {
+      this.init();
+    }); */
   },
   methods: {
     init() {
+      this.initScroll();
       console.log(process);
       this.$nextTick(() => {
         this.introAni();
@@ -559,9 +578,9 @@ export default {
       /*  if (process.client) {
         console.log("init");
       } */
-      /*  setTimeout(() => {
+      setTimeout(() => {
         this.updateScroll();
-      }, 500); */
+      }, 500);
       // console.log("GSAP");
       // console.log(gsap);
     },
@@ -646,20 +665,18 @@ export default {
     },
 
     introAni() {
-      const nav = document.getElementById("nav");
+      // const nav = this.$refs.nav;
       // const heroSub = document.getElementById("hero-subhead");
-      const heroHead = document.getElementById("hero-heading");
-      const heroSummary = document.getElementById("hero-summary");
-      const btns = document.getElementById("hero-btns");
-      const bullets = gsap.utils.toArray(".hero__bullet");
+      const heroHead = this.$refs["hero-heading"];
+      const heroSummary = this.$refs["hero-summary"];
+      const btns = this.$refs["hero-btns"];
+      // const bullets = gsap.utils.toArray(".hero__bullet");
       const els = [/* heroSub, */ heroHead, heroSummary, btns];
-      console.log(els);
-      this.tlIntro = gsap
-        .timeline()
-        .set(els, { opacity: 0, y: "+=80" })
-        .set(nav, { y: "-=40", opacity: 0 })
-        .set(bullets, { x: "+=30", opacity: "0" })
-        .to(
+      // console.log(els);
+      this.tlIntro = gsap.timeline().set(els, { opacity: 0, y: "+=80" });
+      // .set(nav, { y: "-=40", opacity: 0 })
+      // .set(bullets, { x: "+=30", opacity: "0" });
+      /* .to(
           nav,
           {
             opacity: 1,
@@ -668,7 +685,7 @@ export default {
             ease: "Power2.easeOut",
           },
           0.5
-        );
+        ); */
 
       els.forEach((el, i) => {
         this.tlIntro.to(
@@ -682,7 +699,7 @@ export default {
           i * 0.2 + 0.5
         );
       });
-      bullets.forEach((el, i) => {
+      /*  bullets.forEach((el, i) => {
         this.tlIntro.to(
           el,
           {
@@ -693,7 +710,7 @@ export default {
           },
           i * 0.3 + 2
         );
-      });
+      }); */
     },
     showUSPs() {
       const els = gsap.utils.toArray(".usp__bullet");
