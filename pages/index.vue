@@ -505,6 +505,7 @@ export default {
         console.log("loaded");
         this.loaded = true;
         console.log(process.client);
+        console.log(process.static);
         this.init();
       });
       // this.updateScroll();
@@ -547,16 +548,17 @@ export default {
     };
   }, */
   mounted() {
-    // this.initScroll();
+    this.initScroll();
   },
   methods: {
     init() {
-      if (process.client) {
+      console.log(process);
+      this.$nextTick(() => {
+        this.introAni();
+      });
+      /*  if (process.client) {
         console.log("init");
-        this.$nextTick(() => {
-          this.initScroll();
-        });
-      }
+      } */
       /*  setTimeout(() => {
         this.updateScroll();
       }, 500); */
