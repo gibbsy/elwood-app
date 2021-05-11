@@ -433,9 +433,9 @@
       </div>
       <div class="footer__legals">
         <p class="copyright">©2021 Elwood Asset Management LLP</p>
-        <ul>
+        <!-- <ul>
           <nuxt-link to="privacy">Privacy policy</nuxt-link>
-        </ul>
+        </ul> -->
       </div>
     </footer>
   </div>
