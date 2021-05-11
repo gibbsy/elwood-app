@@ -1,5 +1,5 @@
 <template>
-  <div id="nav" class="nav intro-ani" role="navigation">
+  <div id="nav" ref="nav" class="nav intro-ani" role="navigation">
     <div class="elwood-logo">
       <nuxt-link to="/">
         <logo-horizontal />
