@@ -194,7 +194,7 @@
         <div class="graphic"></div>
       </div>
       <dot-grid
-        v-show="!isMobile"
+        v-if="!isMobile"
         data-scroll
         data-scroll-speed="-1"
         :init-options="{ radius: 3, rows: 4, cols: 16, gap: 18 }"
@@ -202,7 +202,7 @@
         uid="features-1"
       ></dot-grid>
       <dot-grid
-        v-show="!isMobile"
+        v-if="!isMobile"
         data-scroll
         data-scroll-speed="-1"
         :init-options="{ radius: 3, rows: 4, cols: 12, gap: 24 }"
@@ -210,7 +210,7 @@
         uid="features-2"
       ></dot-grid>
       <dot-grid
-        v-show="!isMobile"
+        v-if="!isMobile"
         data-scroll
         data-scroll-speed="-2"
         :init-options="{ radius: 3, rows: 4, cols: 8, gap: 18 }"
@@ -434,7 +434,7 @@
       <div class="footer__legals">
         <p class="copyright">©2021 Elwood Asset Management LLP</p>
         <!-- <ul>
-          <nuxt-link to="products/xms-trading">Privacy policy</nuxt-link>
+          <nuxt-link to="privacy">Privacy policy</nuxt-link>
         </ul> -->
       </div>
     </footer>
@@ -444,17 +444,16 @@
 <script>
 import mobile from "is-mobile";
 import imageUrlBuilder from "@sanity/image-url";
-import sanity from "@/sanityClient";
-import sanityClient from "../sanityClient";
-import NavDesktop from "../components/NavDesktop";
-import NavSticky from "../components/NavSticky";
-import ClientsCarousel from "../components/ClientsCarousel";
-import Graphics from "../components/Graphics";
-import ContentVideo from "../components/ContentVideo";
-import DotGrid from "../components/DotGrid";
+import sanityClient from "~/sanityClient";
+import NavDesktop from "~/components/NavDesktop";
+import NavSticky from "~/components/NavSticky";
+import ClientsCarousel from "~/components/ClientsCarousel";
+import Graphics from "~/components/Graphics";
+import ContentVideo from "~/components/ContentVideo";
+import DotGrid from "~/components/DotGrid";
 import ContactForm from "~/components/ContactForm.vue";
 import LogoStacked from "~/assets/logo_vertical.svg?inline";
-const urlBuilder = imageUrlBuilder(sanity);
+const urlBuilder = imageUrlBuilder(sanityClient);
 if (typeof window === "undefined") {
   global.window = {};
 }
@@ -566,6 +565,8 @@ export default {
     };
   }, */
   mounted() {
+    console.log(this.homeData);
+    // this.initScroll();
     this.$nextTick(() => {
       this.init();
     });
@@ -577,9 +578,14 @@ export default {
       this.$nextTick(() => {
         this.introAni();
       });
+      /*  if (process.client) {
+        console.log("init");
+      } */
       setTimeout(() => {
         this.updateScroll();
       }, 500);
+      // console.log("GSAP");
+      // console.log(gsap);
     },
     urlFor(source) {
       return urlBuilder.image(source);
@@ -615,6 +621,16 @@ export default {
             this.navActive = false;
           }
         }
+        /*  if (value === "features") {
+          if (this.isMobile) {
+            return;
+          }
+          if (way === "exit") {
+            this.dark = true;
+          } else {
+            this.dark = false;
+          }
+        } */
         if (value === "usp") {
           if (this.isMobile) {
             return;
@@ -639,6 +655,7 @@ export default {
         }
         if ((value === "showBullets") & (way === "enter")) {
           this.showUSPs();
+          // obj.el.removeAttribute("data-scroll-call");
         }
       });
     },
