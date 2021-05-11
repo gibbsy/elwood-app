@@ -501,7 +501,6 @@ export default {
   },
   async asyncData() {
     const homeData = await sanityClient.fetch(query);
-    console.log(homeData);
     return { homeData: homeData.home, legals: homeData.legals };
   },
   data() {
@@ -515,23 +514,6 @@ export default {
       tlIntro: {},
     };
   },
-  /* async fetch() {
-    await sanityClient.fetch(query).then((data) => {
-      // console.log(data);
-      this.homeData = data.home;
-      // console.log(this.homeData);
-      this.$nextTick(() => {
-        console.log("loaded");
-        this.loaded = true;
-        console.log(process.client);
-        console.log(process.static);
-        if (process.client) {
-          this.init();
-        }
-      });
-      // this.updateScroll();
-    });
-  }, */
   computed: {
     isMobile() {
       return mobile();
@@ -572,7 +554,6 @@ export default {
     this.$nextTick(() => {
       this.init();
     });
-    console.log(this.legals);
   },
   beforeDestroy() {
     console.log("destroy scroll");
@@ -581,7 +562,6 @@ export default {
   methods: {
     init() {
       this.initScroll();
-      console.log(process);
       this.$nextTick(() => {
         this.introAni();
       });
@@ -630,7 +610,6 @@ export default {
           if (way === "exit") {
             this.dark = false;
           } else if (way === "enter") {
-            console.log(obj);
             this.dark = true;
           }
         }
@@ -641,7 +620,6 @@ export default {
           if (way === "exit") {
             this.dark = false;
           } else if (way === "enter") {
-            console.log(obj);
             this.dark = true;
           }
         }
@@ -666,7 +644,6 @@ export default {
       const btns = this.$refs["hero-btns"];
       const bullets = gsap.utils.toArray(".hero__bullet");
       const els = [/* heroSub, */ heroHead, heroSummary, btns];
-      console.log(els);
       this.tlIntro = gsap
         .timeline()
         .set(els, { opacity: 0, y: "+=80" })
