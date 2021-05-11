@@ -433,9 +433,11 @@
       </div>
       <div class="footer__legals">
         <p class="copyright">©2021 Elwood Asset Management LLP</p>
-        <!-- <ul>
-          <nuxt-link to="products/xms-trading">Privacy policy</nuxt-link>
-        </ul> -->
+        <ul>
+          <li v-for="page in legals" :key="page.slug">
+            <nuxt-link :to="`legal/${page.slug}`">{{ page.title }}</nuxt-link>
+          </li>
+        </ul>
       </div>
     </footer>
   </div>
@@ -444,7 +446,6 @@
 <script>
 import mobile from "is-mobile";
 import imageUrlBuilder from "@sanity/image-url";
-import sanity from "@/sanityClient";
 import sanityClient from "../sanityClient";
 import NavDesktop from "../components/NavDesktop";
 import NavSticky from "../components/NavSticky";
@@ -454,7 +455,7 @@ import ContentVideo from "../components/ContentVideo";
 import DotGrid from "../components/DotGrid";
 import ContactForm from "~/components/ContactForm.vue";
 import LogoStacked from "~/assets/logo_vertical.svg?inline";
-const urlBuilder = imageUrlBuilder(sanity);
+const urlBuilder = imageUrlBuilder(sanityClient);
 if (typeof window === "undefined") {
   global.window = {};
 }
@@ -484,7 +485,8 @@ const query = `{
     asset->
     }
   },
-}
+},
+"legals": *[_type == "legalsPage" ]{ title, "slug": slug.current }
 }`;
 export default {
   components: {
@@ -499,7 +501,8 @@ export default {
   },
   async asyncData() {
     const homeData = await sanityClient.fetch(query);
-    return { homeData: homeData.home };
+    console.log(homeData);
+    return { homeData: homeData.home, legals: homeData.legals };
   },
   data() {
     return {
@@ -569,6 +572,11 @@ export default {
     this.$nextTick(() => {
       this.init();
     });
+    console.log(this.legals);
+  },
+  beforeDestroy() {
+    console.log("destroy scroll");
+    this.scroll.destroy();
   },
   methods: {
     init() {
