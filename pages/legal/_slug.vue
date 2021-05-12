@@ -1,20 +1,42 @@
 <template>
-  <div ref="scroll" class="page-wrapper legals">
-    <nav-desktop />
-    <h1>{{ pageData.title }}</h1>
-    <block-content :blocks="pageData.text"></block-content>
+  <div ref="scroll" class="page-wrapper ancillary-page legals">
+    <div class="nav" role="navigation">
+      <transition name="fade" appear mode="out-in">
+        <div class="elwood-logo">
+          <nuxt-link to="/">
+            <logo-horizontal />
+          </nuxt-link>
+        </div>
+      </transition>
+    </div>
+    <div class="legals__hero-container">
+      <Graphics />
+      <div class="legals__title-block">
+        <transition name="fade" appear mode="out-in">
+          <h1 class="hero__headline">{{ pageData.title }}</h1>
+        </transition>
+      </div>
+    </div>
+    <section class="legals section-container"></section>
+    <block-content
+      :class-name="'legals__text text-block--full-width'"
+      :blocks="pageData.text"
+    ></block-content>
+    <app-footer></app-footer>
   </div>
 </template>
 <script>
 import mobile from "is-mobile";
 import imageUrlBuilder from "@sanity/image-url";
-import NavDesktop from "@/components/NavDesktop";
 import sanityClient from "@/sanityClient";
+import AppFooter from "~/components/AppFooter.vue";
+import LogoHorizontal from "~/assets/logo_horizontal.svg?inline";
 const urlBuilder = imageUrlBuilder(sanityClient);
 console.log(mobile());
 export default {
   components: {
-    NavDesktop,
+    LogoHorizontal,
+    AppFooter,
   },
   async asyncData({ route, params }) {
     const query = `*[_type == "legalsPage" && slug.current == "${params.slug}"]{_id, slug, text, title}`;
@@ -34,9 +56,6 @@ export default {
   methods: {
     init() {
       this.initScroll();
-      setTimeout(() => {
-        this.updateScroll();
-      }, 500);
     },
     urlFor(source) {
       return urlBuilder.image(source);
@@ -48,6 +67,9 @@ export default {
         smooth: true,
         getDirection: true,
       });
+      setTimeout(() => {
+        this.updateScroll();
+      }, 500);
       this.initScrollEvents();
     },
     initScrollEvents() {

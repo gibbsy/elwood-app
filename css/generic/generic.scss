@@ -67,6 +67,34 @@
     width: 40%;
   }
 }
+.text-block--full-width {
+  background-color: $lightGrey;
+  padding: 60px 30px;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: Proxima Nova, sans-serif;
+    margin: 0.8rem 0;
+    font-size: 1.2rem;
+    margin-top: 2.4rem;
+  }
+  ul {
+    margin: 1.5rem 0 1.5rem 2rem;
+    @include bp(768) {
+      width: 70%;
+    }
+    li {
+      list-style: disc;
+    }
+  }
+  @include bp(768) {
+    padding: 80px 10%;
+  }
+  @include bp(1200) {
+    padding-right: 30%;
+  }
+}
 
 .summary {
   width: 100%;

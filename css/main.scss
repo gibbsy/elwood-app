@@ -28,11 +28,12 @@
 @import "components/footer";
 @import "components/graphics";
 
-// Sections
+// Pages
 // ==========================================================================
-@import "sections/hero";
-@import "sections/features";
-@import "sections/usp";
-@import "sections/clients";
-@import "sections/connect";
-@import "sections/promo";
+@import "pages/home/hero";
+@import "pages/home/features";
+@import "pages/home/usp";
+@import "pages/home/clients";
+@import "pages/home/connect";
+@import "pages/home/promo";
+@import "pages/legals/legals";

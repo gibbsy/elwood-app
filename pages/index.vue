@@ -1,10 +1,5 @@
 <template>
-  <div
-    id="page-wrapper"
-    ref="scroll"
-    class="home page-wrapper"
-    data-scroll-section
-  >
+  <div id="page-wrapper" ref="scroll" class="home page-wrapper">
     <div id="sticky-nav-target"></div>
     <transition appear name="fade">
       <nav-desktop ref="nav" :scroll="scroll" />
@@ -403,43 +398,7 @@
         </a>
       </div>
     </section>
-    <footer>
-      <div class="footer__main">
-        <div class="footer__contact footer__col">
-          <h2>Connect</h2>
-          <ul class="footer__socials">
-            <li class="linkedin">
-              <a
-                href="https://www.linkedin.com/company/elwoodam/"
-                target="_blank"
-                aria-label="Follow us on Linkedin"
-              ></a>
-            </li>
-            <li class="twitter">
-              <a
-                href="https://twitter.com/Elwood_AM"
-                target="_blank"
-                aria-label="Follow us on Twitter"
-              ></a>
-            </li>
-          </ul>
-          <p class="address">
-            <span>27 Baker Street</span><span>London, W1U 8EQ, UK</span>
-          </p>
-        </div>
-        <div class="footer__logo">
-          <logo-stacked class="logo__stacked" />
-        </div>
-      </div>
-      <div class="footer__legals">
-        <p class="copyright">©2021 Elwood Asset Management LLP</p>
-        <ul>
-          <li v-for="page in legals" :key="page.slug">
-            <nuxt-link :to="`legal/${page.slug}`">{{ page.title }}</nuxt-link>
-          </li>
-        </ul>
-      </div>
-    </footer>
+    <app-footer />
   </div>
 </template>
 
@@ -454,7 +413,8 @@ import Graphics from "../components/Graphics";
 import ContentVideo from "../components/ContentVideo";
 import DotGrid from "../components/DotGrid";
 import ContactForm from "~/components/ContactForm.vue";
-import LogoStacked from "~/assets/logo_vertical.svg?inline";
+import AppFooter from "~/components/AppFooter";
+// import LogoStacked from "~/assets/logo_vertical.svg?inline";
 const urlBuilder = imageUrlBuilder(sanityClient);
 if (typeof window === "undefined") {
   global.window = {};
@@ -496,8 +456,9 @@ export default {
     ClientsCarousel,
     Graphics,
     ContactForm,
-    LogoStacked,
+    // LogoStacked,
     DotGrid,
+    AppFooter,
   },
   async asyncData() {
     const homeData = await sanityClient.fetch(query);
@@ -558,16 +519,11 @@ export default {
   beforeDestroy() {
     console.log("destroy scroll");
     this.scroll.destroy();
+    this.scroll = null;
   },
   methods: {
     init() {
       this.initScroll();
-      this.$nextTick(() => {
-        this.introAni();
-      });
-      setTimeout(() => {
-        this.updateScroll();
-      }, 500);
     },
     urlFor(source) {
       return urlBuilder.image(source);
@@ -579,6 +535,9 @@ export default {
         smooth: true,
         getDirection: true,
       });
+      setTimeout(() => {
+        this.updateScroll();
+      }, 500);
       this.initScrollEvents();
       this.$nextTick(() => {
         this.introAni();

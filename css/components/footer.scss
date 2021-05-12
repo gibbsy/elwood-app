@@ -80,23 +80,39 @@ footer {
 }
 
 .footer__legals {
+  margin-top: 100px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   p,
   li,
   a {
+    color: $midPurple;
     font-size: 0.8rem;
     @include bp(768) {
       font-size: 1rem;
     }
   }
-  a:hover {
-    color: $lightGrey;
-  }
 }
 
-.copyright {
-  margin-top: 100px;
-  color: $darkPurple;
+.legal-links-menu {
+  display: flex;
+  li {
+    margin-left: 2rem;
+    &:first-child {
+      margin: 0;
+    }
+    a {
+      text-decoration: none;
+      &:hover {
+        color: $lightGrey;
+      }
+      &:visited {
+        color: $midPurple;
+        &:hover {
+          color: $lightGrey;
+        }
+      }
+    }
+  }
 }

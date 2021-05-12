@@ -1,0 +1,28 @@
+.ancillary-page .nav {
+  opacity: 1;
+}
+
+.legals__hero-container {
+  @extend .section-container;
+  @include dark-grad();
+  height: 30vh;
+  @include bp(768) {
+    height: 50vh;
+  }
+}
+
+.legals__title-block {
+  @extend .content-block;
+  align-items: flex-end;
+}
+
+.legals__text {
+  background-color: $lightGrey;
+  padding: 60px 30px;
+  @include bp(768) {
+    padding: 80px 10%;
+  }
+  @include bp(1200) {
+    padding-right: 25%;
+  }
+}
