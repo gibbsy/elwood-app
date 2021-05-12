@@ -518,6 +518,7 @@ export default {
   },
   beforeDestroy() {
     console.log("destroy scroll");
+    window.removeEventListener("resize", this.handleResize);
     this.scroll.destroy();
     this.scroll = null;
   },
@@ -544,13 +545,7 @@ export default {
       });
     },
     initScrollEvents() {
-      window.addEventListener("resize", () => {
-        console.log("Resize");
-        clearTimeout(this.resizeTimeout);
-        this.resizeTimeout = setTimeout(() => {
-          this.updateScroll();
-        }, 250);
-      });
+      window.addEventListener("resize", this.handleResize);
       this.scroll.on("call", (value, way, obj) => {
         if (value === "hero") {
           if (this.isMobile) {
@@ -594,7 +589,13 @@ export default {
     scrollTo(target, options) {
       this.scroll.scrollTo(target, options);
     },
-
+    handleResize() {
+      console.log("Resize");
+      clearTimeout(this.resizeTimeout);
+      this.resizeTimeout = setTimeout(() => {
+        this.updateScroll();
+      }, 250);
+    },
     introAni() {
       const nav = document.getElementById("nav");
       // const heroSub = document.getElementById("hero-subhead");

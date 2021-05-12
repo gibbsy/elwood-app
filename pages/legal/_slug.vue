@@ -50,8 +50,10 @@ export default {
     });
   },
   beforeDestroy() {
-    console.log("destro scroll");
+    console.log("destroy scroll");
+    window.removeEventListener("resize", this.handleResize);
     this.scroll.destroy();
+    this.scroll = null;
   },
   methods: {
     init() {
@@ -73,13 +75,7 @@ export default {
       this.initScrollEvents();
     },
     initScrollEvents() {
-      window.addEventListener("resize", () => {
-        console.log("Resize");
-        clearTimeout(this.resizeTimeout);
-        this.resizeTimeout = setTimeout(() => {
-          this.updateScroll();
-        }, 250);
-      });
+      window.addEventListener("resize", this.handleResize);
     },
     updateScroll() {
       console.log("update scroll");
@@ -87,6 +83,13 @@ export default {
     },
     scrollTo(target, options) {
       this.scroll.scrollTo(target, options);
+    },
+    handleResize() {
+      console.log("Resize");
+      clearTimeout(this.resizeTimeout);
+      this.resizeTimeout = setTimeout(() => {
+        this.updateScroll();
+      }, 250);
     },
   },
 };

@@ -5,15 +5,18 @@
 .legals__hero-container {
   @extend .section-container;
   @include dark-grad();
-  height: 30vh;
-  @include bp(768) {
-    height: 50vh;
-  }
 }
 
 .legals__title-block {
   @extend .content-block;
   align-items: flex-end;
+  min-height: 30vh;
+  height: 30vh;
+  padding: 80px 2rem;
+  @include bp(768) {
+    padding: 10vh 10%;
+    height: 50vh;
+  }
 }
 
 .legals__text {
@@ -24,5 +27,8 @@
   }
   @include bp(1200) {
     padding-right: 25%;
+  }
+  @include bp(1600) {
+    padding-right: 40%;
   }
 }

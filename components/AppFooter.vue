@@ -24,7 +24,9 @@
         </p>
       </div>
       <div class="footer__logo">
-        <logo-stacked class="logo__stacked" />
+        <nuxt-link to="/">
+          <logo-stacked class="logo__stacked" />
+        </nuxt-link>
       </div>
     </div>
     <div class="footer__legals">
