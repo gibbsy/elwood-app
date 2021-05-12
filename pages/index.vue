@@ -12,6 +12,7 @@
       :scroll="scroll"
       :dark="dark"
     />
+    <cookie-panel></cookie-panel>
     <section
       id="hero-container"
       class="hero__container"
@@ -111,7 +112,7 @@
           </button>
         </div>
       </div>
-      <div
+      <!-- <div
         id="scroll-prompt"
         class="scroll-prompt"
         data-scroll
@@ -129,7 +130,7 @@
         "
       >
         <div class="graphic"></div>
-      </div>
+      </div> -->
       <div
         class="graphics__circle-keyline--green"
         data-scroll
@@ -414,6 +415,7 @@ import ContentVideo from "../components/ContentVideo";
 import DotGrid from "../components/DotGrid";
 import ContactForm from "~/components/ContactForm.vue";
 import AppFooter from "~/components/AppFooter";
+import CookiePanel from "~/components/CookiePanel.vue";
 // import LogoStacked from "~/assets/logo_vertical.svg?inline";
 const urlBuilder = imageUrlBuilder(sanityClient);
 if (typeof window === "undefined") {
@@ -459,6 +461,7 @@ export default {
     // LogoStacked,
     DotGrid,
     AppFooter,
+    CookiePanel,
   },
   async asyncData() {
     const homeData = await sanityClient.fetch(query);
