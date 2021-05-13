@@ -35,16 +35,19 @@ h1 {
   &.hero__headline {
     margin: 0.75rem 0 0 0;
     font-size: 9vw;
+    @include bp(768) {
+      font-size: 7vw;
+    }
     @include bp(1024) {
-      font-size: 3rem;
+      font-size: 5vw;
       margin: 0.75rem 0 1.2rem 0;
     }
     @include bp(1200) {
-      font-size: 3.5rem;
+      font-size: 3.2vw;
       margin: 0.75rem 0 2rem 0;
     }
     @include bp(1600) {
-      font-size: 4rem;
+      // font-size: 4rem;
     }
   }
   &.block-heading--centred {
@@ -119,7 +122,7 @@ li {
   text-indent: 0;
   padding: 0;
   @include bp(768) {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
   @include bp(1200) {
     font-size: 1.2rem;

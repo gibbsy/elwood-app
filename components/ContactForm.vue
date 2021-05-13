@@ -116,29 +116,31 @@
           >
         </div>
       </fieldset>
-
-      <div class="submit-row">
-        <div v-if="errors.length" class="error">
+      <transition name="quick-fade" mode="out-in">
+        <div v-if="submitted && errors.length" class="submit-row error">
           <p>
             Something went wrong on our end. Sorry about that. You can still
             contact us at
-            <a href="mailto:sales@elwoodam.io" class="common-Link"
+            <a href="mailto:mailto:sales@elwoodam.io" class="common-Link"
               >sales@elwoodam.io</a
-            >.
+            >
           </p>
         </div>
-        <div class="submit-row">
-          <div v-if="submitted" class="thanks">
-            <p>
-              Thanks for contacting us! Someone from the relevant team will be
-              in touch soon.
-            </p>
-          </div>
+      </transition>
+      <transition name="quick-fade" mode="out-in">
+        <div v-show="submitted && !errors.length" class="submit-row thanks">
+          <p>
+            <strong>Thanks for connecting.</strong> Someone from our team will
+            be in touch soon.
+          </p>
         </div>
+      </transition>
+      <div v-show="!submitted" class="submit-row">
         <input
           type="submit"
           class="submit-button btn__solid--purple"
           value="Connect with us"
+          :disabled="submitting"
         />
       </div>
     </form>
@@ -160,6 +162,7 @@ export default {
       website: null,
       enquiry: "",
       optIn: false,
+      submitting: false,
       submitted: false,
     };
   },
@@ -202,7 +205,7 @@ export default {
         this.errors.push("Please enter a valid email address.");
         return;
       }
-      this.submitted = true;
+      this.submitting = true;
       const myForm = document.getElementById("contact-form");
       const formData = new FormData(myForm);
       fetch("/", {
@@ -210,7 +213,11 @@ export default {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData).toString(),
       })
-        .then(() => console.log("Form successfully submitted"))
+        .then(() => {
+          setTimeout(() => {
+            this.submitted = true;
+          }, 100);
+        })
         .catch((error) => {
           this.errors.push(error);
         });

@@ -13,6 +13,7 @@
   "dependencies": {
     "@sanity/client": "^2.8.0",
     "@sanity/image-url": "^0.140.22",
+    "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.9.1",
     "countries-list": "^2.6.1",
     "gsap": "^3.6.1",

@@ -12,7 +12,7 @@
       :scroll="scroll"
       :dark="dark"
     />
-    <cookie-panel></cookie-panel>
+
     <section
       id="hero-container"
       class="hero__container"
@@ -290,6 +290,7 @@
         class="usp__content-block"
         data-scroll
         data-scroll-call="showBullets"
+        data-scroll-repeat="false"
         :data-scroll-offset="videoOffset"
       >
         <div
@@ -415,7 +416,7 @@ import ContentVideo from "../components/ContentVideo";
 import DotGrid from "../components/DotGrid";
 import ContactForm from "~/components/ContactForm.vue";
 import AppFooter from "~/components/AppFooter";
-import CookiePanel from "~/components/CookiePanel.vue";
+// import CookiePanel from "~/components/CookiePanel.vue";
 // import LogoStacked from "~/assets/logo_vertical.svg?inline";
 const urlBuilder = imageUrlBuilder(sanityClient);
 if (typeof window === "undefined") {
@@ -461,7 +462,7 @@ export default {
     // LogoStacked,
     DotGrid,
     AppFooter,
-    CookiePanel,
+    // CookiePanel,
   },
   async asyncData() {
     const homeData = await sanityClient.fetch(query);
@@ -650,7 +651,7 @@ export default {
     },
     showUSPs() {
       const els = gsap.utils.toArray(".usp__bullet");
-      const tlBullets = gsap.timeline().set(els, { y: "+=100" });
+      const tlBullets = gsap.timeline().set(els, { y: "+=100", opacity: 0 });
       els.forEach((el, i) => {
         tlBullets.to(
           el,

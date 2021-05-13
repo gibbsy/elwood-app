@@ -1,4 +1,3 @@
-/* eslint-disable vue/attribute-hyphenation */
 <template>
   <div ref="scroll" class="home page-wrapper" data-scroll-section>
     <div class="nav" role="navigation"></div>

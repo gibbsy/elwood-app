@@ -80,10 +80,16 @@ footer {
 }
 
 .footer__legals {
-  margin-top: 100px;
+  margin-top: 50px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
+  flex-direction: column-reverse;
+  @include bp(768) {
+    margin-top: 100px;
+    align-items: flex-end;
+    flex-direction: row;
+  }
   p,
   li,
   a {
@@ -95,10 +101,25 @@ footer {
   }
 }
 
+.copyright {
+  margin-top: 0.5rem;
+  @include bp(768) {
+    margin-top: 0;
+  }
+}
+
 .legal-links-menu {
   display: flex;
+  flex-direction: column;
+  @include bp(768) {
+    flex-direction: row;
+  }
   li {
-    margin-left: 2rem;
+    margin-top: 0.5rem;
+    @include bp(768) {
+      margin-top: 0;
+      margin-left: 2rem;
+    }
     &:first-child {
       margin: 0;
     }

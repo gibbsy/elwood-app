@@ -1,7 +1,15 @@
 <template>
   <div :class="[{ active }, 'nav__sticky-wrapper']">
     <div id="nav-sticky" :class="[{ dark }, 'nav__sticky']" role="navigation">
-      <div class="elwood-logo">
+      <div
+        class="elwood-logo"
+        @click.prevent="
+          scrollTo('#hero-container', {
+            offset: 0,
+            duration: 1000,
+          })
+        "
+      >
         <logo-horizontal />
       </div>
       <ul class="nav__links-desktop">

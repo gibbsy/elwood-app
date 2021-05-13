@@ -1,5 +1,5 @@
 .cookie__overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -13,14 +13,29 @@
 }
 
 .cookie__panel {
-  position: relative;
-  width: 25vw;
+  position: fixed;
   background: $lightGrey;
-  padding: 2rem;
-  border-radius: 12px;
+  width: 96%;
+  right: 2%;
+  bottom: 0.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
   box-shadow: 0px 0px 24px rgba($nightMode, 0.35);
   z-index: 200;
   pointer-events: initial;
+  @include bp(768) {
+    padding: 2rem;
+    border-radius: 12px;
+    width: 50vw;
+    bottom: 2rem;
+    right: 2rem;
+  }
+  @include bp(1024) {
+    width: 33vw;
+  }
+  @include bp(1200) {
+    width: 25vw;
+  }
   p {
     font-size: 0.9rem;
     line-height: 1.4;
