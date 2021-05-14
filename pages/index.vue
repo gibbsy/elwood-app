@@ -423,6 +423,7 @@ if (typeof window === "undefined") {
   global.window = {};
 }
 const query = `{
+  "config": *[_type=="siteConfig"]{"title": siteTitle, "description": siteDescription, "keywords": siteKeywords},
 	"home": *[_type=="home"][0] {
   ...,
   heroBullets[] {
@@ -466,7 +467,11 @@ export default {
   },
   async asyncData() {
     const homeData = await sanityClient.fetch(query);
-    return { homeData: homeData.home, legals: homeData.legals };
+    return {
+      homeData: homeData.home,
+      legals: homeData.legals,
+      config: homeData.config[0],
+    };
   },
   data() {
     return {
@@ -477,6 +482,44 @@ export default {
       resizeTimeout: 0,
       scroll: {},
       tlIntro: {},
+    };
+  },
+  head() {
+    const { title, description, keywords } = this.config;
+    return {
+      title,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: description,
+        },
+        {
+          hid: "keywords",
+          name: "keywords",
+          content: keywords,
+        },
+        {
+          property: "og:title",
+          content: title,
+          vmid: "og:title",
+        },
+        {
+          property: "og:description",
+          content: description,
+          vmid: "og:description",
+        },
+        {
+          property: "twitter:title",
+          content: title,
+          vmid: "twitter:title",
+        },
+        {
+          property: "twitter:description",
+          content: description,
+          vmid: "twitter:description",
+        },
+      ],
     };
   },
   computed: {
@@ -495,26 +538,6 @@ export default {
       return val;
     },
   },
-  /* head() {
-    if (!this || !this.home) {
-      return;
-    }
-    return {
-      title: this.home.name,
-      meta: [
-        {
-          hid: "description",
-          name: "description",
-          content: this.home.description,
-        },
-        {
-          hid: "keywords",
-          name: "keywords",
-          content: this.home.keywords.join(","),
-        },
-      ],
-    };
-  }, */
   mounted() {
     this.$nextTick(() => {
       this.init();
