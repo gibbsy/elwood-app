@@ -416,8 +416,6 @@ import ContentVideo from "../components/ContentVideo";
 import DotGrid from "../components/DotGrid";
 import ContactForm from "~/components/ContactForm.vue";
 import AppFooter from "~/components/AppFooter";
-// import CookiePanel from "~/components/CookiePanel.vue";
-// import LogoStacked from "~/assets/logo_vertical.svg?inline";
 const urlBuilder = imageUrlBuilder(sanityClient);
 if (typeof window === "undefined") {
   global.window = {};
@@ -460,10 +458,8 @@ export default {
     ClientsCarousel,
     Graphics,
     ContactForm,
-    // LogoStacked,
     DotGrid,
     AppFooter,
-    // CookiePanel,
   },
   async asyncData() {
     const homeData = await sanityClient.fetch(query);
