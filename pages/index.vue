@@ -54,7 +54,7 @@
                 })
               "
             >
-              XMS Trading
+              Single-API Market Access
             </button>
             <button
               class="btn btn__solid--green"
@@ -65,7 +65,7 @@
                 })
               "
             >
-              XMS Brokerage
+              End to End Trading Services
             </button>
           </div>
         </div>
