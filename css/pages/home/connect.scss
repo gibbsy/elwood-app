@@ -24,15 +24,13 @@
 .connect__main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   width: 100%;
   padding: 0 1rem;
   @include bp(768) {
     padding: 0 6rem;
   }
-  @include bp(1024) {
-    flex-direction: row;
-    width: auto;
+  @include bp(1200) {
     padding: 0;
   }
   > * {
@@ -45,7 +43,7 @@
   }
 }
 
-.connect__leftcol {
+/* .connect__leftcol {
   @include bp(768) {
     padding: 0;
   }
@@ -53,7 +51,7 @@
     padding-right: 5%;
   }
 }
-
+ */
 .connect__intro {
   p {
     @media screen and (max-width: 767px) {
@@ -100,18 +98,15 @@
   border-radius: 8px;
   flex: none;
   @include bp(768) {
-    margin-top: 0;
+    margin-top: 3rem;
     padding: 60px;
   }
 
   @include bp(1024) {
     box-shadow: 0px 0px 24px rgba(196, 197, 255, 0.35);
-    width: 55%;
-    margin-left: 40px;
+    width: 800px;
   }
   @include bp(1400) {
-    width: 50%;
-    margin-left: 92px;
   }
   input[type="text"],
   input[type="email"],

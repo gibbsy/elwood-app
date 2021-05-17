@@ -20,13 +20,16 @@ h1 {
   @include bp(1024) {
     font-size: 2rem;
   }
-  @include bp(1400) {
+  @include bp(1200) {
     font-size: 2.6rem;
+  }
+  @include bp(1400) {
+    font-size: 2.8rem;
   }
   @include bp(1600) {
     font-size: 3rem;
   }
-  @include bp(1921) {
+  @include bp(1920) {
     font-size: 3vw;
   }
   strong {
@@ -44,6 +47,10 @@ h1 {
     }
     @include bp(1200) {
       font-size: 3.2vw;
+      margin: 0.75rem 0 2rem 0;
+    }
+    @include bp(1400) {
+      font-size: 3.6vw;
       margin: 0.75rem 0 2rem 0;
     }
     @include bp(1600) {
@@ -64,56 +71,42 @@ h1 {
     margin-bottom: 3rem;
   }
   @include bp(1200) {
-    margin-bottom: 5rem;
-  }
-  @include bp(1800) {
-    margin-bottom: 6rem;
-  }
-}
-h2 {
-  font-size: 1rem;
-}
-button,
-h2,
-.submit-button {
-  font-family: proxima-nova-condensed, sans-serif;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  @include bp(1200) {
-    // letter-spacing: 3px;
-  }
-  @include bp(1400) {
-    // letter-spacing: 4px;
+    margin-bottom: 4rem;
   }
 }
 
 h2 {
+  font-size: 1.2rem;
   color: $elwoodGreen;
-  &.subhead {
+  &.section__caption {
     margin: 0;
   }
-}
-
-h2.usp__title {
-  font-family: Proxima Nova, sans-serif;
-  text-transform: none;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  margin: 0.5rem 0;
-  line-height: 1.4;
-  @include bp(768) {
+  &.usp__title {
+    font-family: brandon-grotesque, sans-serif;
+    text-transform: none;
     font-size: 1.1rem;
-  }
-  @include bp(1200) {
-    font-size: 1.2rem;
+    letter-spacing: 0.8px;
+    margin: 0.5rem 0;
+    line-height: 1.4;
+    @include bp(768) {
+      font-size: 1.2rem;
+    }
+    @include bp(1200) {
+      font-size: 1.3rem;
+    }
+    @include bp(1400) {
+      font-size: 1.4rem;
+    }
+    @include bp(1600) {
+      font-size: 1.6rem;
+    }
   }
 }
 
 p,
 ul,
 li {
-  font-family: Proxima Nova, sans-serif;
+  font-family: brandon-grotesque, sans-serif;
   font-weight: 400;
   line-height: 1.6;
   font-size: 1rem;
@@ -128,17 +121,37 @@ li {
     font-size: 1.2rem;
   }
 
-  @include bp(1600) {
-    // font-size: 1.2rem;
+  @include bp(1400) {
+    font-size: 1.3rem;
     line-height: 1.7;
+  }
+  @include bp(1600) {
+    font-size: 1.4rem;
+  }
+  @include bp(1800) {
+    font-size: 1.5rem;
   }
   strong {
     font-weight: 700;
   }
 }
+
+button,
+.submit-button {
+  font-family: proxima-nova-condensed, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  // text-transform: uppercase;
+  @include bp(1200) {
+    // letter-spacing: 3px;
+  }
+  @include bp(1400) {
+    // letter-spacing: 4px;
+  }
+}
 a.cta-link {
   position: relative;
-  font-family: Proxima Nova, sans-serif;
+  font-family: brandon-grotesque, sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 1rem;
@@ -154,11 +167,11 @@ a.cta-link {
   transition: opacity 0.3s ease, background-color 0.3s $easing,
     color 0.3s $easing;
   @include bp(1400) {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   @include bp(1600) {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   &:before {

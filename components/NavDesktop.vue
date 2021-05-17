@@ -18,49 +18,42 @@
           @mouseleave="hideProds"
         >
           <ul>
-            <li
-              @click.prevent="
-                scrollTo('#feature-1', {
-                  offset: 100,
-                  duration: 1000,
-                })
-              "
-            >
-              <h2>XMS Brokerage</h2>
+            <li>
+              <a
+                @click.prevent="
+                  scrollTo('#feature-0', {
+                    offset: 100,
+                    duration: 1000,
+                  })
+                "
+              >
+                Single-API Market Access</a
+              >
             </li>
-            <li
-              @click.prevent="
-                scrollTo('#feature-2', {
-                  offset: 100,
-                  duration: 1000,
-                })
-              "
-            >
-              <h2>XMS Trading</h2>
+            <li>
+              <a
+                @click.prevent="
+                  scrollTo('#feature-1', {
+                    offset: 100,
+                    duration: 1000,
+                  })
+                "
+              >
+                End to End Trading Services</a
+              >
             </li>
           </ul>
         </div>
       </li>
       <li
         @click.prevent="
-          scrollTo('#clients-section', {
+          scrollTo('#feature-2', {
             offset: 0,
             duration: 1000,
           })
         "
       >
-        <a>Clients</a>
-      </li>
-      <li>
-        <a
-          @click.prevent="
-            scrollTo('#promo-section', {
-              offset: 0,
-              duration: 1000,
-            })
-          "
-          >Developers</a
-        >
+        <a>About us</a>
       </li>
       <li>
         <button

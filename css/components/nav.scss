@@ -74,7 +74,7 @@
       cursor: pointer;
       a {
         color: rgba($lightGrey, 0.9);
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         letter-spacing: 1px;
         font-weight: 500;
         display: flex;
@@ -112,7 +112,6 @@
     }
     .nav__products-dropdown {
       position: absolute;
-      width: 220px;
       left: 50%;
       top: 0;
       padding: 0;
@@ -133,17 +132,28 @@
         overflow: hidden;
       }
       li {
-        padding: 1rem 2rem;
-        background-color: rgba(lighten($nightMode, 5), 0.8);
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        cursor: pointer;
-        transition: background-color 0.1s ease;
-        &:first-child {
-          // padding-top: 0;
-          border-top: 0;
-        }
-        &:hover {
-          background-color: $nightMode;
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          text-align: center;
+          font-size: 1.1rem;
+          letter-spacing: 1px;
+          font-weight: 500;
+          padding: 1rem 2rem;
+          background-color: rgba(lighten($nightMode, 5), 0.8);
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          cursor: pointer;
+          transition: background-color 0.1s ease;
+          white-space: nowrap !important;
+          &:first-child {
+            // padding-top: 0;
+            border-top: 0;
+          }
+          &:hover {
+            background-color: $nightMode;
+          }
         }
       }
     }

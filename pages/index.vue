@@ -48,7 +48,7 @@
             <button
               class="btn btn__solid--green"
               @click.prevent="
-                scrollTo('#feature-2', {
+                scrollTo('#feature-0', {
                   offset: 100,
                   duration: 1000,
                 })
@@ -227,7 +227,7 @@
             data-scroll-speed="1"
             :data-scroll-offset="videoOffset"
           >
-            <h2>
+            <h2 class="section__caption">
               {{ feature.subhead }}
             </h2>
           </div>
@@ -348,58 +348,54 @@
     <section connect__section-container>
       <div id="contact-section" class="connect__content-block">
         <div class="connect__title" data-scroll data-scroll-offset="200">
-          <h1 class="block-heading--centred">Connect with our team</h1>
+          <h1 class="block-heading--centred">Connect With Our Team</h1>
         </div>
         <div class="connect__main" data-scroll data-scroll-offset="200">
-          <div class="connect__leftcol">
-            <div class="connect__intro">
-              <block-content :blocks="homeData.connectIntro"></block-content>
-            </div>
-            <block-content
-              :class-name="'connect__bullets'"
-              :blocks="homeData.connectBullets"
-            ></block-content>
+          <div class="connect__intro">
+            <block-content :blocks="homeData.connectIntro"></block-content>
           </div>
           <contact-form></contact-form>
         </div>
       </div>
     </section>
-    <section
-      id="promo-section"
-      class="promo__section-container"
-      data-scroll
-      data-scroll-call="promos"
-      data-scroll-repeat="true"
-      data-scroll-offset="100%"
-    >
-      <graphics :section-id="'promo-bg-graphics'" :scroll="scroll"></graphics>
-
-      <div
-        class="promo__content-block"
+    <div v-if="homeData.promoBoxes.length">
+      <section
+        id="promo-section"
+        class="promo__section-container"
         data-scroll
-        :data-scroll-offset="videoOffset"
+        data-scroll-call="promos"
+        data-scroll-repeat="true"
+        data-scroll-offset="100%"
       >
-        <a
-          v-for="promo in homeData.promoBoxes"
-          :key="promo.title"
-          :class="['promo-box', `col-${homeData.promoBoxes.length}`]"
-          @click.prevent="scrollTo(`#${promo.link}`)"
+        <graphics :section-id="'promo-bg-graphics'" :scroll="scroll"></graphics>
+
+        <div
+          class="promo__content-block"
+          data-scroll
+          :data-scroll-offset="videoOffset"
         >
-          <div class="promo__content">
-            <figure
-              class="promo__icon"
-              :style="{ backgroundImage: `url(${urlFor(promo.icon)})` }"
-              data-scroll
-            ></figure>
-            <div class="promo__text-content">
-              <h1 class="promo__title">{{ promo.title }}</h1>
-              <block-content :blocks="promo.text"></block-content>
+          <a
+            v-for="promo in homeData.promoBoxes"
+            :key="promo.title"
+            :class="['promo-box', `col-${homeData.promoBoxes.length}`]"
+            @click.prevent="scrollTo(`#${promo.link}`)"
+          >
+            <div class="promo__content">
+              <figure
+                class="promo__icon"
+                :style="{ backgroundImage: `url(${urlFor(promo.icon)})` }"
+                data-scroll
+              ></figure>
+              <div class="promo__text-content">
+                <h1 class="promo__title">{{ promo.title }}</h1>
+                <block-content :blocks="promo.text"></block-content>
+              </div>
             </div>
-          </div>
-          <div class="promo__cta"></div>
-        </a>
-      </div>
-    </section>
+            <div class="promo__cta"></div>
+          </a>
+        </div>
+      </section>
+    </div>
     <app-footer />
   </div>
 </template>

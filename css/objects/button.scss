@@ -5,7 +5,7 @@
   margin: 0;
   margin-left: 1rem;
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 1;
   cursor: pointer;
   text-align: center;
@@ -14,11 +14,14 @@
   -moz-appearance: none;
   @include bp(768) {
     margin-left: 1.5rem;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     padding: 1rem 2rem 0.8rem 2rem;
   }
   @include bp(1200) {
-    font-size: 1rem;
+    font-size: 1.2rem;
+  }
+  @include bp(1400) {
+    font-size: 1.3rem;
   }
   &:first-child {
     margin-left: 0;
