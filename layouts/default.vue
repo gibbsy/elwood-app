@@ -14,7 +14,6 @@ export default {
   data() {
     return {
       page: null,
-      scroll: null,
       cookiesOk: true,
     };
   },
@@ -36,7 +35,6 @@ export default {
     }, 3000);
   },
   methods: {
-    checkCookies() {},
     acceptCookies() {
       console.log("cookies Ok");
       this.cookiesOk = true;
