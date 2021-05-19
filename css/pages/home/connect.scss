@@ -10,6 +10,9 @@
 
 .connect__title {
   @include centred-title-margin();
+  @include bp(1200) {
+    margin-bottom: 3rem;
+  }
   h1 {
     color: $darkPurple;
     @include revealStart();
@@ -157,12 +160,19 @@
       letter-spacing: 0;
       width: 90%;
       @include bp(1800) {
-        width: 70%;
+        width: 80%;
+      }
+      p,
+      a {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        line-height: 1.4;
       }
       p {
         margin-left: 1rem;
-        font-size: 12px;
-        line-height: 1.4;
+      }
+      a {
+        text-decoration: underline;
       }
     }
   }

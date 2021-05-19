@@ -53,14 +53,14 @@
   align-items: center;
   margin-top: 3rem;
   @include bp(768) {
-    width: 90%;
+    width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
   }
-  @include bp(1400) {
-    width: 80%;
+  @include bp(1200) {
+    width: 90%;
   }
 }
 .usp__bullet {

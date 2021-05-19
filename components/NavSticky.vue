@@ -29,7 +29,7 @@
                 <a
                   @click.prevent="
                     scrollTo('#feature-0', {
-                      offset: 100,
+                      offset: 0,
                       duration: 1000,
                     })
                   "
@@ -41,7 +41,7 @@
                 <a
                   @click.prevent="
                     scrollTo('#feature-1', {
-                      offset: 100,
+                      offset: 0,
                       duration: 1000,
                     })
                   "

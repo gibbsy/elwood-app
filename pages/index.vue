@@ -88,7 +88,7 @@
             </button>
           </div>
         </div>
-        <ul
+        <!--  <ul
           id="hero-bullets"
           class="hero__feature-list"
           data-scroll
@@ -101,7 +101,7 @@
           >
             {{ item.text }}
           </li>
-        </ul>
+        </ul> -->
         <div
           class="hero__btn-container--mobile"
           data-scroll
@@ -110,24 +110,24 @@
           <button
             class="btn btn__solid--green"
             @click.prevent="
-              scrollTo('#feature-2', {
-                offset: -100,
+              scrollTo('#feature-0', {
+                offset: 0,
                 duration: 1000,
               })
             "
           >
-            XMS Trading
+            Single-API Market Access
           </button>
           <button
             class="btn btn__solid--green"
             @click.prevent="
               scrollTo('#feature-1', {
-                offset: -100,
+                offset: 0,
                 duration: 1000,
               })
             "
           >
-            XMS Brokerage
+            End to End Trading Services
           </button>
         </div>
       </div>
@@ -239,12 +239,11 @@
         :key="i"
         :class="['feature__content-block', { rtl: i % 2 != 0 }]"
       >
-        <div class="feature__text-block">
+        <div class="feature__text-block" data-scroll data-scroll-speed="1">
           <div
             class="feature__subhead"
             data-scroll
-            data-scroll-speed="1"
-            :data-scroll-offset="videoOffset"
+            :data-scroll-offset="videoOffset / 2"
           >
             <h2 class="section__caption">
               {{ feature.subhead }}
@@ -253,24 +252,21 @@
           <div
             class="feature__title"
             data-scroll
-            data-scroll-speed="1.25"
-            :data-scroll-offset="videoOffset"
+            :data-scroll-offset="videoOffset / 2"
           >
             <block-content :blocks="feature.title"></block-content>
           </div>
           <div
             class="feature__summary"
             data-scroll
-            data-scroll-speed="1.5"
-            :data-scroll-offset="videoOffset"
+            :data-scroll-offset="videoOffset / 2"
           >
             <block-content :blocks="feature.text"></block-content>
           </div>
           <div
             class="feature__cta-wrapper"
             data-scroll
-            data-scroll-speed="1.6"
-            :data-scroll-offset="videoOffset"
+            :data-scroll-offset="videoOffset / 2"
           >
             <a
               class="cta-link"
@@ -492,6 +488,7 @@ export default {
       resizeTimeout: 0,
       scroll: {},
       tlIntro: {},
+      bulletsOn: false,
       /**
        * started to add, then remove email box in hero
        */
@@ -619,8 +616,10 @@ export default {
             this.dark = true;
           }
         }
-        if ((value === "showBullets") & (way === "enter")) {
-          this.showUSPs();
+        if (value === "showBullets" && way === "enter") {
+          if (!this.bulletsOn) {
+            this.showUSPs();
+          }
         }
       });
     },
@@ -688,6 +687,9 @@ export default {
       });
     },
     showUSPs() {
+      if (this.bulletsOn === true) {
+        return;
+      }
       const els = gsap.utils.toArray(".usp__bullet");
       const tlBullets = gsap.timeline().set(els, { y: "+=100", opacity: 0 });
       els.forEach((el, i) => {
@@ -702,6 +704,7 @@ export default {
           i * 0.1 + 0.5
         );
       });
+      this.bulletsOn = true;
     },
     /* handleEmail() {
       console.log(this.email);
