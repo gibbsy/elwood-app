@@ -104,10 +104,13 @@
     font-family: Brandon-Grotesque;
     font-weight: 400;
     max-width: 32rem;
-    font-size: 1.2rem;
+    // font-size: 1.1rem;
     margin-top: 1.4rem;
     &:first-of-type {
       margin-top: 0;
+    }
+    /*  @include bp(375) {
+      font-size: 1.2rem;
     }
     @include bp(768) {
       font-size: 1.3rem;
@@ -117,7 +120,7 @@
     }
     @include bp(1400) {
       font-size: 1.5rem;
-    }
+    } */
   }
 }
 .double-quotes {
