@@ -36,7 +36,6 @@
   }
   color: white;
   & > * {
-    margin: 0.67rem 0;
     @include bp(1200) {
       margin: 0.8rem 0;
     }
@@ -74,7 +73,7 @@
 
 .hero__btn-container--mobile {
   position: relative;
-  margin-top: 1rem;
+  // margin-top: 1rem;
   width: 100%;
   display: flex;
   flex-direction: column;
