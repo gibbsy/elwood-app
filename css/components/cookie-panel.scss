@@ -36,12 +36,14 @@
   @include bp(1200) {
     width: 25vw;
   }
-  p {
+  p,
+  a {
     font-size: 0.9rem;
     line-height: 1.4;
     margin: 0;
     padding: 0;
     a {
+      text-decoration: underline;
       &:hover {
         color: $darkPurple;
       }

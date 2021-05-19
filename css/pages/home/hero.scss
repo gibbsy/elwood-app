@@ -84,12 +84,15 @@
     display: none;
   }
   .btn {
-    width: 80%;
+    width: 90%;
     margin: 1rem 0 0 0;
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 1s $easing, transform 1s $easing;
     transition-delay: 1s;
+    @include bp(375) {
+      width: 80%;
+    }
   }
   &.is-inview {
     .btn {

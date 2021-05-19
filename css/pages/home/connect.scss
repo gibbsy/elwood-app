@@ -29,7 +29,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0 1rem;
+
   @include bp(768) {
     padding: 0 6rem;
   }
@@ -98,9 +98,9 @@
   padding: 40px 20px;
   width: 100%;
   background: #f7f9fd;
-  border-radius: 8px;
   flex: none;
   @include bp(768) {
+    border-radius: 8px;
     margin-top: 3rem;
     padding: 60px;
   }
@@ -190,6 +190,17 @@
   &.thanks {
     p {
       font-weight: 500;
+    }
+  }
+  input[type="submit"] {
+    width: 100%;
+    font-size: 1.2rem;
+    @include bp(768) {
+      width: auto;
+      padding: 1rem 4rem;
+    }
+    @include bp(1200) {
+      font-size: 1.3rem;
     }
   }
 }
