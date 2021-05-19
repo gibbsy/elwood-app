@@ -227,9 +227,8 @@
 
 .graphics__circle {
   position: absolute;
-  z-index: 100;
   display: none;
-  @include bp(1200) {
+  @include bp(1024) {
     display: inline-block;
   }
 
@@ -250,6 +249,13 @@
   }
 }
 
+.graphics__circle--grey {
+  @extend .graphics__circle;
+  .graphic {
+    background-color: $lightGrey;
+  }
+}
+
 .graphics__circle-keyline {
   @extend .graphics__circle;
   .graphic {
@@ -261,13 +267,19 @@
 .graphics__circle-keyline--green {
   @extend .graphics__circle-keyline;
 }
+.graphics__circle-keyline--purple {
+  @extend .graphics__circle-keyline;
+  .graphic {
+    border: 1px solid $midPurple;
+  }
+}
 
-.graphics__hex--white {
+.graphics__hex {
   position: absolute;
   width: 140px;
   height: 140px;
   display: none;
-  @include bp(1200) {
+  @include bp(1024) {
     display: inline-block;
   }
 
@@ -285,6 +297,26 @@
   &.is-inview .graphic {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.graphics__hex--white {
+  @extend .graphics__hex;
+  .graphic {
+    background: url("~/assets/graphics_hex_white.svg") no-repeat center/contain;
+  }
+}
+.graphics__hex--grey {
+  @extend .graphics__hex;
+  .graphic {
+    background: url("~/assets/graphics_hex_grey.svg") no-repeat center/contain;
+  }
+}
+.graphics__hex--keyline {
+  @extend .graphics__hex;
+  .graphic {
+    background: url("~/assets/graphics_hex_keyline.svg") no-repeat
+      center/contain;
   }
 }
 

@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  @include bp(1200) {
+  @include bp(1024) {
     min-height: 100vh;
     padding: 12vh 0;
   }

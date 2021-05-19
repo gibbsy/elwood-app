@@ -1,13 +1,15 @@
 .clients__section-container {
   @extend .section-container;
+  background: linear-gradient(180deg, $lightGrey 80%, #fff 95%);
 }
 .clients__content-block {
   @extend .content-block;
-  min-height: 100vh;
   flex-direction: column;
-  background: linear-gradient(180deg, $lightGrey 80%, #fff 95%);
   align-items: center;
   padding: 10vh 0 0 0;
+  @include bp(1024) {
+    min-height: 100vh;
+  }
   h1 {
     color: $darkPurple;
   }
@@ -31,11 +33,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  min-height: 75vh;
+  min-height: 70vh;
   @include fadeIn();
   @include bp(768) {
     width: 80%;
-    min-height: 60vh;
+    min-height: 50vh;
   }
   @include bp(1024) {
     width: 70%;
@@ -216,5 +218,36 @@
     &:hover {
       transform: scale(0.9);
     }
+  }
+}
+
+#dots-clients-1 {
+  top: 10px;
+  right: 5%;
+  opacity: 0.5;
+}
+#dots-clients-2 {
+  top: 40vh;
+  left: 5%;
+  opacity: 0.5;
+}
+
+#clients-hex-1 {
+  top: 30vh;
+  right: 15%;
+  width: 130px;
+  height: 130px;
+}
+#clients-hex-2 {
+  top: 30vh;
+  right: 18%;
+  opacity: 0.5;
+}
+#clients-circ-1 {
+  top: 60vh;
+  left: 8%;
+  .graphic {
+    width: 180px;
+    height: 180px;
   }
 }

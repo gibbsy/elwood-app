@@ -1,11 +1,11 @@
 .connect__section-container {
   @extend .section-container;
+  background: #fff;
 }
 .connect__content-block {
   @extend .content-block;
   min-height: 100vh;
   flex-direction: column;
-  background: #fff;
 }
 
 .connect__title {
@@ -212,5 +212,36 @@
   }
   50% {
     transform: scale(0.8);
+  }
+}
+
+#dots-connect-1 {
+  top: 70vh;
+  left: 5%;
+  opacity: 0.5;
+}
+#dots-connect-2 {
+  top: 30vh;
+  right: 10%;
+  opacity: 0.5;
+}
+#connect-hex-1 {
+  top: 0;
+  right: 8%;
+  opacity: 0.5;
+}
+#connect-hex-2 {
+  top: 75vh;
+  left: 8%;
+  width: 180px;
+  height: 180px;
+}
+
+#connect-circ-1 {
+  top: 80px;
+  right: 10%;
+  .graphic {
+    width: 180px;
+    height: 180px;
   }
 }

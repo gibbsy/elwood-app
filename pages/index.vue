@@ -348,19 +348,112 @@
     </section>
     <section
       id="clients-section"
-      clients__section-container
+      class="clients__section-container"
       data-scroll
       data-scroll-call="clients"
       data-scroll-repeat="true"
     >
       <div class="clients__content-block">
+        <div
+          id="clients-hex-1"
+          class="graphics__hex--white"
+          data-scroll
+          data-scroll-speed="-2"
+          role="presentation"
+          aria-hidden="true"
+        >
+          <div class="graphic"></div>
+        </div>
+        <div
+          id="clients-hex-2"
+          class="graphics__hex--keyline"
+          data-scroll
+          data-scroll-speed="-3"
+          role="presentation"
+          aria-hidden="true"
+        >
+          <div class="graphic"></div>
+        </div>
+        <div
+          id="clients-circ-1"
+          class="graphics__circle"
+          data-scroll
+          data-scroll-speed="-2"
+          role="presentation"
+          aria-hidden="true"
+        >
+          <div class="graphic"></div>
+        </div>
+
+        <dot-grid
+          v-show="!isMobile"
+          data-scroll
+          data-scroll-speed="-1"
+          :init-options="{ radius: 3, rows: 6, cols: 14, gap: 12 }"
+          fill="purple"
+          uid="clients-1"
+        ></dot-grid>
+        <dot-grid
+          v-show="!isMobile"
+          data-scroll
+          data-scroll-speed="-1"
+          :init-options="{ radius: 3, rows: 8, cols: 12, gap: 18 }"
+          fill="green"
+          uid="clients-2"
+        ></dot-grid>
         <div class="clients__title" data-scroll data-scroll-offset="100">
           <h1 class="block-heading--centred">{{ homeData.clientsTitle }}</h1>
         </div>
         <clients-carousel :clients="homeData.clients"></clients-carousel>
       </div>
     </section>
-    <section connect__section-container>
+    <section class="connect__section-container">
+      <div
+        id="connect-circ-1"
+        class="graphics__circle--grey"
+        data-scroll
+        data-scroll-speed="-2"
+        role="presentation"
+        aria-hidden="true"
+      >
+        <div class="graphic"></div>
+      </div>
+      <div
+        id="connect-hex-1"
+        class="graphics__hex--keyline"
+        data-scroll
+        data-scroll-speed="-3"
+        role="presentation"
+        aria-hidden="true"
+      >
+        <div class="graphic"></div>
+      </div>
+      <div
+        id="connect-hex-2"
+        class="graphics__hex--grey"
+        data-scroll
+        data-scroll-speed="-2"
+        role="presentation"
+        aria-hidden="true"
+      >
+        <div class="graphic"></div>
+      </div>
+      <dot-grid
+        v-show="!isMobile"
+        data-scroll
+        data-scroll-speed="-1"
+        :init-options="{ radius: 3, rows: 6, cols: 14, gap: 12 }"
+        fill="purple"
+        uid="connect-1"
+      ></dot-grid>
+      <dot-grid
+        v-show="!isMobile"
+        data-scroll
+        data-scroll-speed="-1"
+        :init-options="{ radius: 3, rows: 8, cols: 12, gap: 18 }"
+        fill="green"
+        uid="connect-2"
+      ></dot-grid>
       <div id="contact-section" class="connect__content-block">
         <div class="connect__title" data-scroll data-scroll-offset="200">
           <h1 class="block-heading--centred">Connect With Our Team</h1>
