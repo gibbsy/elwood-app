@@ -40,6 +40,25 @@
           >
             <block-content :blocks="homeData.heroBody"></block-content>
           </div>
+          <!-- <div id="hero-email-form" class="hero__form-container">
+            <div class="hero__form-row">
+              <label class="hidden" for="email">Email address</label>
+              <input
+                id="email"
+                v-model="email.value"
+                placeholder="Email address"
+                name="email"
+                type="email"
+                required=""
+              />
+              <button
+                class="btn btn__solid--green"
+                @click.prevent="handleEmail"
+              >
+                Get Started
+              </button>
+            </div>
+          </div> -->
           <div
             id="hero-btns"
             ref="hero-btns"
@@ -470,10 +489,14 @@ export default {
       loaded: false,
       navActive: false,
       dark: false,
-      // homeData: 0,
       resizeTimeout: 0,
       scroll: {},
       tlIntro: {},
+      /**
+       * started to add, then remove email box in hero
+       */
+      /*       email: { value: null, valid: false },
+      emailValid: true, */
     };
   },
   head() {
@@ -680,6 +703,10 @@ export default {
         );
       });
     },
+    /* handleEmail() {
+      console.log(this.email);
+      this.scroll.stop();
+    }, */
   },
 };
 </script>

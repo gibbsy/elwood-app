@@ -85,7 +85,7 @@
         })
       "
     >
-      Request Demo
+      Connect with us
     </button>
   </div>
 </template>

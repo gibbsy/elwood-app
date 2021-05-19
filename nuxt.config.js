@@ -38,11 +38,28 @@ export default {
       { rel: "manifest", href: "/site.webmanifest" },
       { rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#5bbad5" },
     ],
+    // __dangerouslyDisableSanitizers: ["script"],
     script: [
+      {
+        src: "//js.hs-scripts.com/19882646.js",
+        async: true,
+        defer: true,
+        body: true,
+      },
       {
         src:
           "https://cdn.jsdelivr.net/combine/npm/gsap@3.6.0,npm/@vimeo/player@2.15.0",
       },
+      /*    {
+        hid: "hubspot-tracking-code",
+        innerHTML: `
+          <!-- Start of HubSpot Embed Code -->
+          <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/19882646.js"></script>
+          <!-- End of HubSpot Embed Code -->
+        `,
+        type: "text/javascript",
+        charset: "utf-8",
+      }, */
     ],
   },
   // Global CSS: https://go.nuxtjs.dev/config-css

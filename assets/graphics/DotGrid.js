@@ -26,6 +26,7 @@ export default class DotGrid {
         if (Math.random() < 0.6) {
           const tween = gsap.fromTo(
             dot,
+            0,
             { opacity: 0 },
             {
               opacity: 1,
