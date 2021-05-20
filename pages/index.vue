@@ -23,9 +23,6 @@
       <graphics :section-id="'hero-graphics'" :scroll="scroll"></graphics>
       <div class="hero__content-block">
         <div class="hero__text-block" data-scroll data-scroll-speed="-2">
-          <!-- <h2 id="hero-subhead" class="subhead intro-ani">
-            {{ homeData.heroSubhead }}
-          </h2> -->
           <h1
             id="hero-heading"
             ref="hero-heading"
@@ -40,25 +37,6 @@
           >
             <block-content :blocks="homeData.heroBody"></block-content>
           </div>
-          <!-- <div id="hero-email-form" class="hero__form-container">
-            <div class="hero__form-row">
-              <label class="hidden" for="email">Email address</label>
-              <input
-                id="email"
-                v-model="email.value"
-                placeholder="Email address"
-                name="email"
-                type="email"
-                required=""
-              />
-              <button
-                class="btn btn__solid--green"
-                @click.prevent="handleEmail"
-              >
-                Get Started
-              </button>
-            </div>
-          </div> -->
           <div
             id="hero-btns"
             ref="hero-btns"
@@ -84,7 +62,7 @@
                 })
               "
             >
-              End to End Trading Services
+              End-to-End Trading Services
             </button>
           </div>
         </div>
@@ -127,29 +105,10 @@
               })
             "
           >
-            End to End Trading Services
+            End-to-End Trading Services
           </button>
         </div>
       </div>
-      <!-- <div
-        id="scroll-prompt"
-        class="scroll-prompt"
-        data-scroll
-        data-scroll-speed="1.8"
-        data-scroll-offset="0,20%"
-        data-scroll-repeat="true"
-        role="presentation"
-        alt=""
-        aria-hidden
-        @click.prevent="
-          scrollTo('#feature-0', {
-            offset: 0,
-            duration: 1000,
-          })
-        "
-      >
-        <div class="graphic"></div>
-      </div> -->
       <div
         class="graphics__circle-keyline--green"
         data-scroll

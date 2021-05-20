@@ -113,6 +113,9 @@
   @include bp(1600) {
     max-width: 56rem;
   }
+  @include bp(1800) {
+    max-width: 66rem;
+  }
   p {
     margin-bottom: 0;
     margin-top: 0.75rem;
