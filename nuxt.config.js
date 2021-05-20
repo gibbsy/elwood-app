@@ -134,6 +134,7 @@ export default {
         ],
       });
     },
+    generate: { fallback: "404.html" },
     terser: {
       // https://github.com/terser/terser#compress-options
       terserOptions: {
