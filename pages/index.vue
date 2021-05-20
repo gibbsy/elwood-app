@@ -585,7 +585,7 @@ export default {
         },
         {
           property: "og:image",
-          content: "/elwood_thumbnail_large.jpg",
+          content: "https://elwood.io/elwood_thumbnail_large.jpg",
           vmid: "og:image",
         },
         {
@@ -609,6 +609,11 @@ export default {
           vmid: "og:description",
         },
         {
+          property: "twitter:card",
+          content: "summary_large_image",
+          vmid: "twitter:card",
+        },
+        {
           property: "twitter:title",
           content: title,
           vmid: "twitter:title",
@@ -620,13 +625,8 @@ export default {
         },
         {
           property: "twitter:image",
-          content: "/elwood_thumbnail_large.jpg",
+          content: "https://elwood.io/elwood_thumbnail_large.jpg",
           vmid: "twitter:image",
-        },
-        {
-          property: "twitter:card",
-          content: "summary_large_image",
-          vmid: "twitter:card",
         },
       ],
     };
