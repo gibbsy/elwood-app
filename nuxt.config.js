@@ -13,9 +13,13 @@ export default {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "msapplication-TileColor", content: "#da532c" },
       { name: "theme-color", content: "#1a1a1a" },
-      { name: "robots", content: "noindex" },
+      {
+        name: "robots",
+        content: "index, follow, max-snippet:-1, max-image-preview:large",
+      },
     ],
     link: [
+      { rel: "canonical", href: "https://elwood.io" },
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "stylesheet", href: "https://use.typekit.net/sze5cnz.css" },
       {
@@ -39,8 +43,29 @@ export default {
       { rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#5bbad5" },
     ],
     // __dangerouslyDisableSanitizers: ["script"],
+    __dangerouslyDisableSanitizersByTagID: {
+      "gtm-script": ["innerHTML"],
+    },
     script: [
       {
+        hid: "gtm-external",
+        src: "https://www.googletagmanager.com/gtag/js?id=G-FE9M9HTCNS",
+        async: true,
+      },
+      {
+        hid: "gtm-script",
+        innerHTML: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-FE9M9HTCNS');
+        `,
+        type: "text/javascript",
+        charset: "utf-8",
+      },
+      {
+        hid: "hubspot-script",
         src: "//js.hs-scripts.com/19882646.js",
         async: true,
         defer: true,
@@ -50,16 +75,6 @@ export default {
         src:
           "https://cdn.jsdelivr.net/combine/npm/gsap@3.6.0,npm/@vimeo/player@2.15.0",
       },
-      /*    {
-        hid: "hubspot-tracking-code",
-        innerHTML: `
-          <!-- Start of HubSpot Embed Code -->
-          <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/19882646.js"></script>
-          <!-- End of HubSpot Embed Code -->
-        `,
-        type: "text/javascript",
-        charset: "utf-8",
-      }, */
     ],
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -111,6 +126,14 @@ export default {
           },
         ],
       });
+    },
+    terser: {
+      // https://github.com/terser/terser#compress-options
+      terserOptions: {
+        compress: {
+          drop_console: true,
+        },
+      },
     },
   },
   server: {
