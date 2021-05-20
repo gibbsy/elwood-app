@@ -4,19 +4,26 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Elwood XMS",
+    title:
+      "Elwood | Institutional Market Access & Trading Infrastructure for Crypto Assets",
     htmlAttrs: {
       lang: "en",
     },
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "msapplication-TileColor", content: "#da532c" },
-      { name: "theme-color", content: "#1a1a1a" },
       {
         name: "robots",
         content: "index, follow, max-snippet:-1, max-image-preview:large",
       },
+      {
+        hid: "description",
+        name: "description",
+        content:
+          "Elwood is a leading cloud native platform leveraging a single API connection to enable FinTechs to offer crypto assets to their customers, asset managers and financial institutions to trade crypto assets in a seamless fashion",
+      },
+      { name: "msapplication-TileColor", content: "#da532c" },
+      { name: "theme-color", content: "#1a1a1a" },
     ],
     link: [
       { rel: "canonical", href: "https://elwood.io" },
@@ -136,7 +143,7 @@ export default {
       },
     },
   },
-  server: {
+  /*  server: {
     host: "0.0.0.0",
-  },
+  }, */
 };
