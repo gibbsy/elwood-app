@@ -26,7 +26,7 @@ export default {
       { name: "theme-color", content: "#1a1a1a" },
     ],
     link: [
-      { rel: "canonical", href: "https://elwood.io" },
+      { rel: "canonical", href: "https://www.elwood.io" },
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "stylesheet", href: "https://use.typekit.net/sze5cnz.css" },
       {

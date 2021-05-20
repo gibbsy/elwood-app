@@ -575,7 +575,7 @@ export default {
         },
         {
           property: "og:url",
-          content: "https://elwood.io",
+          content: "https://www.elwood.io",
           vmid: "og:url",
         },
         {
@@ -585,7 +585,7 @@ export default {
         },
         {
           property: "og:image",
-          content: "https://elwood.io/elwood_thumbnail_large.jpg",
+          content: "https://www.elwood.io/elwood_thumbnail_large.jpg",
           vmid: "og:image",
         },
         {
@@ -625,7 +625,7 @@ export default {
         },
         {
           property: "twitter:image",
-          content: "https://elwood.io/elwood_thumbnail_large.jpg",
+          content: "https://www.elwood.io/elwood_thumbnail_large.jpg",
           vmid: "twitter:image",
         },
       ],
