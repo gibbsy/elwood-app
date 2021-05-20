@@ -564,6 +564,41 @@ export default {
           content: keywords,
         },
         {
+          property: "og:locale",
+          content: "en_GB",
+          vmid: "og:locale",
+        },
+        {
+          property: "og:type",
+          content: "website",
+          vmid: "og:type",
+        },
+        {
+          property: "og:url",
+          content: "https://elwood.io",
+          vmid: "og:url",
+        },
+        {
+          property: "og:site_name",
+          content: "Elwood",
+          vmid: "og:site_name",
+        },
+        {
+          property: "og:image",
+          content: "/elwood_thumbnail_large.jpg",
+          vmid: "og:image",
+        },
+        {
+          property: "og:image:width",
+          content: "1200",
+          vmid: "og:image_width",
+        },
+        {
+          property: "og:image:height",
+          content: "630",
+          vmid: "og:image_width",
+        },
+        {
           property: "og:title",
           content: title,
           vmid: "og:title",
@@ -582,6 +617,16 @@ export default {
           property: "twitter:description",
           content: description,
           vmid: "twitter:description",
+        },
+        {
+          property: "twitter:image",
+          content: "/elwood_thumbnail_large.jpg",
+          vmid: "twitter:image",
+        },
+        {
+          property: "twitter:card",
+          content: "summary_large_image",
+          vmid: "twitter:card",
         },
       ],
     };
