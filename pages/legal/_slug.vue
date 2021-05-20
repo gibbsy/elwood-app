@@ -9,7 +9,7 @@
         </div>
       </transition>
     </div>
-    <div class="legals__hero-container">
+    <div class="hero__container--dark">
       <Graphics />
       <div class="legals__title-block">
         <transition name="fade" appear mode="out-in">
@@ -17,11 +17,15 @@
         </transition>
       </div>
     </div>
-    <section class="legals section-container"></section>
-    <block-content
-      :class-name="'legals__text text-block--full-width'"
-      :blocks="pageData.text"
-    ></block-content>
+    <section class="legals section-container">
+      <transition name="fade" appear mode="out-in">
+        <block-content
+          :class-name="'legals__text text-block--full-width'"
+          :blocks="pageData.text"
+        ></block-content>
+      </transition>
+    </section>
+
     <app-footer></app-footer>
   </div>
 </template>
