@@ -134,8 +134,8 @@ export default {
         ],
       });
     },
-    generate: { fallback: true },
-    /* router: {
+    generate: { fallback: false },
+    router: {
       extendRoutes(routes, resolve) {
         routes.push({
           name: "custom-err",
@@ -143,7 +143,7 @@ export default {
           component: resolve(__dirname, "pages/404.vue"),
         });
       },
-    }, */
+    },
     terser: {
       // https://github.com/terser/terser#compress-options
       terserOptions: {
