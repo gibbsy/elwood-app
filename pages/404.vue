@@ -1,5 +1,5 @@
 <template>
-  <div ref="scroll" class="page-wrapper ancillary-page error">
+  <div ref="scroll" class="page-wrapper ancillary-page error-404">
     <div class="nav" role="navigation">
       <transition name="fade" appear mode="out-in">
         <div class="elwood-logo">

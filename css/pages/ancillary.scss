@@ -33,13 +33,16 @@
   }
 }
 
-.ancillary-page.error {
-  .hero__container--dark {
-    .graphic {
-      opacity: 1;
-    }
-    .graphics__dots-cluster ul li {
-      opacity: 1;
+.ancillary-page {
+  &.error,
+  .error-404 {
+    .hero__container--dark {
+      .graphic {
+        opacity: 1;
+      }
+      .graphics__dots-cluster ul li {
+        opacity: 1;
+      }
     }
   }
 }
