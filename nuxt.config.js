@@ -106,10 +106,15 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["cookie-universal-nuxt", "@nuxtjs/sitemap"],
+  modules: ["cookie-universal-nuxt", "@nuxtjs/robots", "@nuxtjs/sitemap"],
   sitemap: {
     hostname: "https://www.elwood.io",
     routes: ["/legal/privacy-policy", "legal/disclaimer"],
+  },
+  robots: {
+    UserAgent: "*",
+    Disallow: "",
+    Sitemap: "https://www.elwood.io/sitemap.xml",
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
