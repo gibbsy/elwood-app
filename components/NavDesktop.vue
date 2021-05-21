@@ -1,6 +1,6 @@
 <template>
   <div id="nav" ref="nav" class="nav intro-ani" role="navigation">
-    <div class="elwood-logo">
+    <div class="elwood-logo" aria-label="Elwood Logo">
       <nuxt-link to="/">
         <logo-horizontal />
       </nuxt-link>

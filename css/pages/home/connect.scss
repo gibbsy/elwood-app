@@ -219,11 +219,18 @@
   top: 70vh;
   left: 5%;
   opacity: 0.5;
+  @include bp(1600) {
+    left: 16%;
+  }
 }
 #dots-connect-2 {
   top: 30vh;
   right: 10%;
   opacity: 0.5;
+  @include bp(1800) {
+    right: 22%;
+    top: 36vh;
+  }
 }
 #connect-hex-1 {
   top: 0;
@@ -235,6 +242,16 @@
   left: 8%;
   width: 180px;
   height: 180px;
+  @include bp(1600) {
+    width: 220px;
+    height: 220px;
+    left: 17%;
+  }
+  @include bp(1900) {
+    width: 220px;
+    height: 220px;
+    left: 22%;
+  }
 }
 
 #connect-circ-1 {

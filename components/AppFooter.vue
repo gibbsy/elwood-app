@@ -9,14 +9,16 @@
               href="https://www.linkedin.com/company/elwoodam/"
               target="_blank"
               aria-label="Follow us on Linkedin"
-            ></a>
+              >Linkedin</a
+            >
           </li>
           <li class="twitter">
             <a
               href=" https://twitter.com/elwood_io"
               target="_blank"
               aria-label="Follow us on Twitter"
-            ></a>
+              >Twitter</a
+            >
           </li>
         </ul>
         <p class="address">

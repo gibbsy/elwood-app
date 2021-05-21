@@ -49,6 +49,9 @@ footer {
       border-radius: 50%;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      color: rgba($darkPurple, 0);
+      overflow: hidden;
+      text-indent: -1000px;
     }
     &.linkedin a {
       background: $darkPurple url("~/assets/icon_linkedin.svg") no-repeat

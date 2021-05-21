@@ -3,6 +3,7 @@
     <div id="nav-sticky" :class="[{ dark }, 'nav__sticky']" role="navigation">
       <div
         class="elwood-logo"
+        aria-label="Elwood Logo"
         @click.prevent="
           scrollTo('#hero-container', {
             offset: 0,
