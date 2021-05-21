@@ -57,6 +57,10 @@ export default {
     initGraphics() {
       const container = document.getElementById(this.sectionId);
       this.mainDots = new DotGrid(container, 4);
+
+      /**
+       * Additional dots
+       */
       const options = {
         x: 5,
         y: 20,
@@ -69,9 +73,6 @@ export default {
         alignX: "right",
         alignY: "bottom",
       };
-      /**
-       * Additional dots
-       */
       if (!isMobile()) {
         const cluster1 = new DotCluster({ container, ...options });
         /*  const cluster2 = new DotCluster({

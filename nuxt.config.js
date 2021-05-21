@@ -106,7 +106,11 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["cookie-universal-nuxt"],
+  modules: ["cookie-universal-nuxt", "@nuxtjs/sitemap"],
+  sitemap: {
+    hostname: "https://www.elwood.io",
+    routes: ["/legal/privacy-policy", "legal/disclaimer"],
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -135,15 +139,6 @@ export default {
       });
     },
     generate: { fallback: false },
-    router: {
-      extendRoutes(routes, resolve) {
-        routes.push({
-          name: "custom-err",
-          path: "*",
-          component: resolve(__dirname, "pages/404.vue"),
-        });
-      },
-    },
     terser: {
       // https://github.com/terser/terser#compress-options
       terserOptions: {
