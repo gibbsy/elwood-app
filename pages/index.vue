@@ -740,13 +740,13 @@ export default {
       const heroHead = this.$refs["hero-heading"];
       const heroSummary = this.$refs["hero-summary"];
       const btns = this.$refs["hero-btns"];
-      const bullets = gsap.utils.toArray(".hero__bullet");
+      // const bullets = gsap.utils.toArray(".hero__bullet");
       const els = [/* heroSub, */ heroHead, heroSummary, btns];
       this.tlIntro = gsap
         .timeline()
         .set(els, { opacity: 0, y: "+=80" })
         .set(nav, { y: "-=40", opacity: 0 })
-        .set(bullets, { x: "+=30", opacity: "0" })
+        // .set(bullets, { x: "+=30", opacity: "0" })
         .to(
           nav,
           {
@@ -770,7 +770,7 @@ export default {
           i * 0.2 + 0.5
         );
       });
-      bullets.forEach((el, i) => {
+      /*  bullets.forEach((el, i) => {
         this.tlIntro.to(
           el,
           {
@@ -781,7 +781,7 @@ export default {
           },
           i * 0.3 + 2
         );
-      });
+      }); */
     },
     showUSPs() {
       if (this.bulletsOn === true) {
