@@ -11,13 +11,13 @@
               aria-label="Follow us on Linkedin"
             ></a>
           </li>
-          <!-- <li class="twitter">
+          <li class="twitter">
             <a
-              href="https://twitter.com/Elwood_AM"
+              href=" https://twitter.com/elwood_io"
               target="_blank"
               aria-label="Follow us on Twitter"
             ></a>
-          </li> -->
+          </li>
         </ul>
         <p class="address">
           <span>27 Baker Street</span><span>London, W1U 8EQ, UK</span>
