@@ -35,10 +35,6 @@ export default {
     Hex,
   },
   props: {
-    scroll: {
-      type: Object,
-      default: () => {},
-    },
     sectionId: {
       type: String,
       default: "graphics",
@@ -97,16 +93,6 @@ export default {
           speed: 5,
         }); */
         this.clusters.push(cluster1 /* cluster2, cluster3 */);
-      }
-    },
-    updateScroll() {
-      console.log("updateScroll");
-      if (typeof this.scroll.update === "function") {
-        this.scroll.update();
-      } else {
-        setTimeout(() => {
-          this.updateScroll();
-        }, 100);
       }
     },
   },

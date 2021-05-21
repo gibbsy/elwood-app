@@ -10,7 +10,7 @@
       </transition>
     </div>
     <div class="hero__container--dark">
-      <Graphics :section-id="'err-404'" />
+      <graphics :section-id="'err-404'" />
       <div class="error__title-block">
         <transition name="fade" appear mode="out-in">
           <h1>Sorry, we can't find that page.</h1>
@@ -27,11 +27,13 @@
 </template>
 <script>
 import AppFooter from "~/components/AppFooter.vue";
+import Graphics from "~/components/Graphics.vue";
 import LogoHorizontal from "~/assets/logo_horizontal.svg?inline";
 export default {
   components: {
     LogoHorizontal,
     AppFooter,
+    Graphics,
   },
 
   methods: {},

@@ -20,7 +20,7 @@
       data-scroll-call="hero"
       data-scroll-repeat="true"
     >
-      <graphics :section-id="'hero-graphics'" :scroll="scroll"></graphics>
+      <graphics :section-id="'hero-graphics'"></graphics>
       <div class="hero__content-block">
         <div class="hero__text-block" data-scroll data-scroll-speed="-2">
           <h1
@@ -258,7 +258,7 @@
       data-scroll-repeat="true"
       data-scroll-offset="100%"
     >
-      <graphics :scroll="scroll"></graphics>
+      <graphics></graphics>
 
       <div
         class="usp__content-block"
@@ -434,7 +434,7 @@
         data-scroll-repeat="true"
         data-scroll-offset="100%"
       >
-        <graphics :section-id="'promo-bg-graphics'" :scroll="scroll"></graphics>
+        <graphics :section-id="'promo-bg-graphics'"></graphics>
 
         <div
           class="promo__content-block"
