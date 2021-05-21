@@ -134,7 +134,16 @@ export default {
         ],
       });
     },
-    generate: { fallback: false },
+    generate: { fallback: true },
+    /* router: {
+      extendRoutes(routes, resolve) {
+        routes.push({
+          name: "custom-err",
+          path: "*",
+          component: resolve(__dirname, "pages/404.vue"),
+        });
+      },
+    }, */
     terser: {
       // https://github.com/terser/terser#compress-options
       terserOptions: {
