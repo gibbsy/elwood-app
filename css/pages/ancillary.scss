@@ -33,6 +33,17 @@
   }
 }
 
+.ancillary-page.error {
+  .hero__container--dark {
+    .graphic {
+      opacity: 1;
+    }
+    .graphics__dots-cluster ul li {
+      opacity: 1;
+    }
+  }
+}
+
 .error__title-block {
   @extend .legals__title-block;
   height: 80vh;
