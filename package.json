@@ -5,10 +5,10 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "build:noIndex": "npm run build && echo 'User-agent: *\nDisallow: /' > dist/robots.txt",
+    "build:noindex": "npm run build && echo 'User-agent: *\nDisallow: /' > dist/robots.txt",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "generate:noIndex": "npm run generate && echo 'User-agent: *\nDisallow: /' > dist/robots.txt",
+    "generate:noindex": "npm run generate && echo 'User-agent: *\nDisallow: /' > dist/robots.txt",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "npm run lint:js"
   },
