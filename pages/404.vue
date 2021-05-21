@@ -10,7 +10,7 @@
       </transition>
     </div>
     <div class="hero__container--dark">
-      <Graphics />
+      <Graphics :id="'err-404'" />
       <div class="error__title-block">
         <transition name="fade" appear mode="out-in">
           <h1>Sorry, we can't find that page.</h1>

@@ -55,10 +55,6 @@ export default {
   },
   methods: {
     initGraphics() {
-      /*       if (!process.client) {
-        return;
-      } */
-      console.log("mobile " + isMobile);
       const container = document.getElementById(this.sectionId);
       this.mainDots = new DotGrid(container, 4);
       const options = {
