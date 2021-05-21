@@ -35,14 +35,5 @@ export default {
     AppFooter,
     Graphics,
   },
-  data() {
-    return {
-      err: "",
-    };
-  },
-  mounted() {
-    this.err = "404";
-  },
-  methods: {},
 };
 </script>
