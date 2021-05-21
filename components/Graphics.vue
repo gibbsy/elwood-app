@@ -47,7 +47,9 @@ export default {
     };
   },
   mounted() {
-    this.initGraphics();
+    this.$nextTick(() => {
+      this.initGraphics();
+    });
   },
   methods: {
     initGraphics() {
