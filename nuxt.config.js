@@ -22,7 +22,7 @@ export default {
         content:
           "Elwood is a leading cloud native platform leveraging a single API connection to enable FinTechs to offer crypto assets to their customers, asset managers and financial institutions to trade crypto assets in a seamless fashion",
       },
-      { name: "msapplication-TileColor", content: "#da532c" },
+      { name: "msapplication-TileColor", content: "#0F1F47" },
       { name: "theme-color", content: "#1a1a1a" },
     ],
     link: [
