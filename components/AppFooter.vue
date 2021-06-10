@@ -22,7 +22,8 @@
           </li>
         </ul>
         <p class="address">
-          <span>27 Baker Street</span><span>London, W1U 8EQ, UK</span>
+          <span>5th Floor,</span><span>82 Baker Street,</span
+          ><span>London, W1U 8EQ, UK</span>
         </p>
       </div>
       <div class="footer__logo">
@@ -34,6 +35,7 @@
     <div class="footer__legals">
       <p class="copyright">©2021 Elwood Asset Management LLP</p>
       <ul class="legal-links-menu">
+        <!--  <li><a href="">Elwood Index</a></li> -->
         <li v-for="page in legals" :key="page.slug">
           <nuxt-link :to="`/legal/${page.slug}`">{{ page.title }}</nuxt-link>
         </li>
