@@ -273,7 +273,8 @@
           :data-scroll-offset="videoOffset"
         >
           <block-content
-            :class-name="'block-heading--centred'"
+            render-container-on-single-child
+            :class-name="'section__title block-heading--centred'"
             :blocks="homeData.uspTitle"
           ></block-content>
         </div>
@@ -361,7 +362,9 @@
           uid="clients-2"
         ></dot-grid>
         <div class="clients__title" data-scroll data-scroll-offset="100">
-          <h1 class="block-heading--centred">{{ homeData.clientsTitle }}</h1>
+          <h2 class="section__title block-heading--centred">
+            {{ homeData.clientsTitle }}
+          </h2>
         </div>
         <clients-carousel :clients="homeData.clients"></clients-carousel>
       </div>
@@ -415,7 +418,9 @@
       ></dot-grid>
       <div id="contact-section" class="connect__content-block">
         <div class="connect__title" data-scroll data-scroll-offset="200">
-          <h1 class="block-heading--centred">Connect With Our Team</h1>
+          <h2 class="section__title block-heading--centred">
+            Connect With Our Team
+          </h2>
         </div>
         <div class="connect__main" data-scroll data-scroll-offset="200">
           <div class="connect__intro">
@@ -445,7 +450,7 @@
             v-for="promo in homeData.promoBoxes"
             :key="promo.title"
             :class="['promo-box', `col-${homeData.promoBoxes.length}`]"
-            @click.prevent="scrollTo(`#${promo.link}`)"
+            :href="promo.link"
           >
             <div class="promo__content">
               <figure
@@ -454,7 +459,7 @@
                 data-scroll
               ></figure>
               <div class="promo__text-content">
-                <h1 class="promo__title">{{ promo.title }}</h1>
+                <h2 class="promo__title">{{ promo.title }}</h2>
                 <block-content :blocks="promo.text"></block-content>
               </div>
             </div>

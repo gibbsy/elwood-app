@@ -5,7 +5,7 @@
   @extend .content-block;
   min-height: 100vh;
   flex-direction: column;
-  h1 {
+  .section__title {
     strong {
       color: $darkPurple;
     }

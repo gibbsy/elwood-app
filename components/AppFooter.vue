@@ -26,7 +26,9 @@
             <span>5th Floor,</span><span>82 Baker Street,</span
             ><span>London, W1U 8EQ, UK</span>
           </p>
-          <a class="index-link" href="">Elwood Index</a>
+          <!-- <a class="index-link" href="https://elwoodam.io"
+            >Elwood Blockchain Index</a
+          > -->
         </div>
       </div>
       <div class="footer__logo">

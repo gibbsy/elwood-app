@@ -10,18 +10,16 @@
   @include bp(1024) {
     min-height: 100vh;
   }
-  h1 {
-    color: $darkPurple;
-  }
 }
 
 .clients__title {
   @include centred-title-margin();
-  h1 {
+  .section__title {
+    color: $darkPurple;
     @include revealStart();
   }
   &.is-inview {
-    h1 {
+    .section__title {
       @include revealTo();
     }
   }

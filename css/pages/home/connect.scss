@@ -13,12 +13,12 @@
   @include bp(1200) {
     margin-bottom: 3rem;
   }
-  h1 {
+  .section__title {
     color: $darkPurple;
     @include revealStart();
   }
   &.is-inview {
-    h1 {
+    .section__title {
       @include revealTo();
     }
   }
