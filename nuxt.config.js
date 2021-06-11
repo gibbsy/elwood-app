@@ -86,7 +86,15 @@ export default {
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["@/css/main.scss"],
-
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: "custom_redirect",
+        path: "*",
+        redirect: "/",
+      });
+    },
+  },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: "@/plugins/sanity-blocks.js" },
