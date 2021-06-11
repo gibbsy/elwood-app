@@ -38,8 +38,8 @@ export default {
   /* middleware({ redirect }) {
     return redirect("/");
   }, */
-  mounted() {
+  /*   mounted() {
     this.$router.push("/");
-  },
+  }, */
 };
 </script>
