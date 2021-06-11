@@ -38,9 +38,8 @@ export default {
   /* middleware({ redirect }) {
     return redirect("/");
   }, */
-  beforeMount() {
-    // this.$router.push("/");
-    this.$nuxt.$options.router.push("/");
+  mounted() {
+    this.$router.push("/");
   },
 };
 </script>
