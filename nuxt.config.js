@@ -121,7 +121,7 @@ export default {
   },
   robots: {
     UserAgent: "*",
-    Disallow: "",
+    Disallow: "/legal",
     Sitemap: "https://www.elwood.io/sitemap.xml",
   },
 
