@@ -22,11 +22,11 @@
 
 .promo-box {
   position: relative;
-  padding: 4rem 3rem;
+  padding: 2rem;
   border-radius: 8px;
   border: 1px solid $elwoodGreen;
   background: rgba($nightMode, 0.8);
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
@@ -38,6 +38,8 @@
     margin-top: 0;
   }
   @include bp(768) {
+    width: 80%;
+    padding: 4rem 3rem;
     margin-top: 0;
     &.col-2 {
       margin-left: 5%;
@@ -62,22 +64,32 @@
   }
 }
 
-h2.promo__title {
+.promo__title {
   margin-bottom: 1rem;
-  font-size: 2.4rem;
   color: #fff;
+  font-size: 1.6rem;
+  @include bp(1200) {
+    font-size: 2.4rem;
+  }
 }
 
 .promo__content {
   display: flex;
+  flex-direction: column;
+  @include bp(768) {
+    flex-direction: row;
+  }
 }
 
 .promo__text-content {
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
+  margin-left: 0;
   margin-bottom: 0.6rem;
   color: #fff;
+  @include bp(768) {
+    margin-left: 2rem;
+  }
 }
 
 .promo__icon {
@@ -85,13 +97,20 @@ h2.promo__title {
   display: inline-block;
   flex-shrink: 0;
   flex-grow: 0;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   margin: 0 0 8px 0;
   @include fadeIn();
+  @include bp(768) {
+    margin: 0 0 0 8px;
+  }
+  @include bp(1200) {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .promo__cta {
