@@ -35,8 +35,11 @@ export default {
     AppFooter,
     Graphics,
   },
-  middleware({ redirect }) {
+  /* middleware({ redirect }) {
     return redirect("/");
+  }, */
+  beforeMount() {
+    this.$router.push("/");
   },
 };
 </script>
