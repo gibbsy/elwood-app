@@ -35,5 +35,8 @@ export default {
     AppFooter,
     Graphics,
   },
+  middleware({ redirect }) {
+    return redirect("/");
+  },
 };
 </script>
