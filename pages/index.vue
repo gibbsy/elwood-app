@@ -451,6 +451,7 @@
             :key="promo.title"
             :class="['promo-box', `col-${homeData.promoBoxes.length}`]"
             :href="promo.link"
+            target="_blank"
           >
             <div class="promo__content">
               <figure
