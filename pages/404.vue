@@ -39,7 +39,8 @@ export default {
     return redirect("/");
   }, */
   beforeMount() {
-    this.$router.push("/");
+    // this.$router.push("/");
+    this.$nuxt.$options.router.push("/");
   },
 };
 </script>
