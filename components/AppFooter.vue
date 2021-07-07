@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="footer__legals">
-      <p class="copyright">©2021 Elwood Asset Management LLP</p>
+      <p class="copyright">©2021 Elwood Technologies Services Limited</p>
       <ul class="legal-links-menu">
         <li v-for="page in legals" :key="page.slug">
           <nuxt-link :to="`/legal/${page.slug}`">{{ page.title }}</nuxt-link>
